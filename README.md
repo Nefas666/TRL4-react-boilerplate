@@ -113,4 +113,3 @@ All tables have Row Level Security (RLS) enabled for data protection.
 - `NEXT_PUBLIC_DEV_SUPABASE_REDIRECT_URL`
 
 ## License
-
