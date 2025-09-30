@@ -22,7 +22,7 @@ export function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex h-20 items-center justify-between">
           <Link href="/" className="font-black text-2xl md:text-3xl hover:scale-105 transition-transform">
-            Edu<span className="text-primary">Platform</span>
+            From<span className="text-primary">Soil</span>To<span className="text-primary">Sysyems</span>
           </Link>
           <div className="flex items-center gap-2">
             {links.map((link) => {
