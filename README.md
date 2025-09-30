@@ -1,4 +1,4 @@
-# EduPlatform - Educational Resource Platform (Option B)
+# TRL4 – From Soil to System
 
 A modern educational platform built with Next.js and Supabase, featuring AI-powered chat assistance for course and scholarship recommendations.
 
@@ -108,11 +108,9 @@ All tables have Row Level Security (RLS) enabled for data protection.
 
 ## Environment Variables
 
-Already configured in your Vercel project:
 - `NEXT_PUBLIC_SUPABASE_URL`
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 - `NEXT_PUBLIC_DEV_SUPABASE_REDIRECT_URL`
 
 ## License
 
-MIT
