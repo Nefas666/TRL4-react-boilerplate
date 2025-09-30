@@ -18,13 +18,13 @@ export function Navbar() {
   ]
 
   return (
-    <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <nav className="border-b-4 border-foreground bg-background sticky top-0 z-50">
       <div className="container mx-auto px-4">
-        <div className="flex h-16 items-center justify-between">
-          <Link href="/" className="font-bold text-xl">
-            EduPlatform
+        <div className="flex h-20 items-center justify-between">
+          <Link href="/" className="font-black text-2xl md:text-3xl hover:scale-105 transition-transform">
+            Edu<span className="text-primary">Platform</span>
           </Link>
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-2">
             {links.map((link) => {
               const Icon = link.icon
               const isActive = pathname === link.href
@@ -34,7 +34,7 @@ export function Navbar() {
                   asChild
                   variant={isActive ? "default" : "ghost"}
                   size="sm"
-                  className={cn("gap-2")}
+                  className={cn("gap-2 font-bold rounded-full", isActive && "border-2 border-foreground")}
                 >
                   <Link href={link.href}>
                     <Icon className="h-4 w-4" />
