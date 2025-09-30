@@ -127,7 +127,7 @@ export default function HomePage() {
 
       <footer className="border-t-4 border-foreground py-12 mt-20">
         <div className="container mx-auto px-4 text-center">
-          <p className="text-lg font-bold">&copy; 2025 EduPlatform</p>
+          <p className="text-lg font-bold">&copy; 2025 From soil to systems</p>
           <p className="text-sm text-muted-foreground mt-2">Built with Next.js and Supabase</p>
         </div>
       </footer>
