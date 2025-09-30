@@ -7,9 +7,9 @@ import { Suspense } from "react"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "EduPlatform - Your AI-Powered Educational Journey",
+  title: "From Soil to Systems - Educational Journey",
   description: "Discover courses, scholarships, and funding opportunities with AI assistance",
-  generator: "v0.app",
+  generator: "001100 010010 011110 100001 101101 110011",
 }
 
 export default function RootLayout({
