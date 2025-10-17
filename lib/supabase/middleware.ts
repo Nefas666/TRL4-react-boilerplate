@@ -2,6 +2,8 @@ import { createServerClient } from "@supabase/ssr"
 import { NextResponse, type NextRequest } from "next/server"
 
 export async function updateSession(request: NextRequest) {
+  const isDevMode = process.env.NEXT_PUBLIC_DEV_MODE === "true"
+
   let supabaseResponse = NextResponse.next({
     request,
   })
@@ -29,10 +31,28 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser()
 
-  // Protect routes that require authentication
-  if (!user && !request.nextUrl.pathname.startsWith("/auth") && request.nextUrl.pathname !== "/") {
+  if (isDevMode) {
+    // Add a custom header to indicate dev mode is active
+    supabaseResponse.headers.set("x-dev-mode", "true")
+    return supabaseResponse
+  }
+
+  const isAuthRoute = request.nextUrl.pathname.startsWith("/auth")
+  const isPublicRoute =
+    request.nextUrl.pathname === "/" ||
+    request.nextUrl.pathname === "/resources" ||
+    request.nextUrl.pathname.startsWith("/_next") ||
+    request.nextUrl.pathname.startsWith("/api")
+
+  if (!user && !isAuthRoute && !isPublicRoute) {
     const url = request.nextUrl.clone()
     url.pathname = "/auth/login"
+    return NextResponse.redirect(url)
+  }
+
+  if (user && isAuthRoute && request.nextUrl.pathname !== "/auth/sign-up-success") {
+    const url = request.nextUrl.clone()
+    url.pathname = "/profile"
     return NextResponse.redirect(url)
   }
 
