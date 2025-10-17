@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { MessageSquare, BookOpen, Users, Sparkles, ArrowRight } from "lucide-react"
+import { MessageSquare, BookOpen, Users, Sparkles, ArrowRight, Search, Target, Zap, Award } from "lucide-react"
 import { Navbar } from "@/components/navbar"
 
 export default function HomePage() {
@@ -11,7 +11,15 @@ export default function HomePage() {
 
       <main className="flex-1">
         <section className="container mx-auto px-4 py-16 md:py-24">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-5xl mx-auto text-center">
+            <div className="mb-8 flex justify-center">
+              <div className="relative w-32 h-32 md:w-40 md:h-40">
+                <div className="absolute inset-0 holographic rounded-full blur-2xl opacity-60"></div>
+                <div className="relative w-full h-full holographic rounded-full flex items-center justify-center">
+                  <Sparkles className="w-16 h-16 md:w-20 md:h-20 text-white" />
+                </div>
+              </div>
+            </div>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-balance leading-tight">
               Your AI-Powered Educational Journey
             </h1>
@@ -19,7 +27,11 @@ export default function HomePage() {
               Discover courses, scholarships, and funding opportunities tailored to your goals
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button asChild size="lg" className="gap-2 text-base px-8 rounded-full bg-primary hover:bg-primary/90">
+              <Button
+                asChild
+                size="lg"
+                className="gap-2 text-base px-8 rounded-full bg-foreground text-background hover:bg-foreground/90"
+              >
                 <Link href="/chat">
                   <MessageSquare className="h-5 w-5" />
                   Start Chatting
@@ -40,14 +52,70 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="py-16 bg-muted/30">
+        <section className="py-16 gradient-yellow-mint">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Everything You Need to Succeed</h2>
-            <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              <Card className="border-0 soft-shadow bg-primary/5 hover:soft-shadow-lg transition-shadow">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">How It Works</h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+              <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
                 <CardHeader className="space-y-4">
-                  <div className="w-14 h-14 rounded-2xl bg-primary/20 flex items-center justify-center">
-                    <MessageSquare className="h-7 w-7 text-primary-foreground" />
+                  <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center">
+                    <Search className="h-7 w-7 text-primary" />
+                  </div>
+                  <CardTitle className="text-xl font-bold">Search</CardTitle>
+                  <CardDescription className="text-base leading-relaxed">
+                    Browse our curated database of courses and opportunities
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+
+              <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
+                <CardHeader className="space-y-4">
+                  <div className="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center">
+                    <MessageSquare className="h-7 w-7 text-secondary" />
+                  </div>
+                  <CardTitle className="text-xl font-bold">Chat</CardTitle>
+                  <CardDescription className="text-base leading-relaxed">
+                    Get personalized recommendations from our AI assistant
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+
+              <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
+                <CardHeader className="space-y-4">
+                  <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center">
+                    <Target className="h-7 w-7 text-accent" />
+                  </div>
+                  <CardTitle className="text-xl font-bold">Match</CardTitle>
+                  <CardDescription className="text-base leading-relaxed">
+                    Find opportunities that align with your goals
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+
+              <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
+                <CardHeader className="space-y-4">
+                  <div className="w-14 h-14 rounded-2xl bg-highlight/10 flex items-center justify-center">
+                    <Award className="h-7 w-7 text-highlight" />
+                  </div>
+                  <CardTitle className="text-xl font-bold">Succeed</CardTitle>
+                  <CardDescription className="text-base leading-relaxed">
+                    Apply and achieve your educational dreams
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Everything You Need</h2>
+            <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+              <Card className="border-0 card-shadow hover:card-shadow-hover transition-all bg-card overflow-hidden">
+                <div className="h-2 bg-primary"></div>
+                <CardHeader className="space-y-4 pt-8">
+                  <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center">
+                    <MessageSquare className="h-7 w-7 text-primary" />
                   </div>
                   <CardTitle className="text-xl font-bold">AI Chat Assistant</CardTitle>
                   <CardDescription className="text-base leading-relaxed">
@@ -56,10 +124,11 @@ export default function HomePage() {
                 </CardHeader>
               </Card>
 
-              <Card className="border-0 soft-shadow bg-secondary/5 hover:soft-shadow-lg transition-shadow">
-                <CardHeader className="space-y-4">
-                  <div className="w-14 h-14 rounded-2xl bg-secondary/20 flex items-center justify-center">
-                    <BookOpen className="h-7 w-7 text-secondary-foreground" />
+              <Card className="border-0 card-shadow hover:card-shadow-hover transition-all bg-card overflow-hidden">
+                <div className="h-2 bg-secondary"></div>
+                <CardHeader className="space-y-4 pt-8">
+                  <div className="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center">
+                    <BookOpen className="h-7 w-7 text-secondary" />
                   </div>
                   <CardTitle className="text-xl font-bold">Resource Library</CardTitle>
                   <CardDescription className="text-base leading-relaxed">
@@ -68,10 +137,11 @@ export default function HomePage() {
                 </CardHeader>
               </Card>
 
-              <Card className="border-0 soft-shadow bg-accent/5 hover:soft-shadow-lg transition-shadow">
-                <CardHeader className="space-y-4">
-                  <div className="w-14 h-14 rounded-2xl bg-accent/20 flex items-center justify-center">
-                    <Users className="h-7 w-7 text-accent-foreground" />
+              <Card className="border-0 card-shadow hover:card-shadow-hover transition-all bg-card overflow-hidden">
+                <div className="h-2 bg-accent"></div>
+                <CardHeader className="space-y-4 pt-8">
+                  <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center">
+                    <Users className="h-7 w-7 text-accent" />
                   </div>
                   <CardTitle className="text-xl font-bold">Community</CardTitle>
                   <CardDescription className="text-base leading-relaxed">
@@ -84,20 +154,20 @@ export default function HomePage() {
         </section>
 
         <section className="container mx-auto px-4 py-16 md:py-20">
-          <Card className="max-w-3xl mx-auto text-center border-0 soft-shadow-lg bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10">
+          <Card className="max-w-3xl mx-auto text-center border-0 card-shadow-hover gradient-purple-pink overflow-hidden">
             <CardHeader className="py-12 space-y-6">
-              <div className="w-16 h-16 rounded-2xl bg-primary/20 mx-auto flex items-center justify-center">
-                <Sparkles className="h-8 w-8 text-primary-foreground" />
+              <div className="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-sm mx-auto flex items-center justify-center">
+                <Zap className="h-8 w-8 text-white" />
               </div>
-              <CardTitle className="text-3xl md:text-4xl font-bold">Ready to Get Started?</CardTitle>
+              <CardTitle className="text-3xl md:text-4xl font-bold text-white">Ready to Get Started?</CardTitle>
               <CardContent className="space-y-6">
-                <p className="text-lg text-muted-foreground leading-relaxed">
+                <p className="text-lg text-white/90 leading-relaxed">
                   Join thousands of learners finding their perfect educational path
                 </p>
                 <Button
                   asChild
                   size="lg"
-                  className="rounded-full px-10 text-base font-semibold bg-foreground text-background hover:bg-foreground/90 gap-2"
+                  className="rounded-full px-10 text-base font-semibold bg-white text-primary hover:bg-white/90 gap-2"
                 >
                   <Link href="/auth/sign-up">
                     Create Free Account

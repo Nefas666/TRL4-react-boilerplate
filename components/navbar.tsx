@@ -18,7 +18,7 @@ export function Navbar() {
   ]
 
   return (
-    <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
+    <nav className="border-b bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80 sticky top-0 z-50 card-shadow">
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           <Link href="/" className="font-bold text-xl md:text-2xl hover:opacity-80 transition-opacity">
@@ -35,8 +35,8 @@ export function Navbar() {
                   variant={isActive ? "default" : "ghost"}
                   size="sm"
                   className={cn(
-                    "gap-2 font-medium rounded-full",
-                    isActive && "bg-primary/10 text-primary hover:bg-primary/20",
+                    "gap-2 font-medium rounded-full transition-all",
+                    isActive && "bg-primary text-primary-foreground hover:bg-primary/90",
                   )}
                 >
                   <Link href={link.href}>
