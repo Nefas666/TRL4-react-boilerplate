@@ -70,13 +70,13 @@ export default function SignUpPage() {
   }
 
   return (
-    <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
+    <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10 bg-muted/30">
       <div className="w-full max-w-sm">
         <div className="flex flex-col gap-6">
           {isDevMode && (
-            <Alert className="border-yellow-500 bg-yellow-50 dark:bg-yellow-950">
-              <Code className="h-4 w-4 text-yellow-600" />
-              <AlertDescription className="text-yellow-800 dark:text-yellow-200">
+            <Alert className="border-0 bg-highlight/50 soft-shadow">
+              <Code className="h-4 w-4 text-highlight-foreground" />
+              <AlertDescription className="text-highlight-foreground text-sm">
                 <strong>Development Mode Active</strong>
                 <br />
                 Authentication is bypassed. This should NEVER be enabled in production.
@@ -84,9 +84,9 @@ export default function SignUpPage() {
             </Alert>
           )}
 
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-2xl">Sign up</CardTitle>
+          <Card className="border-0 soft-shadow-lg">
+            <CardHeader className="space-y-2">
+              <CardTitle className="text-2xl font-bold">Sign up</CardTitle>
               <CardDescription>Create a new account</CardDescription>
             </CardHeader>
             <CardContent>
@@ -102,6 +102,7 @@ export default function SignUpPage() {
                       value={displayName}
                       onChange={(e) => setDisplayName(e.target.value)}
                       disabled={isDevMode}
+                      className="rounded-xl"
                     />
                   </div>
                   <div className="grid gap-2">
@@ -114,6 +115,7 @@ export default function SignUpPage() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       disabled={isDevMode}
+                      className="rounded-xl"
                     />
                   </div>
                   <div className="grid gap-2">
@@ -126,6 +128,7 @@ export default function SignUpPage() {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       disabled={isDevMode}
+                      className="rounded-xl"
                     />
                     <p className="text-xs text-muted-foreground">Must be at least 8 characters</p>
                   </div>
@@ -138,29 +141,30 @@ export default function SignUpPage() {
                       value={confirmPassword}
                       onChange={(e) => setConfirmPassword(e.target.value)}
                       disabled={isDevMode}
+                      className="rounded-xl"
                     />
                   </div>
                   {error && (
-                    <Alert variant="destructive">
+                    <Alert variant="destructive" className="border-0 soft-shadow">
                       <AlertCircle className="h-4 w-4" />
                       <AlertDescription>{error}</AlertDescription>
                     </Alert>
                   )}
 
                   {isDevMode ? (
-                    <Button type="button" onClick={handleDevBypass} className="w-full" variant="secondary">
+                    <Button type="button" onClick={handleDevBypass} className="w-full rounded-full" variant="secondary">
                       <Code className="mr-2 h-4 w-4" />
                       Bypass Auth (Dev Mode)
                     </Button>
                   ) : (
-                    <Button type="submit" className="w-full" disabled={isLoading}>
+                    <Button type="submit" className="w-full rounded-full" disabled={isLoading}>
                       {isLoading ? "Creating account..." : "Sign up"}
                     </Button>
                   )}
                 </div>
                 <div className="mt-4 text-center text-sm">
                   Already have an account?{" "}
-                  <Link href="/auth/login" className="underline underline-offset-4">
+                  <Link href="/auth/login" className="underline underline-offset-4 text-primary">
                     Login
                   </Link>
                 </div>

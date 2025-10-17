@@ -54,13 +54,13 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
+    <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10 bg-muted/30">
       <div className="w-full max-w-sm">
         <div className="flex flex-col gap-6">
           {isDevMode && (
-            <Alert className="border-yellow-500 bg-yellow-50 dark:bg-yellow-950">
-              <Code className="h-4 w-4 text-yellow-600" />
-              <AlertDescription className="text-yellow-800 dark:text-yellow-200">
+            <Alert className="border-0 bg-highlight/50 soft-shadow">
+              <Code className="h-4 w-4 text-highlight-foreground" />
+              <AlertDescription className="text-highlight-foreground text-sm">
                 <strong>Development Mode Active</strong>
                 <br />
                 Authentication is bypassed. This should NEVER be enabled in production.
@@ -68,9 +68,9 @@ export default function LoginPage() {
             </Alert>
           )}
 
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-2xl">Login</CardTitle>
+          <Card className="border-0 soft-shadow-lg">
+            <CardHeader className="space-y-2">
+              <CardTitle className="text-2xl font-bold">Login</CardTitle>
               <CardDescription>Enter your email below to login to your account</CardDescription>
             </CardHeader>
             <CardContent>
@@ -86,6 +86,7 @@ export default function LoginPage() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       disabled={isDevMode}
+                      className="rounded-xl"
                     />
                   </div>
                   <div className="grid gap-2">
@@ -97,29 +98,30 @@ export default function LoginPage() {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       disabled={isDevMode}
+                      className="rounded-xl"
                     />
                   </div>
                   {error && (
-                    <Alert variant="destructive">
+                    <Alert variant="destructive" className="border-0 soft-shadow">
                       <AlertCircle className="h-4 w-4" />
                       <AlertDescription>{error}</AlertDescription>
                     </Alert>
                   )}
 
                   {isDevMode ? (
-                    <Button type="button" onClick={handleDevBypass} className="w-full" variant="secondary">
+                    <Button type="button" onClick={handleDevBypass} className="w-full rounded-full" variant="secondary">
                       <Code className="mr-2 h-4 w-4" />
                       Bypass Auth (Dev Mode)
                     </Button>
                   ) : (
-                    <Button type="submit" className="w-full" disabled={isLoading}>
+                    <Button type="submit" className="w-full rounded-full" disabled={isLoading}>
                       {isLoading ? "Logging in..." : "Login"}
                     </Button>
                   )}
                 </div>
                 <div className="mt-4 text-center text-sm">
                   Don&apos;t have an account?{" "}
-                  <Link href="/auth/sign-up" className="underline underline-offset-4">
+                  <Link href="/auth/sign-up" className="underline underline-offset-4 text-primary">
                     Sign up
                   </Link>
                 </div>
