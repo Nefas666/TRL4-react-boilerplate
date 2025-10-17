@@ -1,13 +1,13 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Host_Grotesk } from "next/font/google"
+import { Space_Grotesk } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
 import "./globals.css"
 
-const hostGrotesk = Host_Grotesk({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-host-grotesk",
+  variable: "--font-space-grotesk",
   display: "swap",
 })
 
@@ -24,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`font-sans ${hostGrotesk.variable}`}>
+      <body className={`font-sans ${spaceGrotesk.variable}`}>
         <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
         <Analytics />
       </body>
