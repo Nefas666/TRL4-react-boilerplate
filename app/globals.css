@@ -186,6 +186,27 @@
     background: linear-gradient(135deg, oklch(0.75 0.15 200) 0%, oklch(0.7 0.2 240) 100%);
   }
 
+  /* Added more gradient backgrounds matching the case study */
+  .bg-cream {
+    background-color: oklch(0.97 0.01 85);
+  }
+
+  .bg-soft-yellow {
+    background-color: oklch(0.95 0.12 95);
+  }
+
+  .bg-soft-mint {
+    background-color: oklch(0.92 0.12 155);
+  }
+
+  .bg-soft-peach {
+    background-color: oklch(0.94 0.08 50);
+  }
+
+  .bg-soft-blue {
+    background-color: oklch(0.92 0.08 220);
+  }
+
   .holographic {
     background: linear-gradient(
       135deg,
@@ -215,5 +236,12 @@
 
   .card-shadow-hover {
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  }
+
+  /* Added phone mockup style */
+  .phone-mockup {
+    border-radius: 2.5rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    border: 8px solid oklch(0.2 0 0);
   }
 }

@@ -1,18 +1,18 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import {
   MessageSquare,
   BookOpen,
   Users,
-  Sparkles,
   ArrowRight,
   Sprout,
   Network,
   GraduationCap,
   Target,
+  TrendingUp,
   Globe,
-  Leaf,
+  CheckCircle2,
 } from "lucide-react"
 import { Navbar } from "@/components/navbar"
 
@@ -22,11 +22,11 @@ export default function HomePage() {
       <Navbar />
 
       <main className="flex-1">
-        <section className="gradient-yellow-mint py-20 md:py-32">
+        <section className="bg-soft-yellow py-20 md:py-32">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
-                <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 text-balance leading-[0.95]">
+                <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-8 text-balance leading-[0.95] tracking-tight">
                   From Soil
                   <br />
                   to Systems
@@ -36,227 +36,207 @@ export default function HomePage() {
                 </p>
               </div>
 
-              <div className="relative max-w-4xl mx-auto h-[400px] md:h-[500px] flex items-center justify-center">
-                <div className="absolute inset-0 holographic rounded-[3rem] blur-3xl opacity-30"></div>
-                <div className="relative w-full h-full holographic rounded-[3rem] flex items-center justify-center">
-                  <Sprout className="w-24 h-24 md:w-32 md:h-32 text-white" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="py-20 md:py-28">
-          <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto">
-              <h2 className="text-4xl md:text-5xl font-bold text-center mb-6">The Challenge</h2>
-              <p className="text-xl text-center text-muted-foreground mb-16 max-w-3xl mx-auto leading-relaxed">
-                Rural youth face barriers to entrepreneurship
-              </p>
-
-              <div className="grid md:grid-cols-3 gap-6">
-                <Card className="bg-foreground text-background border-0 card-shadow-hover">
-                  <CardHeader className="space-y-4 p-8">
-                    <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center">
-                      <Target className="h-7 w-7 text-white" />
+              <div className="max-w-md mx-auto">
+                <div className="relative aspect-[9/16] bg-card rounded-[2.5rem] shadow-2xl border-8 border-foreground/90 overflow-hidden">
+                  <div className="absolute inset-0 flex flex-col items-center justify-center p-8 bg-gradient-to-b from-background to-muted">
+                    <div className="relative w-40 h-40 mb-8">
+                      <div className="absolute inset-0 holographic rounded-full blur-2xl opacity-60"></div>
+                      <div className="relative w-full h-full holographic rounded-full flex items-center justify-center">
+                        <Sprout className="w-20 h-20 text-white" />
+                      </div>
                     </div>
-                    <CardTitle className="text-xl font-bold text-white">Limited Access</CardTitle>
-                    <CardDescription className="text-base leading-relaxed text-white/80">
-                      Rural youth and unemployed people often lack access to information, mentors, and opportunities
-                    </CardDescription>
-                  </CardHeader>
-                </Card>
-
-                <Card className="bg-foreground text-background border-0 card-shadow-hover">
-                  <CardHeader className="space-y-4 p-8">
-                    <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center">
-                      <Network className="h-7 w-7 text-white" />
-                    </div>
-                    <CardTitle className="text-xl font-bold text-white">Bureaucratic Complexity</CardTitle>
-                    <CardDescription className="text-base leading-relaxed text-white/80">
-                      Scattered digital resources and complex bureaucracy make it hard to start sustainable initiatives
-                    </CardDescription>
-                  </CardHeader>
-                </Card>
-
-                <Card className="bg-foreground text-background border-0 card-shadow-hover">
-                  <CardHeader className="space-y-4 p-8">
-                    <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center">
-                      <BookOpen className="h-7 w-7 text-white" />
-                    </div>
-                    <CardTitle className="text-xl font-bold text-white">Disconnected Training</CardTitle>
-                    <CardDescription className="text-base leading-relaxed text-white/80">
-                      Existing training is often static and disconnected from real community needs
-                    </CardDescription>
-                  </CardHeader>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="py-20 md:py-28 bg-[oklch(0.92_0.12_155)]">
-          <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto">
-              <h2 className="text-4xl md:text-5xl font-bold text-center mb-6">The Solution</h2>
-              <p className="text-xl text-center text-foreground/70 mb-16 max-w-3xl mx-auto leading-relaxed">
-                A digital mentor for the next generation of rural entrepreneurs
-              </p>
-
-              <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div className="space-y-8">
-                  <div className="space-y-4">
-                    <h3 className="text-2xl font-bold">AI-Powered Platform</h3>
-                    <p className="text-lg leading-relaxed text-foreground/70">
-                      From Soil to Systems acts as a personal digital mentor. Users describe their ideas in natural
-                      language, and the chatbot instantly suggests:
+                    <h2 className="text-2xl font-bold text-center mb-4">Your AI Assistant</h2>
+                    <p className="text-center text-muted-foreground text-sm">
+                      How can I assist you today with your entrepreneurship journey?
                     </p>
                   </div>
-
-                  <div className="space-y-4">
-                    <div className="flex items-start gap-4">
-                      <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                        <GraduationCap className="h-5 w-5 text-primary" />
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-1">Training Opportunities</h4>
-                        <p className="text-foreground/70">Personalized learning paths for your goals</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-4">
-                      <div className="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center flex-shrink-0">
-                        <Sparkles className="h-5 w-5 text-secondary" />
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-1">Funding and Resources</h4>
-                        <p className="text-foreground/70">Access to grants and support programs</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-4">
-                      <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
-                        <Users className="h-5 w-5 text-accent" />
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-lg mb-1">Local Mentors or Networks</h4>
-                        <p className="text-foreground/70">Connect with experienced entrepreneurs</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="relative h-[400px] md:h-[500px]">
-                  <div className="absolute inset-0 bg-primary/20 rounded-[3rem] blur-2xl"></div>
-                  <div className="relative w-full h-full bg-card rounded-[3rem] card-shadow-hover flex items-center justify-center">
-                    <MessageSquare className="w-24 h-24 text-primary" />
-                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="py-20 md:py-28 gradient-yellow-mint">
+        <section className="bg-soft-peach py-20">
           <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto">
-              <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">Key Features</h2>
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-4xl md:text-5xl font-bold mb-8">The Challenge</h2>
+              <div className="space-y-6 text-lg leading-relaxed">
+                <p className="text-foreground/80">
+                  In <span className="font-semibold text-foreground">Northern Ostrobothnia (Finland)</span>, rural youth
+                  and unemployed people often lack access to information, mentors, and opportunities.
+                </p>
+                <p className="text-foreground/80">
+                  Bureaucratic complexity and scattered digital resources make it hard to start sustainable initiatives.
+                </p>
+                <p className="text-foreground/80">
+                  Existing training is often static and disconnected from real community needs.
+                </p>
+                <div className="pt-4">
+                  <p className="text-xl font-bold text-foreground">Rural youth face barriers to entrepreneurship</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
-                  <CardHeader className="space-y-4 p-8">
-                    <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center">
-                      <MessageSquare className="h-7 w-7 text-primary" />
-                    </div>
-                    <CardTitle className="text-xl font-bold">AI Chatbot-Mentor</CardTitle>
-                    <CardDescription className="text-base leading-relaxed">
-                      Natural language interface for instant personalized guidance
-                    </CardDescription>
+        <section className="bg-soft-mint py-20">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-4xl md:text-5xl font-bold mb-8">The Solution</h2>
+              <div className="space-y-6 text-lg leading-relaxed mb-12">
+                <p className="text-foreground/80">
+                  <span className="font-semibold text-foreground">From Soil to Systems</span> is an AI-powered platform
+                  that acts as a personal digital mentor.
+                </p>
+                <p className="text-foreground/80">
+                  Users describe their ideas in natural language, and the chatbot instantly suggests:
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-6">
+                <Card className="border-0 card-shadow bg-card">
+                  <CardHeader className="space-y-4">
+                    <GraduationCap className="h-10 w-10 text-primary" />
+                    <CardTitle className="text-xl">Training opportunities</CardTitle>
                   </CardHeader>
                 </Card>
 
-                <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
-                  <CardHeader className="space-y-4 p-8">
-                    <div className="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center">
-                      <GraduationCap className="h-7 w-7 text-secondary" />
-                    </div>
-                    <CardTitle className="text-xl font-bold">Micro-learning Hub</CardTitle>
-                    <CardDescription className="text-base leading-relaxed">
-                      Curated training and resources for rural entrepreneurship
-                    </CardDescription>
+                <Card className="border-0 card-shadow bg-card">
+                  <CardHeader className="space-y-4">
+                    <Target className="h-10 w-10 text-secondary" />
+                    <CardTitle className="text-xl">Funding and resources</CardTitle>
                   </CardHeader>
                 </Card>
 
-                <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
-                  <CardHeader className="space-y-4 p-8">
-                    <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center">
-                      <Users className="h-7 w-7 text-accent" />
-                    </div>
-                    <CardTitle className="text-xl font-bold">Community Space</CardTitle>
+                <Card className="border-0 card-shadow bg-card">
+                  <CardHeader className="space-y-4">
+                    <Users className="h-10 w-10 text-accent" />
+                    <CardTitle className="text-xl">Local mentors or networks</CardTitle>
+                  </CardHeader>
+                </Card>
+              </div>
+
+              <div className="mt-12">
+                <p className="text-xl font-bold text-foreground">
+                  The system transforms uncertainty into concrete, guided actions.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-soft-yellow py-20">
+          <div className="container mx-auto px-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">Key Features</h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+              <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
+                <CardHeader className="space-y-6 p-8">
+                  <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center">
+                    <MessageSquare className="h-8 w-8 text-primary" />
+                  </div>
+                  <div className="space-y-4">
+                    <CardTitle className="text-2xl font-bold">AI Chatbot-Mentor</CardTitle>
+                    <CardDescription className="text-base leading-relaxed">
+                      Natural language interface for personalized guidance
+                    </CardDescription>
+                  </div>
+                </CardHeader>
+              </Card>
+
+              <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
+                <CardHeader className="space-y-6 p-8">
+                  <div className="w-16 h-16 rounded-2xl bg-secondary/10 flex items-center justify-center">
+                    <BookOpen className="h-8 w-8 text-secondary" />
+                  </div>
+                  <div className="space-y-4">
+                    <CardTitle className="text-2xl font-bold">Micro-learning Hub</CardTitle>
+                    <CardDescription className="text-base leading-relaxed">
+                      Curated training and resources for rural entrepreneurs
+                    </CardDescription>
+                  </div>
+                </CardHeader>
+              </Card>
+
+              <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
+                <CardHeader className="space-y-6 p-8">
+                  <div className="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center">
+                    <Users className="h-8 w-8 text-accent" />
+                  </div>
+                  <div className="space-y-4">
+                    <CardTitle className="text-2xl font-bold">Community Space</CardTitle>
                     <CardDescription className="text-base leading-relaxed">
                       Connect with mentors and fellow entrepreneurs
                     </CardDescription>
-                  </CardHeader>
-                </Card>
+                  </div>
+                </CardHeader>
+              </Card>
 
-                <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
-                  <CardHeader className="space-y-4 p-8">
-                    <div className="w-14 h-14 rounded-2xl bg-highlight/10 flex items-center justify-center">
-                      <Network className="h-7 w-7 text-highlight" />
-                    </div>
-                    <CardTitle className="text-xl font-bold">Open Architecture</CardTitle>
+              <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
+                <CardHeader className="space-y-6 p-8">
+                  <div className="w-16 h-16 rounded-2xl bg-highlight/10 flex items-center justify-center">
+                    <Network className="h-8 w-8 text-highlight" />
+                  </div>
+                  <div className="space-y-4">
+                    <CardTitle className="text-2xl font-bold">Open Architecture</CardTitle>
                     <CardDescription className="text-base leading-relaxed">
-                      Replicable model for other EU rural regions
+                      Replicable model for EU rural regions
                     </CardDescription>
-                  </CardHeader>
-                </Card>
-              </div>
+                  </div>
+                </CardHeader>
+              </Card>
             </div>
           </div>
         </section>
 
-        <section className="py-20 md:py-28 bg-[oklch(0.92_0.08_40)]">
+        <section className="bg-soft-blue py-20">
           <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto">
-              <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">Outcomes</h2>
-
+            <div className="max-w-5xl mx-auto">
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center">Outcomes</h2>
               <div className="grid md:grid-cols-2 gap-8">
-                <Card className="border-0 card-shadow-hover bg-card">
+                <Card className="border-0 card-shadow bg-card">
                   <CardHeader className="space-y-4 p-8">
-                    <div className="text-5xl font-bold text-primary">1</div>
-                    <CardTitle className="text-2xl font-bold">Empowers Rural Youth</CardTitle>
-                    <CardDescription className="text-lg leading-relaxed">
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <CheckCircle2 className="h-6 w-6 text-primary" />
+                    </div>
+                    <CardTitle className="text-xl">Empowers rural youth</CardTitle>
+                    <CardDescription className="text-base leading-relaxed">
                       Provides personalized guidance and removes barriers to entrepreneurship
                     </CardDescription>
                   </CardHeader>
                 </Card>
 
-                <Card className="border-0 card-shadow-hover bg-card">
+                <Card className="border-0 card-shadow bg-card">
                   <CardHeader className="space-y-4 p-8">
-                    <div className="text-5xl font-bold text-secondary">2</div>
-                    <CardTitle className="text-2xl font-bold">Sustainable Innovation</CardTitle>
-                    <CardDescription className="text-lg leading-relaxed">
+                    <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center">
+                      <TrendingUp className="h-6 w-6 text-secondary" />
+                    </div>
+                    <CardTitle className="text-xl">Sustainable innovation</CardTitle>
+                    <CardDescription className="text-base leading-relaxed">
                       Encourages new jobs in green sectors and sustainable practices
                     </CardDescription>
                   </CardHeader>
                 </Card>
 
-                <Card className="border-0 card-shadow-hover bg-card">
+                <Card className="border-0 card-shadow bg-card">
                   <CardHeader className="space-y-4 p-8">
-                    <div className="text-5xl font-bold text-accent">3</div>
-                    <CardTitle className="text-2xl font-bold">Strengthens Networks</CardTitle>
-                    <CardDescription className="text-lg leading-relaxed">
+                    <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center">
+                      <Network className="h-6 w-6 text-accent" />
+                    </div>
+                    <CardTitle className="text-xl">Strengthens networks</CardTitle>
+                    <CardDescription className="text-base leading-relaxed">
                       Builds local connections and promotes digital inclusion
                     </CardDescription>
                   </CardHeader>
                 </Card>
 
-                <Card className="border-0 card-shadow-hover bg-card">
+                <Card className="border-0 card-shadow bg-card">
                   <CardHeader className="space-y-4 p-8">
-                    <div className="text-5xl font-bold text-highlight">4</div>
-                    <CardTitle className="text-2xl font-bold">Replicable Model</CardTitle>
-                    <CardDescription className="text-lg leading-relaxed">
-                      Creates a blueprint for other EU rural regions
+                    <div className="w-12 h-12 rounded-xl bg-highlight/10 flex items-center justify-center">
+                      <Globe className="h-6 w-6 text-highlight" />
+                    </div>
+                    <CardTitle className="text-xl">Replicable model</CardTitle>
+                    <CardDescription className="text-base leading-relaxed">
+                      Creates a framework for other EU rural regions
                     </CardDescription>
                   </CardHeader>
                 </Card>
@@ -265,113 +245,55 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="py-20 md:py-28 bg-[oklch(0.92_0.08_220)]">
+        <section className="gradient-purple-pink py-24">
           <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto">
-              <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">The Partners</h2>
-
-              <div className="grid md:grid-cols-2 gap-8">
-                <Card className="border-0 card-shadow-hover bg-card">
-                  <CardHeader className="space-y-6 p-10">
-                    <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center">
-                      <Globe className="h-8 w-8 text-primary" />
-                    </div>
-                    <CardTitle className="text-2xl font-bold">Markesing</CardTitle>
-                    <CardDescription className="text-base leading-relaxed space-y-4">
-                      <p>
-                        Italian-based organization developing digital solutions for social and cultural impact. With
-                        over 400 hours of training delivered across 12 public schools.
-                      </p>
-                      <p>
-                        Recent project: <span className="font-semibold">EmpathyBot</span>, an AI platform supporting
-                        parents in high-conflict divorces.
-                      </p>
-                      <p className="font-semibold text-foreground">
-                        Leads digital development and strategic coordination.
-                      </p>
-                    </CardDescription>
-                  </CardHeader>
-                </Card>
-
-                <Card className="border-0 card-shadow-hover bg-card">
-                  <CardHeader className="space-y-6 p-10">
-                    <div className="w-16 h-16 rounded-2xl bg-highlight/10 flex items-center justify-center">
-                      <Leaf className="h-8 w-8 text-highlight" />
-                    </div>
-                    <CardTitle className="text-2xl font-bold">Settevoci</CardTitle>
-                    <CardDescription className="text-base leading-relaxed space-y-4">
-                      <p>
-                        Grassroots initiative that revived an abandoned rural masseria in Castiglione di Sicilia into a
-                        hub for permaculture and cultural exchange.
-                      </p>
-                      <p>
-                        Through regenerative agriculture, hands-on learning, and inclusive gatherings, they created a
-                        living space rooted in sustainability.
-                      </p>
-                      <p className="font-semibold text-foreground">
-                        Shapes content, pilots the platform, and anchors it in real-world practice.
-                      </p>
-                    </CardDescription>
-                  </CardHeader>
-                </Card>
+            <div className="max-w-4xl mx-auto text-center space-y-8">
+              <div className="w-20 h-20 rounded-2xl bg-white/20 backdrop-blur-sm mx-auto flex items-center justify-center">
+                <Sprout className="h-10 w-10 text-white" />
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
+                We believe that caring for soil
+                <br />
+                means caring for life
+              </h2>
+              <p className="text-xl text-white/90 leading-relaxed max-w-2xl mx-auto">
+                We can regenerate not just the land, but the way we live together. Let's grow this vision. Together.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
+                <Button
+                  asChild
+                  size="lg"
+                  className="rounded-full px-10 text-base font-semibold bg-white text-primary hover:bg-white/90 gap-2"
+                >
+                  <Link href="/auth/sign-up">
+                    Get Started
+                    <ArrowRight className="h-5 w-5" />
+                  </Link>
+                </Button>
+                <Button
+                  asChild
+                  size="lg"
+                  variant="outline"
+                  className="rounded-full px-10 text-base font-semibold bg-transparent border-2 border-white text-white hover:bg-white/10"
+                >
+                  <Link href="/chat">
+                    <MessageSquare className="h-5 w-5" />
+                    Talk to AI Mentor
+                  </Link>
+                </Button>
               </div>
             </div>
-          </div>
-        </section>
-
-        <section className="py-20 md:py-28">
-          <div className="container mx-auto px-4">
-            <Card className="max-w-4xl mx-auto text-center border-0 card-shadow-hover gradient-purple-pink overflow-hidden">
-              <CardHeader className="py-16 space-y-8">
-                <div className="w-20 h-20 rounded-2xl bg-white/20 backdrop-blur-sm mx-auto flex items-center justify-center">
-                  <Sprout className="h-10 w-10 text-white" />
-                </div>
-                <CardTitle className="text-4xl md:text-5xl font-bold text-white leading-tight">
-                  Caring for Soil Means
-                  <br />
-                  Caring for Life
-                </CardTitle>
-                <CardContent className="space-y-8">
-                  <p className="text-xl text-white/90 leading-relaxed max-w-2xl mx-auto">
-                    We believe we can regenerate not just the land, but the way we live together. Let's grow this
-                    vision. Together.
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Button
-                      asChild
-                      size="lg"
-                      className="rounded-full px-10 text-lg font-semibold bg-white text-primary hover:bg-white/90 gap-2"
-                    >
-                      <Link href="/auth/sign-up">
-                        Get Started
-                        <ArrowRight className="h-5 w-5" />
-                      </Link>
-                    </Button>
-                    <Button
-                      asChild
-                      size="lg"
-                      variant="outline"
-                      className="rounded-full px-10 text-lg font-semibold border-2 border-white text-white hover:bg-white/10 gap-2 bg-transparent"
-                    >
-                      <Link href="/chat">
-                        <MessageSquare className="h-5 w-5" />
-                        Talk to AI Mentor
-                      </Link>
-                    </Button>
-                  </div>
-                </CardContent>
-              </CardHeader>
-            </Card>
           </div>
         </section>
       </main>
 
-      <footer className="border-t py-12 bg-muted/30">
+      <footer className="bg-cream border-t py-12">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto text-center space-y-2">
-            <p className="text-base font-semibold">&copy; 2025 From Soil to Systems</p>
+          <div className="max-w-4xl mx-auto text-center space-y-4">
+            <p className="text-lg font-bold">From Soil to Systems</p>
             <p className="text-sm text-muted-foreground">A collaboration between Markesing and Settevoci</p>
-            <p className="text-xs text-muted-foreground">info@markesing.com • +39-3463321502</p>
+            <p className="text-xs text-muted-foreground">+39-3463321502 • info@markesing.com</p>
+            <p className="text-xs text-muted-foreground">&copy; 2025 All rights reserved</p>
           </div>
         </div>
       </footer>
