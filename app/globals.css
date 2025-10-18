@@ -244,4 +244,135 @@
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
     border: 8px solid oklch(0.2 0 0);
   }
+
+  /* Added CSS animations for holographic sphere */
+  @keyframes rotate-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes pulse-slow {
+    0%,
+    100% {
+      opacity: 0.8;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  }
+
+  @keyframes shine {
+    0% {
+      transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+    100% {
+      transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+  }
+
+  @keyframes float-1 {
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+    33% {
+      transform: translate(10px, -15px);
+    }
+    66% {
+      transform: translate(-10px, 10px);
+    }
+  }
+
+  @keyframes float-2 {
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+    33% {
+      transform: translate(-15px, 10px);
+    }
+    66% {
+      transform: translate(10px, -10px);
+    }
+  }
+
+  @keyframes float-3 {
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+    33% {
+      transform: translate(15px, 10px);
+    }
+    66% {
+      transform: translate(-10px, -15px);
+    }
+  }
+
+  /* Added holographic blob morphing animations */
+  @keyframes morph {
+    0%,
+    100% {
+      border-radius: 45% 55% 60% 40% / 50% 60% 40% 50%;
+    }
+    25% {
+      border-radius: 60% 40% 50% 50% / 55% 45% 55% 45%;
+    }
+    50% {
+      border-radius: 50% 50% 40% 60% / 45% 55% 45% 55%;
+    }
+    75% {
+      border-radius: 40% 60% 55% 45% / 60% 40% 60% 40%;
+    }
+  }
+
+  @keyframes morph-reverse {
+    0%,
+    100% {
+      border-radius: 55% 45% 40% 60% / 60% 40% 60% 40%;
+    }
+    25% {
+      border-radius: 40% 60% 50% 50% / 45% 55% 45% 55%;
+    }
+    50% {
+      border-radius: 50% 50% 60% 40% / 55% 45% 55% 45%;
+    }
+    75% {
+      border-radius: 60% 40% 45% 55% / 40% 60% 40% 60%;
+    }
+  }
+
+  .animate-rotate-slow {
+    animation: rotate-slow 20s linear infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 4s ease-in-out infinite;
+  }
+
+  .animate-shine {
+    animation: shine 3s ease-in-out infinite;
+  }
+
+  .animate-float-1 {
+    animation: float-1 6s ease-in-out infinite;
+  }
+
+  .animate-float-2 {
+    animation: float-2 7s ease-in-out infinite;
+  }
+
+  .animate-float-3 {
+    animation: float-3 8s ease-in-out infinite;
+  }
+
+  .bg-gradient-radial {
+    background: radial-gradient(circle, var(--tw-gradient-stops));
+  }
 }
