@@ -1,6 +1,6 @@
 "use client"
 
-export default function HolographicBlobOrganic() {
+export function HolographicBlobOrganic() {
   return (
     <div className="relative w-full h-full flex items-center justify-center">
       {/* Main holographic blob with organic shape */}
