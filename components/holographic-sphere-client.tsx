@@ -12,5 +12,9 @@ const HolographicSphere = dynamic(() => import("./holographic-sphere"), {
 })
 
 export default function HolographicSphereClient() {
-  return <HolographicSphere />
+  return (
+    <div className="w-full h-full">
+      <HolographicSphere />
+    </div>
+  )
 }

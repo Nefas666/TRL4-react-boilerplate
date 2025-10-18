@@ -31,7 +31,7 @@ function AnimatedSphere() {
   )
 }
 
-export function HolographicSphere() {
+export default function HolographicSphere() {
   return (
     <div className="w-full h-full">
       <Canvas camera={{ position: [0, 0, 5], fov: 45 }} gl={{ alpha: true, antialias: true }}>
