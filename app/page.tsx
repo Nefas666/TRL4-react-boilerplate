@@ -15,6 +15,12 @@ import {
   CheckCircle2,
 } from "lucide-react"
 import { Navbar } from "@/components/navbar"
+import dynamic from "next/dynamic"
+
+const HolographicSphere = dynamic(
+  () => import("@/components/holographic-sphere").then((mod) => mod.HolographicSphere),
+  { ssr: false },
+)
 
 export default function HomePage() {
   return (
@@ -37,19 +43,14 @@ export default function HomePage() {
               </div>
 
               <div className="max-w-md mx-auto">
-                <div className="relative aspect-[9/16] bg-card rounded-[2.5rem] shadow-2xl border-8 border-foreground/90 overflow-hidden">
-                  <div className="absolute inset-0 flex flex-col items-center justify-center p-8 bg-gradient-to-b from-background to-muted">
-                    <div className="relative w-40 h-40 mb-8">
-                      <div className="absolute inset-0 holographic rounded-full blur-2xl opacity-60"></div>
-                      <div className="relative w-full h-full holographic rounded-full flex items-center justify-center">
-                        <Sprout className="w-20 h-20 text-white" />
-                      </div>
-                    </div>
-                    <h2 className="text-2xl font-bold text-center mb-4">Your AI Assistant</h2>
-                    <p className="text-center text-muted-foreground text-sm">
-                      How can I assist you today with your entrepreneurship journey?
-                    </p>
-                  </div>
+                <div className="relative aspect-square w-full max-w-sm mx-auto">
+                  <HolographicSphere />
+                </div>
+                <div className="text-center mt-8 space-y-4">
+                  <h2 className="text-2xl font-bold">Your AI Assistant</h2>
+                  <p className="text-muted-foreground">
+                    How can I assist you today with your entrepreneurship journey?
+                  </p>
                 </div>
               </div>
             </div>
