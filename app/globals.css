@@ -245,6 +245,21 @@
     border: 8px solid oklch(0.2 0 0);
   }
 
+  /* Added gentle floating animation for hero image */
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
   /* Added CSS animations for holographic sphere */
   @keyframes rotate-slow {
     from {

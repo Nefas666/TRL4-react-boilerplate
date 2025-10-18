@@ -15,7 +15,6 @@ import {
   CheckCircle2,
 } from "lucide-react"
 import { Navbar } from "@/components/navbar"
-import HolographicSphereCss from "@/components/holographic-sphere-css"
 
 export default function HomePage() {
   return (
@@ -39,7 +38,13 @@ export default function HomePage() {
 
               <div className="max-w-md mx-auto">
                 <div className="relative aspect-square w-full max-w-sm mx-auto">
-                  <HolographicSphereCss />
+                  <div className="animate-float">
+                    <img
+                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-10-18%20at%2002.35.37-qFBoL0e75EoGSgLshTDXvIzjFn29yn.png"
+                      alt="Holographic AI sphere"
+                      className="w-full h-full object-contain drop-shadow-2xl"
+                    />
+                  </div>
                 </div>
                 <div className="text-center mt-8 space-y-4">
                   <h2 className="text-2xl font-bold">Your AI Assistant</h2>
