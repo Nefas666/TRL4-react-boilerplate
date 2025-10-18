@@ -15,7 +15,7 @@ import {
   CheckCircle2,
 } from "lucide-react"
 import { Navbar } from "@/components/navbar"
-import HolographicBlobWrapper from "@/components/holographic-blob-wrapper"
+import HolographicBlobClient from "@/components/holographic-blob-client"
 
 export default function HomePage() {
   return (
@@ -39,7 +39,7 @@ export default function HomePage() {
 
               <div className="max-w-md mx-auto">
                 <div className="relative aspect-square w-full max-w-sm mx-auto">
-                  <HolographicBlobWrapper />
+                  <HolographicBlobClient />
                 </div>
                 <div className="text-center mt-8 space-y-4">
                   <h2 className="text-2xl font-bold">Your AI Assistant</h2>
