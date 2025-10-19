@@ -36,7 +36,7 @@ export function Navbar() {
             From<span className="text-primary">Soil</span>To<span className="text-primary">Systems</span>
           </Link>
         </div>
-          <div className="col-span-2">
+          <div className="col-span-2 place-self-end">
             {links.map((link) => {
               const Icon = link.icon
               const isActive = pathname === link.href
