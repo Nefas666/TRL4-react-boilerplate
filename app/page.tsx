@@ -1,6 +1,3 @@
-"use client"
-
-import { useEffect, useRef } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -16,26 +13,20 @@ import {
   TrendingUp,
   Globe,
   CheckCircle2,
+  ChevronDown,
 } from "lucide-react"
 import { Navbar } from "@/components/navbar"
 import HolographicBlob from "@/components/holographic-blob"
+import { FullPageWrapper } from "@/components/fullpage-wrapper"
 
 export default function HomePage() {
-  const sectionsRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    // Enable smooth scrolling behavior
-    if (sectionsRef.current) {
-      sectionsRef.current.style.scrollBehavior = "smooth"
-    }
-  }, [])
-
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
 
-      <main ref={sectionsRef} className="flex-1 snap-y snap-mandatory overflow-y-scroll h-[calc(100vh-4rem)]">
-        <section className="snap-start snap-always min-h-[calc(100vh-4rem)] bg-golden-yellow flex items-center py-20">
+      <FullPageWrapper>
+        {/* Hero Section */}
+        <section className="fullpage-section h-screen bg-soft-yellow flex items-center justify-center snap-start">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
@@ -58,13 +49,28 @@ export default function HomePage() {
                   <p className="text-muted-foreground">
                     How can I assist you today with your entrepreneurship journey?
                   </p>
+                  <Button
+                    asChild
+                    size="lg"
+                    className="rounded-full px-10 text-base font-semibold bg-[#BEC8F9] text-[#1B2431] hover:bg-[#BEC8F9]/90 gap-2 mt-6"
+                  >
+                    <Link href="/chat">
+                      <MessageSquare className="h-5 w-5" />
+                      Start Chatting
+                    </Link>
+                  </Button>
                 </div>
+              </div>
+
+              <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+                <ChevronDown className="h-8 w-8 text-foreground/40" />
               </div>
             </div>
           </div>
         </section>
 
-        <section className="snap-start snap-always min-h-[calc(100vh-4rem)] bg-pale-aqua flex items-center py-20">
+        {/* Challenge Section */}
+        <section className="fullpage-section h-screen bg-soft-peach flex items-center justify-center snap-start">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-4xl md:text-5xl font-bold mb-8">The Challenge</h2>
@@ -87,14 +93,15 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="snap-start snap-always min-h-[calc(100vh-4rem)] bg-sky-blue flex items-center py-20">
+        {/* Solution Section */}
+        <section className="fullpage-section h-screen bg-soft-mint flex items-center justify-center snap-start">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-4xl md:text-5xl font-bold mb-8">The Solution</h2>
               <div className="space-y-6 text-lg leading-relaxed mb-12">
                 <p className="text-foreground/80">
-                  <span className="font-semibold text-foreground">Verso</span> is an AI-powered platform that acts as a
-                  personal digital mentor.
+                  <span className="font-semibold text-foreground">From Soil to Systems</span> is an AI-powered platform
+                  that acts as a personal digital mentor.
                 </p>
                 <p className="text-foreground/80">
                   Users describe their ideas in natural language, and the chatbot instantly suggests:
@@ -104,21 +111,21 @@ export default function HomePage() {
               <div className="grid md:grid-cols-3 gap-6">
                 <Card className="border-0 card-shadow bg-card">
                   <CardHeader className="space-y-4">
-                    <GraduationCap className="h-10 w-10 text-primary" />
+                    <GraduationCap className="h-10 w-10 text-[#BEC8F9]" />
                     <CardTitle className="text-xl">Training opportunities</CardTitle>
                   </CardHeader>
                 </Card>
 
                 <Card className="border-0 card-shadow bg-card">
                   <CardHeader className="space-y-4">
-                    <Target className="h-10 w-10 text-secondary" />
+                    <Target className="h-10 w-10 text-[#A2EAF6]" />
                     <CardTitle className="text-xl">Funding and resources</CardTitle>
                   </CardHeader>
                 </Card>
 
                 <Card className="border-0 card-shadow bg-card">
                   <CardHeader className="space-y-4">
-                    <Users className="h-10 w-10 text-accent" />
+                    <Users className="h-10 w-10 text-[#C9E0DD]" />
                     <CardTitle className="text-xl">Local mentors or networks</CardTitle>
                   </CardHeader>
                 </Card>
@@ -133,14 +140,15 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="snap-start snap-always min-h-[calc(100vh-4rem)] bg-golden-yellow flex items-center py-20">
+        {/* Features Section */}
+        <section className="fullpage-section h-screen bg-soft-yellow flex items-center justify-center snap-start">
           <div className="container mx-auto px-4">
             <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">Key Features</h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
               <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
                 <CardHeader className="space-y-6 p-8">
-                  <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center">
-                    <MessageSquare className="h-8 w-8 text-primary" />
+                  <div className="w-16 h-16 rounded-2xl bg-[#BEC8F9]/20 flex items-center justify-center">
+                    <MessageSquare className="h-8 w-8 text-[#BEC8F9]" />
                   </div>
                   <div className="space-y-4">
                     <CardTitle className="text-2xl font-bold">AI Chatbot-Mentor</CardTitle>
@@ -153,8 +161,8 @@ export default function HomePage() {
 
               <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
                 <CardHeader className="space-y-6 p-8">
-                  <div className="w-16 h-16 rounded-2xl bg-secondary/10 flex items-center justify-center">
-                    <BookOpen className="h-8 w-8 text-secondary" />
+                  <div className="w-16 h-16 rounded-2xl bg-[#FEE17C]/20 flex items-center justify-center">
+                    <BookOpen className="h-8 w-8 text-[#FEE17C]" />
                   </div>
                   <div className="space-y-4">
                     <CardTitle className="text-2xl font-bold">Micro-learning Hub</CardTitle>
@@ -167,8 +175,8 @@ export default function HomePage() {
 
               <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
                 <CardHeader className="space-y-6 p-8">
-                  <div className="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center">
-                    <Users className="h-8 w-8 text-accent" />
+                  <div className="w-16 h-16 rounded-2xl bg-[#C9E0DD]/20 flex items-center justify-center">
+                    <Users className="h-8 w-8 text-[#C9E0DD]" />
                   </div>
                   <div className="space-y-4">
                     <CardTitle className="text-2xl font-bold">Community Space</CardTitle>
@@ -181,8 +189,8 @@ export default function HomePage() {
 
               <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
                 <CardHeader className="space-y-6 p-8">
-                  <div className="w-16 h-16 rounded-2xl bg-highlight/10 flex items-center justify-center">
-                    <Network className="h-8 w-8 text-highlight" />
+                  <div className="w-16 h-16 rounded-2xl bg-[#A2EAF6]/20 flex items-center justify-center">
+                    <Network className="h-8 w-8 text-[#A2EAF6]" />
                   </div>
                   <div className="space-y-4">
                     <CardTitle className="text-2xl font-bold">Open Architecture</CardTitle>
@@ -196,15 +204,16 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="snap-start snap-always min-h-[calc(100vh-4rem)] bg-lavender flex items-center py-24">
+        {/* Outcomes Section */}
+        <section className="fullpage-section h-screen bg-soft-blue flex items-center justify-center snap-start">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
               <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center">Outcomes</h2>
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-0 card-shadow bg-card">
                   <CardHeader className="space-y-4 p-8">
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                      <CheckCircle2 className="h-6 w-6 text-primary" />
+                    <div className="w-12 h-12 rounded-xl bg-[#BEC8F9]/20 flex items-center justify-center">
+                      <CheckCircle2 className="h-6 w-6 text-[#BEC8F9]" />
                     </div>
                     <CardTitle className="text-xl">Empowers rural youth</CardTitle>
                     <CardDescription className="text-base leading-relaxed">
@@ -215,8 +224,8 @@ export default function HomePage() {
 
                 <Card className="border-0 card-shadow bg-card">
                   <CardHeader className="space-y-4 p-8">
-                    <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center">
-                      <TrendingUp className="h-6 w-6 text-secondary" />
+                    <div className="w-12 h-12 rounded-xl bg-[#A2EAF6]/20 flex items-center justify-center">
+                      <TrendingUp className="h-6 w-6 text-[#A2EAF6]" />
                     </div>
                     <CardTitle className="text-xl">Sustainable innovation</CardTitle>
                     <CardDescription className="text-base leading-relaxed">
@@ -227,8 +236,8 @@ export default function HomePage() {
 
                 <Card className="border-0 card-shadow bg-card">
                   <CardHeader className="space-y-4 p-8">
-                    <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center">
-                      <Network className="h-6 w-6 text-accent" />
+                    <div className="w-12 h-12 rounded-xl bg-[#C9E0DD]/20 flex items-center justify-center">
+                      <Network className="h-6 w-6 text-[#C9E0DD]" />
                     </div>
                     <CardTitle className="text-xl">Strengthens networks</CardTitle>
                     <CardDescription className="text-base leading-relaxed">
@@ -239,8 +248,8 @@ export default function HomePage() {
 
                 <Card className="border-0 card-shadow bg-card">
                   <CardHeader className="space-y-4 p-8">
-                    <div className="w-12 h-12 rounded-xl bg-highlight/10 flex items-center justify-center">
-                      <Globe className="h-6 w-6 text-highlight" />
+                    <div className="w-12 h-12 rounded-xl bg-[#FEE17C]/20 flex items-center justify-center">
+                      <Globe className="h-6 w-6 text-[#FEE17C]" />
                     </div>
                     <CardTitle className="text-xl">Replicable model</CardTitle>
                     <CardDescription className="text-base leading-relaxed">
@@ -253,25 +262,26 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="snap-start gradient-navy-lavender flex items-center py-24">
+        {/* CTA Section */}
+        <section className="fullpage-section h-screen bg-lavender flex items-center justify-center snap-start">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center space-y-8">
               <div className="w-20 h-20 rounded-2xl bg-white/20 backdrop-blur-sm mx-auto flex items-center justify-center">
                 <Sprout className="h-10 w-10 text-white" />
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
+              <h2 className="text-4xl md:text-5xl font-bold text-[#1B2431] leading-tight">
                 We believe that caring for soil
                 <br />
                 means caring for life
               </h2>
-              <p className="text-xl text-white/90 leading-relaxed max-w-2xl mx-auto">
+              <p className="text-xl text-[#1B2431]/80 leading-relaxed max-w-2xl mx-auto">
                 We can regenerate not just the land, but the way we live together. Let's grow this vision. Together.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
                 <Button
                   asChild
                   size="lg"
-                  className="rounded-full px-10 text-base font-semibold bg-white text-primary hover:bg-white/90 gap-2"
+                  className="rounded-full px-10 text-base font-semibold bg-[#1B2431] text-white hover:bg-[#1B2431]/90 gap-2"
                 >
                   <Link href="/auth/sign-up">
                     Get Started
@@ -282,7 +292,7 @@ export default function HomePage() {
                   asChild
                   size="lg"
                   variant="outline"
-                  className="rounded-full px-10 text-base font-semibold bg-transparent border-2 border-white text-white hover:bg-white/10"
+                  className="rounded-full px-10 text-base font-semibold bg-transparent border-2 border-[#1B2431] text-[#1B2431] hover:bg-[#1B2431]/10"
                 >
                   <Link href="/chat">
                     <MessageSquare className="h-5 w-5" />
@@ -293,18 +303,18 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+      </FullPageWrapper>
 
-        <footer className="snap-start bg-khaki border-t py-12">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center space-y-4">
-              <p className="text-lg font-bold">Verso</p>
-              <p className="text-sm text-muted-foreground">A collaboration between Markesing and Settevoci</p>
-              <p className="text-xs text-muted-foreground">+39-3463321502 • info@markesing.com</p>
-              <p className="text-xs text-muted-foreground">&copy; 2025 All rights reserved</p>
-            </div>
+      <footer className="bg-cream border-t py-12">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center space-y-4">
+            <p className="text-lg font-bold">From Soil to Systems</p>
+            <p className="text-sm text-muted-foreground">A collaboration between Markesing and Settevoci</p>
+            <p className="text-xs text-muted-foreground">+39-3463321502 • info@markesing.com</p>
+            <p className="text-xs text-muted-foreground">&copy; 2025 All rights reserved</p>
           </div>
-        </footer>
-      </main>
+        </div>
+      </footer>
     </div>
   )
 }

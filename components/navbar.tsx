@@ -14,36 +14,36 @@ export function Navbar() {
       href: "/",
       label: "Home",
       icon: Home,
-      activeColor: "bg-primary text-primary-foreground",
-      hoverColor: "hover:bg-primary/40",
+      activeColor: "bg-[#BEC8F9] text-[#1B2431]",
+      hoverColor: "hover:bg-[#BEC8F9]/40",
     },
     {
       href: "/chat",
       label: "Chat",
       icon: MessageSquare,
-      activeColor: "bg-secondary text-secondary-foreground",
-      hoverColor: "hover:bg-secondary/40",
+      activeColor: "bg-[#A2EAF6] text-[#1B2431]",
+      hoverColor: "hover:bg-[#A2EAF6]/40",
     },
     {
       href: "/resources",
       label: "Resources",
       icon: BookOpen,
-      activeColor: "bg-accent text-accent-foreground",
-      hoverColor: "hover:bg-accent/40",
+      activeColor: "bg-[#FEE17C] text-[#1B2431]",
+      hoverColor: "hover:bg-[#FEE17C]/40",
     },
     {
       href: "/community",
       label: "Community",
       icon: Users,
-      activeColor: "bg-highlight text-highlight-foreground",
-      hoverColor: "hover:bg-highlight/40",
+      activeColor: "bg-[#C9E0DD] text-[#1B2431]",
+      hoverColor: "hover:bg-[#C9E0DD]/40",
     },
     {
       href: "/profile",
       label: "Profile",
       icon: User,
-      activeColor: "bg-aqua text-aqua-foreground",
-      hoverColor: "hover:bg-aqua/40",
+      activeColor: "bg-[#E9E3C0] text-[#1B2431]",
+      hoverColor: "hover:bg-[#E9E3C0]/40",
     },
   ]
 
@@ -52,7 +52,7 @@ export function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           <Link href="/" className="font-bold text-xl md:text-2xl hover:opacity-80 transition-opacity">
-            From<span className="text-primary">Soil</span>To<span className="text-primary">Systems</span>
+            From<span className="text-[#BEC8F9]">Soil</span>To<span className="text-[#A2EAF6]">Systems</span>
           </Link>
           <div className="flex items-center gap-1">
             {links.map((link) => {

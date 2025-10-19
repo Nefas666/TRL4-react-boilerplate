@@ -3,67 +3,69 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Light Khaki background */
 :root {
-  --background: #e9e3c0;
-  --foreground: #121212;
+  /* Palette colors from the provided image */
+  --khaki: #e9e3c0;
+  --golden-yellow: #fee17c;
+  --pale-aqua: #c9e0dd;
+  --black: #121212;
+  --sky-blue: #a2eaf6;
+  --charcoal-navy: #1b2431;
+  --lavender-blue: #bec8f9;
+
+  /* Soft cream background */
+  --background: oklch(0.95 0.02 85);
+  --foreground: oklch(0.15 0 0);
 
   /* White cards */
-  --card: #ffffff;
-  --card-foreground: #121212;
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.15 0 0);
 
-  --popover: #ffffff;
-  --popover-foreground: #121212;
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.15 0 0);
 
-  /* Charcoal Navy primary */
-  --primary: #1b2431;
-  --primary-foreground: #ffffff;
+  /* Lavender blue primary */
+  --primary: oklch(0.75 0.08 270);
+  --primary-foreground: oklch(0.15 0 0);
 
-  /* Lavender Blue secondary */
-  --secondary: #bec8f9;
-  --secondary-foreground: #121212;
+  /* Sky blue secondary */
+  --secondary: oklch(0.85 0.08 200);
+  --secondary-foreground: oklch(0.15 0 0);
 
   /* Muted gray */
-  --muted: #e9e3c0;
-  --muted-foreground: #1b2431;
+  --muted: oklch(0.94 0.005 85);
+  --muted-foreground: oklch(0.5 0 0);
 
-  /* Sky Blue accent */
-  --accent: #a2eaf6;
-  --accent-foreground: #121212;
+  /* Pale aqua accent */
+  --accent: oklch(0.88 0.04 180);
+  --accent-foreground: oklch(0.15 0 0);
 
-  /* Light Golden Yellow */
-  --highlight: #fee17c;
-  --highlight-foreground: #121212;
+  /* Golden yellow highlight */
+  --highlight: oklch(0.92 0.12 90);
+  --highlight-foreground: oklch(0.15 0 0);
 
-  /* Pale Aqua */
-  --aqua: #c9e0dd;
-  --aqua-foreground: #121212;
+  /* Khaki */
+  --khaki-color: oklch(0.91 0.04 85);
+  --khaki-foreground: oklch(0.15 0 0);
 
   --destructive: oklch(0.7 0.18 25);
-  --destructive-foreground: #ffffff;
+  --destructive-foreground: oklch(1 0 0);
 
   /* Subtle borders */
-  --border: rgba(27, 36, 49, 0.1);
-  --input: rgba(27, 36, 49, 0.05);
-  --ring: #1b2431;
-
-  /* Chart colors using the palette */
-  --chart-1: #1b2431; /* Charcoal Navy */
-  --chart-2: #bec8f9; /* Lavender Blue */
-  --chart-3: #a2eaf6; /* Sky Blue */
-  --chart-4: #fee17c; /* Light Golden Yellow */
-  --chart-5: #c9e0dd; /* Pale Aqua */
+  --border: oklch(0.92 0.005 85);
+  --input: oklch(0.95 0.005 85);
+  --ring: oklch(0.75 0.08 270);
 
   --radius: 1.5rem;
 
-  --sidebar: #ffffff;
-  --sidebar-foreground: #121212;
-  --sidebar-primary: #1b2431;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #e9e3c0;
-  --sidebar-accent-foreground: #121212;
-  --sidebar-border: rgba(27, 36, 49, 0.1);
-  --sidebar-ring: #1b2431;
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: oklch(0.15 0 0);
+  --sidebar-primary: oklch(0.75 0.08 270);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.97 0.01 85);
+  --sidebar-accent-foreground: oklch(0.15 0 0);
+  --sidebar-border: oklch(0.92 0.005 85);
+  --sidebar-ring: oklch(0.75 0.08 270);
 }
 
 .dark {
@@ -160,8 +162,6 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --color-aqua: var(--aqua);
-  --color-aqua-foreground: var(--aqua-foreground);
 }
 
 @layer base {
@@ -175,31 +175,36 @@
 
 /* Add vibrant gradient and holographic utilities */
 @layer utilities {
-  .gradient-yellow-aqua {
+  .gradient-yellow-mint {
     background: linear-gradient(135deg, #fee17c 0%, #c9e0dd 100%);
   }
 
-  .gradient-lavender-sky {
+  .gradient-purple-pink {
     background: linear-gradient(135deg, #bec8f9 0%, #a2eaf6 100%);
   }
 
-  .gradient-navy-lavender {
-    background: linear-gradient(135deg, #1b2431 0%, #bec8f9 100%);
+  .gradient-cyan-blue {
+    background: linear-gradient(135deg, #a2eaf6 0%, #bec8f9 100%);
   }
 
-  .bg-khaki {
-    background-color: #e9e3c0;
+  /* Updated background colors to match palette */
+  .bg-cream {
+    background-color: #f5f1e8;
   }
 
-  .bg-golden-yellow {
+  .bg-soft-yellow {
     background-color: #fee17c;
   }
 
-  .bg-pale-aqua {
+  .bg-soft-mint {
     background-color: #c9e0dd;
   }
 
-  .bg-sky-blue {
+  .bg-soft-peach {
+    background-color: #e9e3c0;
+  }
+
+  .bg-soft-blue {
     background-color: #a2eaf6;
   }
 
@@ -207,7 +212,7 @@
     background-color: #bec8f9;
   }
 
-  .bg-charcoal-navy {
+  .bg-charcoal {
     background-color: #1b2431;
   }
 
