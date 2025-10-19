@@ -32,12 +32,12 @@ export function Navbar() {
   return (
     <nav className="border-b bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80 sticky top-0 z-50 card-shadow grid grid-cols-3 gap-2">
       <div className="container mx-auto px-4">
-        <div className="col-span-2">
+        <div className="col-span-1">
           <Link href="/" className="font-bold text-xl md:text-2xl hover:opacity-80 transition-opacity">
             From<span className="text-primary">Soil</span>To<span className="text-primary">Systems</span>
           </Link>
           </div>
-          <div className="col-span-1 flex items-center justify-end gap-3">
+          <div className="col-span-2">
             {links.map((link) => {
               const Icon = link.icon
               const isActive = pathname === link.href
