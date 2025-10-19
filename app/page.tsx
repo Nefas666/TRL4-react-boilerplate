@@ -241,7 +241,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="slide-section gradient-navy-lavender py-24 bg-secondary text-background opacity-100 shadow-none">
+        <section className="slide-section py-24 bg-secondary text-background opacity-100 shadow-none">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center space-y-8 bg-secondary text-primary">
               <div className="w-20 h-20 rounded-2xl bg-white/20 backdrop-blur-sm mx-auto flex items-center justify-center">
