@@ -187,7 +187,7 @@ export default function HomePage() {
         <section className="slide-section bg-soft-yellow py-20">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
-              <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center">Outcomes</h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 text-left">Outcomes</h2>
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-0 card-shadow bg-card">
                   <CardHeader className="space-y-4 p-8">
