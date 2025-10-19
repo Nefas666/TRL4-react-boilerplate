@@ -247,12 +247,12 @@ export default function HomePage() {
               <div className="w-20 h-20 rounded-2xl bg-white/20 backdrop-blur-sm mx-auto flex items-center justify-center">
                 <Sprout className="h-10 w-10 text-white" />
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
+              <h2 className="text-4xl md:text-5xl font-bold leading-tight text-primary">
                 We believe that caring for soil
                 <br />
                 means caring for life
               </h2>
-              <p className="text-xl text-white/90 leading-relaxed max-w-2xl mx-auto">
+              <p className="text-xl leading-relaxed max-w-2xl mx-auto text-primary">
                 We can regenerate not just the land, but the way we live together. Let's grow this vision. Together.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
