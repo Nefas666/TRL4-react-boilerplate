@@ -52,7 +52,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="slide-section bg-soft-aqua py-20 rounded-2xl">
+        <section className="slide-section bg-soft-aqua py-20 rounded-t-xl">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-4xl md:text-5xl font-bold mb-8">The Challenge</h2>
@@ -75,7 +75,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="slide-section bg-soft-lavender py-20">
+        <section className="slide-section bg-soft-lavender py-20 rounded-t-xl">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-4xl md:text-5xl font-bold mb-8">The Solution</h2>
