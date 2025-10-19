@@ -123,7 +123,7 @@ export default function HomePage() {
 
         <section className="slide-section bg-soft-blue py-20">
           <div className="container mx-auto px-4">
-            <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">Key Features</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-left mb-16">Key Features</h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
               <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
                 <CardHeader className="space-y-6 p-8">
