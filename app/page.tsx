@@ -244,9 +244,19 @@ export default function HomePage() {
         <section className="slide-section py-24 bg-secondary opacity-100 shadow-none text-foreground">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center space-y-8 bg-secondary text-primary">
-              <div className="w-20 h-20 rounded-2xl bg-white/20 backdrop-blur-sm mx-auto flex items-center justify-center">
-                <Sprout className="h-10 w-10 text-white" />
-              </div>
+
+                <div className="max-w-md mx-auto">
+                <div className="relative aspect-square w-full max-w-sm mx-auto">
+                  <HolographicBlob />
+                </div>
+                <div className="text-center mt-8 space-y-4">
+                  <h2 className="text-2xl font-bold">Your AI Assistant</h2>
+                  <p className="text-muted-foreground">
+                    How can I assist you today with your entrepreneurship journey?
+                  </p>
+                </div>
+
+             
               <h2 className="text-4xl md:text-5xl font-bold leading-tight text-primary">
                 We believe that caring for soil
                 <br />
