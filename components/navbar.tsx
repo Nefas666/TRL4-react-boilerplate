@@ -10,11 +10,41 @@ export function Navbar() {
   const pathname = usePathname()
 
   const links = [
-    { href: "/", label: "Home", icon: Home },
-    { href: "/chat", label: "Chat", icon: MessageSquare },
-    { href: "/resources", label: "Resources", icon: BookOpen },
-    { href: "/community", label: "Community", icon: Users },
-    { href: "/profile", label: "Profile", icon: User },
+    {
+      href: "/",
+      label: "Home",
+      icon: Home,
+      activeColor: "bg-primary text-primary-foreground",
+      hoverColor: "hover:bg-primary/40",
+    },
+    {
+      href: "/chat",
+      label: "Chat",
+      icon: MessageSquare,
+      activeColor: "bg-secondary text-secondary-foreground",
+      hoverColor: "hover:bg-secondary/40",
+    },
+    {
+      href: "/resources",
+      label: "Resources",
+      icon: BookOpen,
+      activeColor: "bg-accent text-accent-foreground",
+      hoverColor: "hover:bg-accent/40",
+    },
+    {
+      href: "/community",
+      label: "Community",
+      icon: Users,
+      activeColor: "bg-highlight text-highlight-foreground",
+      hoverColor: "hover:bg-highlight/40",
+    },
+    {
+      href: "/profile",
+      label: "Profile",
+      icon: User,
+      activeColor: "bg-aqua text-aqua-foreground",
+      hoverColor: "hover:bg-aqua/40",
+    },
   ]
 
   return (
@@ -32,11 +62,11 @@ export function Navbar() {
                 <Button
                   key={link.href}
                   asChild
-                  variant={isActive ? "default" : "ghost"}
+                  variant="ghost"
                   size="sm"
                   className={cn(
                     "gap-2 font-medium rounded-full transition-all",
-                    isActive && "bg-primary text-primary-foreground hover:bg-primary/90",
+                    isActive ? link.activeColor : link.hoverColor,
                   )}
                 >
                   <Link href={link.href}>

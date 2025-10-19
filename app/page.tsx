@@ -1,3 +1,6 @@
+"use client"
+
+import { useEffect, useRef } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -18,12 +21,21 @@ import { Navbar } from "@/components/navbar"
 import HolographicBlob from "@/components/holographic-blob"
 
 export default function HomePage() {
+  const sectionsRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    // Enable smooth scrolling behavior
+    if (sectionsRef.current) {
+      sectionsRef.current.style.scrollBehavior = "smooth"
+    }
+  }, [])
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
 
-      <main className="flex-1">
-        <section className="bg-soft-yellow py-20 md:py-32">
+      <main ref={sectionsRef} className="flex-1 snap-y snap-mandatory overflow-y-scroll h-[calc(100vh-4rem)]">
+        <section className="snap-start snap-always min-h-[calc(100vh-4rem)] bg-golden-yellow flex items-center py-20">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
@@ -52,7 +64,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="bg-soft-peach py-20">
+        <section className="snap-start snap-always min-h-[calc(100vh-4rem)] bg-pale-aqua flex items-center py-20">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-4xl md:text-5xl font-bold mb-8">The Challenge</h2>
@@ -75,14 +87,14 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="bg-soft-mint py-20">
+        <section className="snap-start snap-always min-h-[calc(100vh-4rem)] bg-sky-blue flex items-center py-20">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-4xl md:text-5xl font-bold mb-8">The Solution</h2>
               <div className="space-y-6 text-lg leading-relaxed mb-12">
                 <p className="text-foreground/80">
-                  <span className="font-semibold text-foreground">Verso</span> is an AI-powered platform
-                  that acts as a personal digital mentor.
+                  <span className="font-semibold text-foreground">Verso</span> is an AI-powered platform that acts as a
+                  personal digital mentor.
                 </p>
                 <p className="text-foreground/80">
                   Users describe their ideas in natural language, and the chatbot instantly suggests:
@@ -121,7 +133,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="bg-soft-yellow py-20">
+        <section className="snap-start snap-always min-h-[calc(100vh-4rem)] bg-golden-yellow flex items-center py-20">
           <div className="container mx-auto px-4">
             <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">Key Features</h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
@@ -184,7 +196,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="bg-soft-blue py-20">
+        <section className="snap-start snap-always min-h-[calc(100vh-4rem)] bg-lavender flex items-center py-24">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
               <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center">Outcomes</h2>
@@ -241,7 +253,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="gradient-purple-pink py-24">
+        <section className="snap-start gradient-navy-lavender flex items-center py-24">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center space-y-8">
               <div className="w-20 h-20 rounded-2xl bg-white/20 backdrop-blur-sm mx-auto flex items-center justify-center">
@@ -281,18 +293,18 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-      </main>
 
-      <footer className="bg-cream border-t py-12">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center space-y-4">
-            <p className="text-lg font-bold">Verso</p>
-            <p className="text-sm text-muted-foreground">A collaboration between Markesing and Settevoci</p>
-            <p className="text-xs text-muted-foreground">+39-3463321502 • info@markesing.com</p>
-            <p className="text-xs text-muted-foreground">&copy; 2025 All rights reserved</p>
+        <footer className="snap-start bg-khaki border-t py-12">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto text-center space-y-4">
+              <p className="text-lg font-bold">Verso</p>
+              <p className="text-sm text-muted-foreground">A collaboration between Markesing and Settevoci</p>
+              <p className="text-xs text-muted-foreground">+39-3463321502 • info@markesing.com</p>
+              <p className="text-xs text-muted-foreground">&copy; 2025 All rights reserved</p>
+            </div>
           </div>
-        </div>
-      </footer>
+        </footer>
+      </main>
     </div>
   )
 }

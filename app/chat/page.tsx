@@ -6,7 +6,7 @@ import { useState, useRef, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card } from "@/components/ui/card"
-import { Send } from "lucide-react"
+import { Send, Sparkles } from "lucide-react"
 import { ChatMessage } from "@/components/chat-message"
 import { TypingIndicator } from "@/components/typing-indicator"
 import { Navbar } from "@/components/navbar"
@@ -68,19 +68,48 @@ export default function ChatPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-khaki">
       <Navbar />
 
       <main className="flex-1 container mx-auto px-4 py-6 flex flex-col max-w-4xl">
-        <Card className="flex-1 flex flex-col">
+        <Card className="flex-1 flex flex-col bg-card border-0 card-shadow">
           <div className="flex-1 overflow-y-auto p-6">
             {messages.length === 0 ? (
               <div className="h-full flex items-center justify-center">
-                <div className="text-center max-w-md">
-                  <h2 className="text-2xl font-bold mb-2">Start a Conversation</h2>
-                  <p className="text-muted-foreground">
-                    Ask me about courses, scholarships, funding opportunities, or any educational guidance you need.
+                <div className="text-center max-w-md space-y-6">
+                  <div className="w-24 h-24 mx-auto bg-gradient-lavender-sky rounded-3xl flex items-center justify-center">
+                    <Sparkles className="h-12 w-12 text-white" />
+                  </div>
+                  <h2 className="text-3xl font-bold">I'm Your AI Assistant</h2>
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    How can I assist you today with your entrepreneurship journey?
                   </p>
+                  <div className="flex flex-wrap gap-2 justify-center pt-4">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="rounded-full bg-transparent"
+                      onClick={() => setInput("Tell me about funding opportunities")}
+                    >
+                      Funding opportunities
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="rounded-full bg-transparent"
+                      onClick={() => setInput("How do I start a sustainable business?")}
+                    >
+                      Start a business
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="rounded-full bg-transparent"
+                      onClick={() => setInput("Find local mentors")}
+                    >
+                      Find mentors
+                    </Button>
+                  </div>
                 </div>
               </div>
             ) : (
@@ -94,17 +123,18 @@ export default function ChatPage() {
             )}
           </div>
 
-          <div className="border-t p-4">
-            <form onSubmit={handleSubmit} className="flex gap-2">
+          <div className="border-t p-6 bg-muted/30">
+            <form onSubmit={handleSubmit} className="flex gap-3">
               <Input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Type your message..."
+                placeholder="Ask me anything about your entrepreneurship journey..."
                 disabled={isLoading}
-                className="flex-1"
+                className="flex-1 rounded-full px-6 py-6 text-base border-2 focus-visible:ring-2 focus-visible:ring-primary"
               />
-              <Button type="submit" disabled={isLoading || !input.trim()}>
-                <Send className="h-4 w-4" />
+              <Button type="submit" disabled={isLoading || !input.trim()} size="lg" className="rounded-full px-8 gap-2">
+                <Send className="h-5 w-5" />
+                <span className="hidden sm:inline">Send</span>
               </Button>
             </form>
           </div>
