@@ -203,7 +203,7 @@ export default function HomePage() {
 
                 <Card className="border-0 card-shadow bg-card">
                   <CardHeader className="space-y-4 p-8">
-                    <div className="w-12 h-12 rounded-xl bg-[#FEE17C]/10 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-xl bg-soft-yellow flex items-left justify-center">
                       <TrendingUp className="h-6 w-6 text-[#FEE17C]" />
                     </div>
                     <CardTitle className="text-xl">Sustainable innovation</CardTitle>
