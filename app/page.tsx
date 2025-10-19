@@ -81,7 +81,7 @@ export default function HomePage() {
               <h2 className="text-4xl md:text-5xl font-bold mb-8">The Solution</h2>
               <div className="space-y-6 text-lg leading-relaxed mb-12">
                 <p className="text-foreground/80">
-                  <span className="font-semibold text-foreground">From Soil to Systems</span> is an AI-powered platform
+                  <span className="font-semibold text-foreground">Verso</span> is an AI-powered platform
                   that acts as a personal digital mentor.
                 </p>
                 <p className="text-foreground/80">
@@ -286,7 +286,7 @@ export default function HomePage() {
       <footer className="bg-cream border-t py-12">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center space-y-4">
-            <p className="text-lg font-bold">From Soil to Systems</p>
+            <p className="text-lg font-bold">Verso</p>
             <p className="text-sm text-muted-foreground">A collaboration between Markesing and Settevoci</p>
             <p className="text-xs text-muted-foreground">+39-3463321502 • info@markesing.com</p>
             <p className="text-xs text-muted-foreground">&copy; 2025 All rights reserved</p>
