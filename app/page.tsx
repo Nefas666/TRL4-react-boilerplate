@@ -249,12 +249,7 @@ export default function HomePage() {
                 <div className="relative aspect-square w-full max-w-sm mx-auto">
                   <HolographicBlob />
                 </div>
-                <div className="text-center mt-8 space-y-4">
-                  <h2 className="text-2xl font-bold">Your AI Assistant</h2>
-                  <p className="text-muted-foreground">
-                    How can I assist you today with your entrepreneurship journey?
-                  </p>
-                </div>
+               </div>
 
              
               <h2 className="text-4xl md:text-5xl font-bold leading-tight text-primary">
