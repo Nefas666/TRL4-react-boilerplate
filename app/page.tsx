@@ -201,7 +201,7 @@ export default function HomePage() {
                   </CardHeader>
                 </Card>
 
-                <Card className="border-0 card-shadow bg-card">
+                <Card className="border-0">
                   <CardHeader className="space-y-4 p-8">
                     <div className="w-12 h-12 rounded-xl bg-soft-yellow flex items-left justify-center">
                       <TrendingUp className="h-6 w-6 text-[#FEE17C]" />
