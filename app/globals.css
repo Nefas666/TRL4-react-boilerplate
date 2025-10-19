@@ -3,69 +3,68 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Updated color palette to match provided palette.png */
 :root {
-  /* Palette colors from the provided image */
-  --khaki: #e9e3c0;
-  --golden-yellow: #fee17c;
-  --pale-aqua: #c9e0dd;
-  --black: #121212;
-  --sky-blue: #a2eaf6;
-  --charcoal-navy: #1b2431;
-  --lavender-blue: #bec8f9;
-
-  /* Soft cream background */
-  --background: oklch(0.95 0.02 85);
-  --foreground: oklch(0.15 0 0);
+  /* Light Khaki background */
+  --background: #e9e3c0;
+  --foreground: #121212;
 
   /* White cards */
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.15 0 0);
+  --card: #ffffff;
+  --card-foreground: #121212;
 
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.15 0 0);
+  --popover: #ffffff;
+  --popover-foreground: #121212;
 
-  /* Lavender blue primary */
-  --primary: oklch(0.75 0.08 270);
-  --primary-foreground: oklch(0.15 0 0);
+  /* Charcoal Navy primary */
+  --primary: #1b2431;
+  --primary-foreground: #ffffff;
 
-  /* Sky blue secondary */
-  --secondary: oklch(0.85 0.08 200);
-  --secondary-foreground: oklch(0.15 0 0);
+  /* Light Golden Yellow secondary */
+  --secondary: #fee17c;
+  --secondary-foreground: #121212;
 
   /* Muted gray */
-  --muted: oklch(0.94 0.005 85);
-  --muted-foreground: oklch(0.5 0 0);
+  --muted: #e9e3c0;
+  --muted-foreground: #1b2431;
 
-  /* Pale aqua accent */
-  --accent: oklch(0.88 0.04 180);
-  --accent-foreground: oklch(0.15 0 0);
+  /* Sky Blue accent */
+  --accent: #a2eaf6;
+  --accent-foreground: #121212;
 
-  /* Golden yellow highlight */
-  --highlight: oklch(0.92 0.12 90);
-  --highlight-foreground: oklch(0.15 0 0);
+  /* Pale Aqua */
+  --aqua: #c9e0dd;
+  --aqua-foreground: #121212;
 
-  /* Khaki */
-  --khaki-color: oklch(0.91 0.04 85);
-  --khaki-foreground: oklch(0.15 0 0);
+  /* Lavender Blue */
+  --lavender: #bec8f9;
+  --lavender-foreground: #121212;
 
-  --destructive: oklch(0.7 0.18 25);
-  --destructive-foreground: oklch(1 0 0);
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
 
   /* Subtle borders */
-  --border: oklch(0.92 0.005 85);
-  --input: oklch(0.95 0.005 85);
-  --ring: oklch(0.75 0.08 270);
+  --border: #d4ceb0;
+  --input: #d4ceb0;
+  --ring: #1b2431;
+
+  /* Chart colors using palette */
+  --chart-1: #1b2431; /* charcoal navy */
+  --chart-2: #fee17c; /* golden yellow */
+  --chart-3: #a2eaf6; /* sky blue */
+  --chart-4: #c9e0dd; /* pale aqua */
+  --chart-5: #bec8f9; /* lavender */
 
   --radius: 1.5rem;
 
-  --sidebar: oklch(1 0 0);
-  --sidebar-foreground: oklch(0.15 0 0);
-  --sidebar-primary: oklch(0.75 0.08 270);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.97 0.01 85);
-  --sidebar-accent-foreground: oklch(0.15 0 0);
-  --sidebar-border: oklch(0.92 0.005 85);
-  --sidebar-ring: oklch(0.75 0.08 270);
+  --sidebar: #ffffff;
+  --sidebar-foreground: #121212;
+  --sidebar-primary: #1b2431;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e9e3c0;
+  --sidebar-accent-foreground: #121212;
+  --sidebar-border: #d4ceb0;
+  --sidebar-ring: #1b2431;
 }
 
 .dark {
@@ -175,56 +174,43 @@
 
 /* Add vibrant gradient and holographic utilities */
 @layer utilities {
-  .gradient-yellow-mint {
+  /* Updated gradient utilities to use new palette */
+  .gradient-yellow-aqua {
     background: linear-gradient(135deg, #fee17c 0%, #c9e0dd 100%);
   }
 
-  .gradient-purple-pink {
-    background: linear-gradient(135deg, #bec8f9 0%, #a2eaf6 100%);
+  .gradient-navy-lavender {
+    background: linear-gradient(135deg, #1b2431 0%, #bec8f9 100%);
   }
 
-  .gradient-cyan-blue {
-    background: linear-gradient(135deg, #a2eaf6 0%, #bec8f9 100%);
+  .gradient-aqua-blue {
+    background: linear-gradient(135deg, #c9e0dd 0%, #a2eaf6 100%);
   }
 
-  /* Updated background colors to match palette */
+  /* Updated background colors to use new palette */
   .bg-cream {
-    background-color: #f5f1e8;
+    background-color: #e9e3c0;
   }
 
   .bg-soft-yellow {
     background-color: #fee17c;
   }
 
-  .bg-soft-mint {
+  .bg-soft-aqua {
     background-color: #c9e0dd;
-  }
-
-  .bg-soft-peach {
-    background-color: #e9e3c0;
   }
 
   .bg-soft-blue {
     background-color: #a2eaf6;
   }
 
-  .bg-lavender {
+  .bg-soft-lavender {
     background-color: #bec8f9;
   }
 
-  .bg-charcoal {
-    background-color: #1b2431;
-  }
-
+  /* Updated holographic gradient to use new palette colors */
   .holographic {
-    background: linear-gradient(
-      135deg,
-      oklch(0.75 0.2 350) 0%,
-      oklch(0.7 0.25 290) 25%,
-      oklch(0.75 0.15 200) 50%,
-      oklch(0.8 0.18 60) 75%,
-      oklch(0.75 0.2 350) 100%
-    );
+    background: linear-gradient(135deg, #bec8f9 0%, #a2eaf6 25%, #c9e0dd 50%, #fee17c 75%, #bec8f9 100%);
     background-size: 200% 200%;
     animation: holographic-shift 8s ease infinite;
   }
@@ -383,5 +369,41 @@
 
   .bg-gradient-radial {
     background: radial-gradient(circle, var(--tw-gradient-stops));
+  }
+
+  /* Added vertical slide scroll-snap styles */
+  .vertical-slides {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100vh;
+  }
+
+  .slide-section {
+    scroll-snap-align: start;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* Added navbar hover colors at 40% opacity */
+  .nav-hover-primary:hover {
+    background-color: rgba(27, 36, 49, 0.4);
+  }
+
+  .nav-hover-secondary:hover {
+    background-color: rgba(254, 225, 124, 0.4);
+  }
+
+  .nav-hover-accent:hover {
+    background-color: rgba(162, 234, 246, 0.4);
+  }
+
+  .nav-hover-aqua:hover {
+    background-color: rgba(201, 224, 221, 0.4);
+  }
+
+  .nav-hover-lavender:hover {
+    background-color: rgba(190, 200, 249, 0.4);
   }
 }
