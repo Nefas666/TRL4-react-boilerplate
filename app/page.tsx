@@ -221,7 +221,7 @@ export default function HomePage() {
 
                   <div className="grid md:grid-cols-2 md:grid-rows-2 gap-6">
                     <Card className="border-0 card-shadow bg-card row-span-2">
-                      <CardHeader className="space-y-4">
+                      <CardHeader className="space-y-4 bg-">
                         <CardTitle className="text-xl">Training opportunities</CardTitle>
                       </CardHeader>
                     </Card>
