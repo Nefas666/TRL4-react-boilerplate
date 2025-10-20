@@ -32,15 +32,15 @@ export default function HomePage() {
 
   const getBlobSize = () => {
     if (activeSlide === 0 || activeSlide === 5) {
-      return "w-[400px] h-[400px]" // Large in hero and CTA
+      return "w-[300px] h-[300px]" // Large in hero and CTA
     }
-    return "w-[280px] h-[280px]" // Smaller in middle slides
+    return "w-[220px] h-[220px]" // Smaller in middle slides
   }
 
   const getBlobPosition = () => {
     switch (activeSlide) {
       case 0: // Hero - center
-        return "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        return "top-[35%] left-[60%] -translate-x-1/2 -translate-y-1/2"
       case 1: // Challenge - right side (content is on left)
         return "top-1/2 right-[10%] -translate-y-1/2"
       case 2: // Solution - left side (content is on right)
@@ -88,8 +88,8 @@ export default function HomePage() {
               <div className="container mx-auto px-4 h-full">
                 <div className="max-w-6xl mx-auto h-full relative">
                   {/* Title - Top Left */}
-                  <div className="absolute top-8 -left-4 z-30">
-                    <h1 className="text-6xl lg:text-8xl font-bold text-balance leading-[0.95] tracking-tight md:text-9xl text-popover">
+                  <div className="absolute top-8 z-30">
+                    <h1 className="text-8xl lg:text-8xl font-bold text-balance leading-[0.95] tracking-tight md:text-9xl text-popover">
                       tAImi
                     </h1>
                   </div>
@@ -101,14 +101,14 @@ export default function HomePage() {
                       alt="Taimi - Your AI Mentor"
                       width={280}
                       height={280}
-                      className="object-contain drop-shadow-2xl relative z-30"
+                      className="object-contain drop-shadow-2xl relative"
                       style={{ filter: "saturate(1.3) contrast(1.1) brightness(1.05)" }}
                       priority
                     />
                   </div>
 
-                  <div className="absolute bottom-8 right-8 z-30 max-w-[360px]">
-                    <div className="bg-white/90 backdrop-blur-md rounded-3xl p-6 shadow-lg border border-white/50">
+                  <div className="absolute bottom-8 right-20 max-w-[360px] z-20">
+                    <div className="bg-white/80 backdrop-blur-md rounded-3xl p-6 shadow-lg border border-white/50">
                       <p className="text-lg md:text-xl text-foreground/80 leading-relaxed text-right">
                         AI Mentor for Rural Youth Entrepreneurship in Finland
                       </p>
@@ -152,8 +152,8 @@ export default function HomePage() {
                   <h2 className="text-4xl md:text-5xl font-bold mb-8 text-right">The Solution</h2>
                   <div className="space-y-6 text-lg leading-relaxed mb-12 bg-soft-lavender/80 backdrop-blur-sm rounded-3xl max-w-lg">
                     <p className="text-foreground/80 text-right">
-                      <span className="font-semibold text-foreground">tAImi</span> is an AI-powered
-                      platform that acts as a personal digital mentor.
+                      <span className="font-semibold text-foreground">tAImi</span> is an AI-powered platform that acts
+                      as a personal digital mentor.
                     </p>
                     <p className="text-foreground/80 text-right">
                       Users describe their ideas in natural language, and the chatbot instantly suggests:
@@ -226,7 +226,33 @@ export default function HomePage() {
                         </div>
                       </CardHeader>
                     </Card>
+                    <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
+                      <CardHeader className="space-y-6 p-8">
+                        <div className="w-16 h-16 rounded-2xl bg-[#FEE17C]/10 flex items-center justify-center">
+                          <BookOpen className="h-8 w-8 text-[#FEE17C]" />
+                        </div>
+                        <div className="space-y-4">
+                          <CardTitle className="text-2xl font-bold">Micro-learning Hub</CardTitle>
+                          <CardDescription className="text-base leading-relaxed">
+                            Curated training and resources for rural entrepreneurs
+                          </CardDescription>
+                        </div>
+                      </CardHeader>
+                    </Card>
 
+                    <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
+                      <CardHeader className="space-y-6 p-8">
+                        <div className="w-16 h-16 rounded-2xl bg-[#A2EAF6]/10 flex items-center justify-center">
+                          <Users className="h-8 w-8 text-[#A2EAF6]" />
+                        </div>
+                        <div className="space-y-4">
+                          <CardTitle className="text-2xl font-bold">Community Space</CardTitle>
+                          <CardDescription className="text-base leading-relaxed">
+                            Connect with mentors and fellow entrepreneurs
+                          </CardDescription>
+                        </div>
+                      </CardHeader>
+                    </Card>
                     <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
                       <CardHeader className="space-y-6 p-8">
                         <div className="w-16 h-16 rounded-2xl bg-[#A2EAF6]/10 flex items-center justify-center">
