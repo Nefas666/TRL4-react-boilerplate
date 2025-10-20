@@ -222,7 +222,7 @@ export default function HomePage() {
                     </p>
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-6">
+                  <div className="grid md:grid-cols-2 md:grid-rows-2 gap-6">
                     <Card className="border-0 card-shadow bg-card">
                       <CardHeader className="space-y-4">
                         <GraduationCap className="h-10 w-10 text-[#1B2431]" />
