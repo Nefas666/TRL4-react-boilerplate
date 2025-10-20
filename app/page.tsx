@@ -149,7 +149,7 @@ export default function HomePage() {
                   {/* Title - Top Left */}
                   <div className="absolute top-8 -left-4 z-30">
                     <h1 className="text-6xl lg:text-8xl font-bold text-balance leading-[0.95] tracking-tight md:text-9xl text-popover">
-                      Taimi
+                      tAImi
                     </h1>
                   </div>
 
@@ -216,7 +216,7 @@ export default function HomePage() {
                   <h2 className="text-4xl md:text-5xl font-bold mb-8">The Solution</h2>
                   <div className="space-y-6 text-lg leading-relaxed mb-12 bg-soft-lavender/80 backdrop-blur-sm rounded-3xl max-w-lg">
                     <p className="text-foreground/80">
-                      <span className="font-semibold text-foreground">From Soil to Systems</span> is an AI-powered
+                      <span className="font-semibold text-foreground">tAImi</span> is an AI-powered
                       platform that acts as a personal digital mentor.
                     </p>
                     <p className="text-foreground/80">
