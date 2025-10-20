@@ -122,7 +122,7 @@ export default function HomePage() {
                   {/* Taimi Avatar - Center, overlaid on blob (only in hero) */}
                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-[300px] h-[300px] flex items-center justify-center">
                     <Image
-                      src="/images/design-mode/Designer%20%284%29.png"
+                      src="/images/design-mode/Designer%20%284%29(1).png"
                       alt="Taimi - Your AI Mentor"
                       width={280}
                       height={280}
