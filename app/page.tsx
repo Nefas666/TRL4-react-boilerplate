@@ -208,7 +208,7 @@ export default function HomePage() {
 
           {/* Slide 3 - The Solution */}
           <SwiperSlide>
-            <section className="slide-content bg-soft-lavender/30 py-20 relative rounded-t-3xl">
+            <section className="slide-content bg-soft-lavender/30 py-20 relative">
               <div className="lg:container mx-auto px-4">
                 <div className="lg:max-w-4xl mx-auto relative z-20">
                   <h2 className="text-4xl md:text-5xl font-bold mb-8 text-right">The Solution</h2>
@@ -251,7 +251,7 @@ export default function HomePage() {
 
           {/* Slide 4 - Key Features */}
           <SwiperSlide>
-            <section className="slide-content bg-soft-blue py-20 relative rounded-t-3xl">
+            <section className="slide-content bg-soft-blue py-20 relative">
               <div className="container mx-auto px-4">
                 <div className="relative z-20">
                   <h2 className="text-4xl md:text-5xl font-bold text-left mb-16">Key Features</h2>
@@ -319,7 +319,7 @@ export default function HomePage() {
 
           {/* Slide 5 - Outcomes */}
           <SwiperSlide>
-            <section className="slide-content bg-soft-yellow py-20 relative rounded-t-3xl">
+            <section className="slide-content bg-soft-yellow py-20 relative">
               <div className="container mx-auto px-4">
                 <div className="max-w-5xl mx-auto relative z-20">
                   <h2 className="text-4xl md:text-5xl font-bold mb-16 text-left">Outcomes</h2>
