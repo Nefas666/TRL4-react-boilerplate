@@ -19,15 +19,13 @@ import { Navbar } from "@/components/navbar"
 import HolographicBlob from "@/components/holographic-blob"
 import Image from "next/image"
 import { useState } from "react"
-
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Mousewheel, Pagination } from "swiper/modules"
 import type { Swiper as SwiperType } from "swiper"
 
 // Import Swiper styles
-import "swiper/css"
-import "swiper/css/pagination"
+
 
 export default function HomePage() {
   const [activeSlide, setActiveSlide] = useState(0)
@@ -64,66 +62,9 @@ export default function HomePage() {
 
       <div
         className={`fixed pointer-events-none transition-all duration-[1500ms] ease-in-out ${getBlobSize()} ${getBlobPosition()}`}
-        style={{ zIndex: 10 }}
-      >
+        style={{ zIndex: 10 }}>
         <HolographicBlob />
       </div>
-
-      <style jsx global>{`
-        .swiper-container {
-          width: 100%;
-          height: 100vh;
-        }
-        
-        .swiper-slide {
-          display: flex;
-          flex-direction: column;
-        }
-        
-        .swiper-pagination {
-          right: 20px !important;
-          left: auto !important;
-          top: 50% !important;
-          transform: translateY(-50%);
-          width: auto !important;
-        }
-        
-        .swiper-pagination-bullet {
-          width: 12px;
-          height: 12px;
-          background: rgba(27, 36, 49, 0.3);
-          opacity: 1;
-          margin: 8px 0 !important;
-          transition: all 0.3s ease;
-        }
-        
-        .swiper-pagination-bullet-active {
-          background: #1B2431;
-          width: 12px;
-          height: 32px;
-          border-radius: 6px;
-        }
-        
-        .slide-content {
-          overflow-y: auto;
-          height: 100%;
-          scrollbar-width: thin;
-          scrollbar-color: rgba(27, 36, 49, 0.3) transparent;
-        }
-        
-        .slide-content::-webkit-scrollbar {
-          width: 6px;
-        }
-        
-        .slide-content::-webkit-scrollbar-track {
-          background: transparent;
-        }
-        
-        .slide-content::-webkit-scrollbar-thumb {
-          background-color: rgba(27, 36, 49, 0.3);
-          border-radius: 3px;
-        }
-      `}</style>
 
       <main className="flex-1">
         <Swiper
@@ -154,9 +95,6 @@ export default function HomePage() {
                   </div>
 
                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] flex items-center justify-center">
-                    {/* Glow effect behind avatar - z-10 */}
-                    <div className="absolute inset-0 bg-gradient-radial from-yellow-300/60 via-emerald-300/40 to-transparent blur-3xl animate-pulse-slow z-10" />
-                    <div className="absolute inset-0 bg-gradient-radial from-white/40 via-yellow-200/30 to-transparent blur-2xl z-40" />
 
                     <Image
                       src="/images/design-mode/Designer%20%284%29(1).png"
@@ -199,9 +137,7 @@ export default function HomePage() {
                     <p className="text-foreground/80">
                       Existing training is often static and disconnected from real community needs.
                     </p>
-                    <div className="pt-4">
-                      <p className="text-xl font-bold text-foreground">Rural youth face barriers to entrepreneurship</p>
-                    </div>
+                   
                   </div>
                 </div>
               </div>
@@ -261,7 +197,6 @@ export default function HomePage() {
           <SwiperSlide>
             <section className="slide-content bg-soft-blue py-20 relative rounded-t-3xl">
               <div className="container mx-auto px-4">
-                <div className="relative z-20">
                   <h2 className="text-4xl md:text-5xl font-bold text-left mb-16">Key Features</h2>
                   <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
                     <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
@@ -278,49 +213,49 @@ export default function HomePage() {
                       </CardHeader>
                     </Card>
 
-                  <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
-                    <CardHeader className="space-y-6 p-8">
-                      <div className="w-16 h-16 rounded-2xl bg-[#FEE17C]/10 flex items-center justify-center">
-                        <BookOpen className="h-8 w-8 text-[#FEE17C]" />
-                      </div>
-                      <div className="space-y-4">
-                        <CardTitle className="text-2xl font-bold">Micro-learning Hub</CardTitle>
-                        <CardDescription className="text-base leading-relaxed">
-                          Curated training and resources for rural entrepreneurs
-                        </CardDescription>
-                      </div>
-                    </CardHeader>
-                  </Card>
+                    <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
+                      <CardHeader className="space-y-6 p-8">
+                        <div className="w-16 h-16 rounded-2xl bg-[#FEE17C]/10 flex items-center justify-center">
+                          <BookOpen className="h-8 w-8 text-[#FEE17C]" />
+                        </div>
+                        <div className="space-y-4">
+                          <CardTitle className="text-2xl font-bold">Micro-learning Hub</CardTitle>
+                          <CardDescription className="text-base leading-relaxed">
+                            Curated training and resources for rural entrepreneurs
+                          </CardDescription>
+                        </div>
+                      </CardHeader>
+                    </Card>
 
-                  <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
-                    <CardHeader className="space-y-6 p-8">
-                      <div className="w-16 h-16 rounded-2xl bg-[#A2EAF6]/10 flex items-center justify-center">
-                        <Users className="h-8 w-8 text-[#A2EAF6]" />
-                      </div>
-                      <div className="space-y-4">
-                        <CardTitle className="text-2xl font-bold">Community Space</CardTitle>
-                        <CardDescription className="text-base leading-relaxed">
-                          Connect with mentors and fellow entrepreneurs
-                        </CardDescription>
-                      </div>
-                    </CardHeader>
-                  </Card>
+                    <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
+                      <CardHeader className="space-y-6 p-8">
+                        <div className="w-16 h-16 rounded-2xl bg-[#A2EAF6]/10 flex items-center justify-center">
+                          <Users className="h-8 w-8 text-[#A2EAF6]" />
+                        </div>
+                        <div className="space-y-4">
+                          <CardTitle className="text-2xl font-bold">Community Space</CardTitle>
+                          <CardDescription className="text-base leading-relaxed">
+                            Connect with mentors and fellow entrepreneurs
+                          </CardDescription>
+                        </div>
+                      </CardHeader>
+                    </Card>
 
-                  <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
-                    <CardHeader className="space-y-6 p-8">
-                      <div className="w-16 h-16 rounded-2xl bg-[#C9E0DD]/10 flex items-center justify-center">
-                        <Network className="h-8 w-8 text-[#C9E0DD]" />
-                      </div>
-                      <div className="space-y-4">
-                        <CardTitle className="text-2xl font-bold">Open Architecture</CardTitle>
-                        <CardDescription className="text-base leading-relaxed">
-                          Replicable model for EU rural regions
-                        </CardDescription>
-                      </div>
-                    </CardHeader>
-                  </Card>
+                    <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
+                      <CardHeader className="space-y-6 p-8">
+                        <div className="w-16 h-16 rounded-2xl bg-[#C9E0DD]/10 flex items-center justify-center">
+                          <Network className="h-8 w-8 text-[#C9E0DD]" />
+                        </div>
+                        <div className="space-y-4">
+                          <CardTitle className="text-2xl font-bold">Open Architecture</CardTitle>
+                          <CardDescription className="text-base leading-relaxed">
+                            Replicable model for EU rural regions
+                          </CardDescription>
+                        </div>
+                      </CardHeader>
+                    </Card>
+                  </div>
                 </div>
-              </div>
             </section>
           </SwiperSlide>
 

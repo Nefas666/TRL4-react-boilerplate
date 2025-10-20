@@ -18,7 +18,7 @@ export default function HolographicBlob() {
       <div className="absolute bottom-[30%] left-[35%] w-10 h-10 rounded-full bg-white-200/50 blur-md animate-[pulse-slow_6s_ease-in-out_infinite]" />
 
       {/* Ambient glow */}
-      <div className="absolute w-[320px] h-[320px] rounded-full bg-gradient-radial from-emerald-400/30 via-yellow-400/20 to-transparent blur-2xl animate-pulse-slow" />
+      <div className="absolute w-[320px] h-[320px] rounded-full bg-gradient-radial from-emerald-400/30 via-yellob szxdw-400/20 to-transparent blur-2xl animate-pulse-slow" />
 
       {/* Floating particles */}
       <div className="absolute top-[15%] left-[20%] w-2 h-2 rounded-full bg-emerald-400/60 animate-float-1" />

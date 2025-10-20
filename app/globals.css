@@ -208,6 +208,63 @@
     background-color: #bec8f9;
   }
 
+  @global {
+        .swiper-container {
+          width: 100%;
+          height: 100vh;
+        }
+        
+        .swiper-slide {
+          display: flex;
+          flex-direction: column;
+        }
+        
+        .swiper-pagination {
+          right: 20px !important;
+          left: auto !important;
+          top: 50% !important;
+          transform: translateY(-50%);
+          width: auto !important;
+        }
+        
+        .swiper-pagination-bullet {
+          width: 12px;
+          height: 12px;
+          background: rgba(27, 36, 49, 0.3);
+          opacity: 1;
+          margin: 8px 0 !important;
+          transition: all 0.3s ease;
+        }
+        
+        .swiper-pagination-bullet-active {
+          background: #1B2431;
+          width: 12px;
+          height: 32px;
+          border-radius: 6px;
+        }
+        
+        .slide-content {
+          overflow-y: auto;
+          height: 100%;
+          scrollbar-width: thin;
+          scrollbar-color: rgba(27, 36, 49, 0.3) transparent;
+        }
+        
+        .slide-content::-webkit-scrollbar {
+          width: 6px;
+        }
+        
+        .slide-content::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        
+        .slide-content::-webkit-scrollbar-thumb {
+          background-color: rgba(27, 36, 49, 0.3);
+          border-radius: 3px;
+        }
+
+  }
+
   /* Updated holographic gradient to use new palette colors */
   .holographic {
     background: linear-gradient(135deg, #bec8f9 0%, #a2eaf6 25%, #c9e0dd 50%, #fee17c 75%, #bec8f9 100%);
