@@ -98,7 +98,7 @@ export default function HomePage() {
         }
         
         .swiper-pagination-bullet-active {
-          background: #1B2431;
+          background:rgba(255, 255, 255, 0.9);
           width: 12px;
           height: 32px;
           border-radius: 6px;
@@ -108,7 +108,7 @@ export default function HomePage() {
           overflow-y: auto;
           height: 100%;
           scrollbar-width: thin;
-          scrollbar-color: rgba(27, 36, 49, 0.3) transparent;
+          scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
         }
         
         .slide-content::-webkit-scrollbar {
