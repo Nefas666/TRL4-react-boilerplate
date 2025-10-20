@@ -214,7 +214,7 @@ export default function HomePage() {
               <div className="container mx-auto px-4">
                 <div className="max-w-4xl mx-auto relative z-20">
                   <h2 className="text-4xl md:text-5xl font-bold mb-8 text-right">The Solution</h2>
-                  <div className="space-y-6 text-lg leading-relaxed mb-12 bg-soft-lavender/80 backdrop-blur-sm rounded-4xl max-w-lg">
+                  <div className="space-y-6 text-lg leading-relaxed mb-12 bg-soft-lavender/80 backdrop-blur-sm rounded-3xl max-w-lg">
                     <p className="text-foreground/80 text-right">
                       <span className="font-semibold text-foreground">tAImi</span> is an AI-powered
                       platform that acts as a personal digital mentor.
