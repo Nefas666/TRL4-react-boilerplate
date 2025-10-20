@@ -217,8 +217,8 @@ export default function HomePage() {
                   <h2 className="text-4xl md:text-5xl font-bold mb-8">The Solution</h2>
                   <div className="space-y-6 text-lg leading-relaxed mb-12">
                     <p className="text-foreground/80">
-                      <span className="font-semibold text-foreground">From Soil to Systems</span> is an AI-powered platform
-                      that acts as a personal digital mentor.
+                      <span className="font-semibold text-foreground">From Soil to Systems</span> is an AI-powered
+                      platform that acts as a personal digital mentor.
                     </p>
                     <p className="text-foreground/80 text-right">
                       Users describe their ideas in natural language, and the chatbot instantly suggests:
@@ -260,7 +260,7 @@ export default function HomePage() {
 
           {/* Slide 4 - Key Features */}
           <SwiperSlide>
-            <section className="slide-content bg-soft-blue py-20">
+            <section className="slide-content bg-soft-blue py-20 rounded-t-3xl">
               <div className="container mx-auto px-4">
                 <h2 className="text-4xl md:text-5xl font-bold text-left mb-16">Key Features</h2>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
@@ -278,48 +278,47 @@ export default function HomePage() {
                     </CardHeader>
                   </Card>
 
-                    <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
-                      <CardHeader className="space-y-6 p-8">
-                        <div className="w-16 h-16 rounded-2xl bg-[#FEE17C]/10 flex items-center justify-center">
-                          <BookOpen className="h-8 w-8 text-[#FEE17C]" />
-                        </div>
-                        <div className="space-y-4">
-                          <CardTitle className="text-2xl font-bold">Micro-learning Hub</CardTitle>
-                          <CardDescription className="text-base leading-relaxed">
-                            Curated training and resources for rural entrepreneurs
-                          </CardDescription>
-                        </div>
-                      </CardHeader>
-                    </Card>
+                  <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
+                    <CardHeader className="space-y-6 p-8">
+                      <div className="w-16 h-16 rounded-2xl bg-[#FEE17C]/10 flex items-center justify-center">
+                        <BookOpen className="h-8 w-8 text-[#FEE17C]" />
+                      </div>
+                      <div className="space-y-4">
+                        <CardTitle className="text-2xl font-bold">Micro-learning Hub</CardTitle>
+                        <CardDescription className="text-base leading-relaxed">
+                          Curated training and resources for rural entrepreneurs
+                        </CardDescription>
+                      </div>
+                    </CardHeader>
+                  </Card>
 
-                    <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
-                      <CardHeader className="space-y-6 p-8">
-                        <div className="w-16 h-16 rounded-2xl bg-[#A2EAF6]/10 flex items-center justify-center">
-                          <Users className="h-8 w-8 text-[#A2EAF6]" />
-                        </div>
-                        <div className="space-y-4">
-                          <CardTitle className="text-2xl font-bold">Community Space</CardTitle>
-                          <CardDescription className="text-base leading-relaxed">
-                            Connect with mentors and fellow entrepreneurs
-                          </CardDescription>
-                        </div>
-                      </CardHeader>
-                    </Card>
+                  <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
+                    <CardHeader className="space-y-6 p-8">
+                      <div className="w-16 h-16 rounded-2xl bg-[#A2EAF6]/10 flex items-center justify-center">
+                        <Users className="h-8 w-8 text-[#A2EAF6]" />
+                      </div>
+                      <div className="space-y-4">
+                        <CardTitle className="text-2xl font-bold">Community Space</CardTitle>
+                        <CardDescription className="text-base leading-relaxed">
+                          Connect with mentors and fellow entrepreneurs
+                        </CardDescription>
+                      </div>
+                    </CardHeader>
+                  </Card>
 
-                    <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
-                      <CardHeader className="space-y-6 p-8">
-                        <div className="w-16 h-16 rounded-2xl bg-[#C9E0DD]/10 flex items-center justify-center">
-                          <Network className="h-8 w-8 text-[#C9E0DD]" />
-                        </div>
-                        <div className="space-y-4">
-                          <CardTitle className="text-2xl font-bold">Open Architecture</CardTitle>
-                          <CardDescription className="text-base leading-relaxed">
-                            Replicable model for EU rural regions
-                          </CardDescription>
-                        </div>
-                      </CardHeader>
-                    </Card>
-                  </div>
+                  <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
+                    <CardHeader className="space-y-6 p-8">
+                      <div className="w-16 h-16 rounded-2xl bg-[#C9E0DD]/10 flex items-center justify-center">
+                        <Network className="h-8 w-8 text-[#C9E0DD]" />
+                      </div>
+                      <div className="space-y-4">
+                        <CardTitle className="text-2xl font-bold">Open Architecture</CardTitle>
+                        <CardDescription className="text-base leading-relaxed">
+                          Replicable model for EU rural regions
+                        </CardDescription>
+                      </div>
+                    </CardHeader>
+                  </Card>
                 </div>
               </div>
             </section>
