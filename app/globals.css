@@ -120,6 +120,8 @@
 
 @theme inline {
   --font-sans: var(--font-space-grotesk);
+  /* Added Clash Display font variable for titles/headings */
+  --font-display: var(--font-clash-display);
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -174,6 +176,11 @@
 
 /* Add vibrant gradient and holographic utilities */
 @layer utilities {
+  /* Added font-display utility class for Clash Display */
+  .font-display {
+    font-family: var(--font-clash-display), var(--font-space-grotesk), sans-serif;
+  }
+
   /* Updated gradient utilities to use new palette */
   .gradient-yellow-aqua {
     background: linear-gradient(135deg, #fee17c 0%, #c9e0dd 100%);
