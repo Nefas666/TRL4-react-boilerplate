@@ -2,7 +2,7 @@
 
 export default function HolographicBlob() {
   return (
-    <div className="relative w-full h-full flex items-center justify-center">
+    <div className="relative w-full h-full flex items-center justify-center z-90">
       {/* Main holographic blob with organic shape */}
       <div className="absolute w-[280px] h-[280px] rounded-[45%_55%_60%_40%/50%_60%_40%_50%] bg-gradient-to-br from-emerald-500 via-green-500 to-white opacity-90 blur-sm animate-[morph_8s_ease-in-out_infinite,rotate-slow_20s_linear_infinite]" />
 
