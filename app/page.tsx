@@ -147,7 +147,7 @@ export default function HomePage() {
               <div className="container mx-auto px-4 h-full">
                 <div className="max-w-6xl mx-auto h-full relative">
                   {/* Title - Top Left */}
-                  <div className="absolute top-8 -left-4 z-30">
+                  <div className="absolute top-8 z-30">
                     <h1 className="text-6xl lg:text-8xl font-bold text-balance leading-[0.95] tracking-tight md:text-9xl text-popover">
                       tAImi
                     </h1>
