@@ -109,7 +109,7 @@ export default function HomePage() {
                 <div className="max-w-6xl mx-auto">
                   <div className="text-center mb-12">
                     <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-8 text-balance leading-[0.95] tracking-tight">
-                      Taipi
+                      Taimi
                     </h1>
                     <p className="text-xl md:text-2xl text-foreground/70 max-w-3xl mx-auto leading-relaxed">
                       AI Mentor for Rural Youth Entrepreneurship in Finland
