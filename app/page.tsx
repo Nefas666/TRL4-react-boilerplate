@@ -225,21 +225,18 @@ export default function HomePage() {
                   <div className="grid md:grid-cols-2 md:grid-rows-2 gap-6">
                     <Card className="border-0 card-shadow bg-card row-span-2">
                       <CardHeader className="space-y-4">
-                        <GraduationCap className="h-10 w-10 text-[#1B2431]" />
                         <CardTitle className="text-xl">Training opportunities</CardTitle>
                       </CardHeader>
                     </Card>
 
                     <Card className="border-0 card-shadow bg-card">
                       <CardHeader className="space-y-4">
-                        <Target className="h-10 w-10 text-[#FEE17C]" />
                         <CardTitle className="text-xl">Funding and resources</CardTitle>
                       </CardHeader>
                     </Card>
 
                     <Card className="border-0 card-shadow bg-card col-span-2">
                       <CardHeader className="space-y-4">
-                        <Users className="h-10 w-10 text-[#A2EAF6]" />
                         <CardTitle className="text-xl">Local mentors or networks</CardTitle>
                       </CardHeader>
                     </Card>
