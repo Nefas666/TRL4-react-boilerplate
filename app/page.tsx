@@ -208,7 +208,7 @@ export default function HomePage() {
 
           {/* Slide 3 - The Solution */}
           <SwiperSlide>
-            <section className="slide-content bg-soft-lavender/20 py-20 relative rounded-t-3xl">
+            <section className="slide-content bg-soft-lavender/30 py-20 relative rounded-t-3xl">
               <div className="lg:container mx-auto px-4">
                 <div className="lg:max-w-4xl mx-auto relative z-20">
                   <h2 className="text-4xl md:text-5xl font-bold mb-8 text-right">The Solution</h2>
