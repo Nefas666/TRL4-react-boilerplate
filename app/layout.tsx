@@ -12,7 +12,7 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: "Taimi - Educational Journey",
+  title: "Verso - Educational Journey",
   description: "Discover courses, scholarships, and funding opportunities with AI assistance",
   generator: "001100 010010 011110 100001 101101 110011",
 }

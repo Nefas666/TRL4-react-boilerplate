@@ -9,7 +9,7 @@ export default function AboutPage() {
 
       <main className="flex-1 container mx-auto px-4 py-12 max-w-5xl">
         <div className="mb-12 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">About Taimi</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">About Verso</h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             An AI-powered platform empowering rural youth entrepreneurship in Northern Ostrobothnia, Finland
           </p>
@@ -46,7 +46,7 @@ export default function AboutPage() {
             </CardHeader>
             <CardContent className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
-                Taimi is an AI-powered platform that acts as a personal digital mentor. Users describe
+                Verso is an AI-powered platform that acts as a personal digital mentor. Users describe
                 their ideas in natural language, and the chatbot instantly suggests:
               </p>
               <ul className="list-disc list-inside space-y-2 ml-4">
@@ -139,7 +139,7 @@ export default function AboutPage() {
                   in the educational field.
                 </p>
                 <p>
-                  In "Taimi", Markesing leads the digital development and strategic coordination of the
+                  In "Verso", Markesing leads the digital development and strategic coordination of the
                   platform.
                 </p>
               </CardContent>

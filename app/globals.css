@@ -371,11 +371,12 @@
     background: radial-gradient(circle, var(--tw-gradient-stops));
   }
 
-  /* Added vertical slide scroll-snap styles */
+  /* Updated vertical slide styles to work with fixed blob */
   .vertical-slides {
     scroll-snap-type: y mandatory;
     overflow-y: scroll;
     height: 100vh;
+    position: relative;
   }
 
   .slide-section {
@@ -384,6 +385,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
+    z-index: 20;
   }
 
   /* Added navbar hover colors at 40% opacity */

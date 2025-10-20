@@ -1,5 +1,5 @@
 {
-  "name": "Taimi_trl4-react-boilerplate",
+  "name": "Verso - trl4-react-boilerplate",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -65,7 +65,6 @@
     "react-resizable-panels": "^2.1.7",
     "recharts": "2.15.4",
     "sonner": "^1.7.4",
-    "swiper": "latest",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
     "three": "latest",
