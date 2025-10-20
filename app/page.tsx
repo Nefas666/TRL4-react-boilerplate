@@ -169,7 +169,7 @@ export default function HomePage() {
                     />
                   </div>
 
-                  <div className="absolute bottom-8 right-8 z-30 max-w-md">
+                  <div className="absolute bottom-8 right-8 z-30 max-w-[calc(260px - 20px)]">
                     <div className="bg-white/90 backdrop-blur-md rounded-3xl p-6 shadow-lg border border-white/50">
                       <p className="text-lg md:text-xl text-foreground/80 leading-relaxed text-right">
                         AI Mentor for Rural Youth Entrepreneurship in Finland
