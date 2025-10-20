@@ -113,7 +113,7 @@ export default function HomePage() {
               <div className="container mx-auto px-4 h-full">
                 <div className="max-w-6xl mx-auto h-full relative">
                   {/* Title - Top Left */}
-                  <div className="absolute top-8 left-0 z-20">
+                  <div className="absolute top-8 left-0 z-30">
                     <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-balance leading-[0.95] tracking-tight">
                       Taimi
                     </h1>
@@ -122,7 +122,7 @@ export default function HomePage() {
                   {/* Taimi Avatar - Center, overlaid on blob (only in hero) */}
                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-[300px] h-[300px] flex items-center justify-center">
                     <Image
-                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Designer%20%284%29-LgaZVBqv3b69YrU7n7zab16VSmL7Fs.png"
+                      src="/images/design-mode/Designer%20%284%29.png"
                       alt="Taimi - Your AI Mentor"
                       width={280}
                       height={280}
