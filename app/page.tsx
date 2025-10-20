@@ -91,14 +91,14 @@ export default function HomePage() {
         .swiper-pagination-bullet {
           width: 12px;
           height: 12px;
-          background: rgba(27, 36, 49, 0.3);
+          background: rgba(255, 255, 255, 0.4);
           opacity: 1;
           margin: 8px 0 !important;
           transition: all 0.3s ease;
         }
         
         .swiper-pagination-bullet-active {
-          background: #1B2431;
+          background: rgba(255, 255, 255, 0.9;
           width: 12px;
           height: 32px;
           border-radius: 6px;
@@ -108,7 +108,7 @@ export default function HomePage() {
           overflow-y: auto;
           height: 100%;
           scrollbar-width: thin;
-          scrollbar-color: rgba(27, 36, 49, 0.3) transparent;
+          scrollbar-color: rgba(255, 255, 255, 0.3 transparent;
         }
         
         .slide-content::-webkit-scrollbar {
@@ -120,7 +120,7 @@ export default function HomePage() {
         }
         
         .slide-content::-webkit-scrollbar-thumb {
-          background-color: rgba(27, 36, 49, 0.3);
+          background-color: rgba(255, 255, 255, 0.4;
           border-radius: 3px;
         }
       `}</style>
