@@ -64,13 +64,13 @@ export default function HomePage() {
 
       <div
         className={`fixed pointer-events-none transition-all duration-[1500ms] ease-in-out ${getBlobSize()} ${getBlobPosition()}`}
-        style={{ zIndex: 5 }}
+        style={{ zIndex: 10 }}
       >
         <HolographicBlob />
       </div>
 
       <style jsx global>{`
-     .swiper-container {
+        .swiper-container {
           width: 100%;
           height: 100vh;
         }
@@ -120,7 +120,7 @@ export default function HomePage() {
         }
         
         .slide-content::-webkit-scrollbar-thumb {
-          background-color: rgba(27, 36, 49, 0.3);
+          background-color: rgba(255, 255, 255, 0.3);
           border-radius: 3px;
         }
       `}</style>
