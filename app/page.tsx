@@ -42,7 +42,7 @@ export default function HomePage() {
   const getBlobPosition = () => {
     switch (activeSlide) {
       case 0: // Hero - center
-        return "top-[35%] left-1/2 -translate-x-1/2 -translate-y-1/2"
+        return "top-[35%] left-[60%] -translate-x-1/2 -translate-y-1/2"
       case 1: // Challenge - right side (content is on left)
         return "top-1/2 right-[10%] -translate-y-1/2"
       case 2: // Solution - left side (content is on right)
