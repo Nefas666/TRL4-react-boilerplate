@@ -91,14 +91,14 @@ export default function HomePage() {
         .swiper-pagination-bullet {
           width: 12px;
           height: 12px;
-          background: rgba(255, 255, 255, 0.4);
+          background: rgba(27, 36, 49, 0.3);
           opacity: 1;
           margin: 8px 0 !important;
           transition: all 0.3s ease;
         }
         
         .swiper-pagination-bullet-active {
-          background: rgba(255, 255, 255, 0.9;
+          background: #1B2431;
           width: 12px;
           height: 32px;
           border-radius: 6px;
@@ -108,7 +108,7 @@ export default function HomePage() {
           overflow-y: auto;
           height: 100%;
           scrollbar-width: thin;
-          scrollbar-color: rgba(255, 255, 255, 0.3 transparent;
+          scrollbar-color: rgba(27, 36, 49, 0.3) transparent;
         }
         
         .slide-content::-webkit-scrollbar {
@@ -120,7 +120,7 @@ export default function HomePage() {
         }
         
         .slide-content::-webkit-scrollbar-thumb {
-          background-color: rgba(255, 255, 255, 0.4;
+          background-color: rgba(27, 36, 49, 0.3);
           border-radius: 3px;
         }
       `}</style>
@@ -146,30 +146,28 @@ export default function HomePage() {
             <section className="slide-content bg-soft-yellow py-20 md:py-32 relative rounded-t-3xl">
               <div className="container mx-auto px-4 h-full">
                 <div className="max-w-6xl mx-auto h-full relative">
-                  <div className="absolute top-8 z-40">
+                  {/* Title - Top Left */}
+                  <div className="absolute top-8 z-30">
                     <h1 className="text-8xl lg:text-8xl font-bold text-balance leading-[0.95] tracking-tight md:text-9xl text-popover">
                       tAImi
                     </h1>
                   </div>
 
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] flex items-center justify-center">
-                    <div className="absolute inset-0 bg-gradient-radial from-yellow-300/60 via-emerald-300/40 to-transparent blur-3xl animate-pulse-slow z-10" />
-                    <div className="absolute inset-0 bg-gradient-radial from-white/40 via-yellow-200/30 to-transparent blur-2xl z-15" />
-
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] flex items-center justify-center z-30">
                     <Image
                       src="/images/design-mode/Designer%20%284%29(1).png"
                       alt="Taimi - Your AI Mentor"
                       width={280}
                       height={280}
-                      className="object-contain drop-shadow-2xl relative z-30"
+                      className="object-contain drop-shadow-2xl relative"
                       style={{ filter: "saturate(1.3) contrast(1.1) brightness(1.05)" }}
                       priority
                     />
                   </div>
 
-                  <div className="absolute bottom-8 right-8 z-35 max-w-[360px]">
+                  <div className="absolute bottom-8 right-8 max-w-[360px] z-20">
                     <div className="bg-white/80 backdrop-blur-md rounded-3xl p-6 shadow-lg border border-white/50">
-                      <p className="text-lg md:text-xl text-foreground/90 leading-relaxed text-right">
+                      <p className="text-lg md:text-xl text-foreground/80 leading-relaxed text-right">
                         AI Mentor for Rural Youth Entrepreneurship in Finland
                       </p>
                     </div>
@@ -208,35 +206,47 @@ export default function HomePage() {
 
           {/* Slide 3 - The Solution */}
           <SwiperSlide>
-            <section className="slide-content bg-soft-lavender/30 py-20 relative">
-              <div className="lg:container mx-auto px-4">
-                <div className="lg:max-w-4xl mx-auto relative z-20">
+            <section className="slide-content bg-soft-lavender py-20 relative rounded-t-3xl">
+              <div className="mx-auto px-4">
+                <div className="max-w-4xl mx-auto relative z-20">
                   <h2 className="text-4xl md:text-5xl font-bold mb-8 text-right">The Solution</h2>
                   <div className="space-y-6 text-lg leading-relaxed mb-12 bg-soft-lavender/80 backdrop-blur-sm rounded-3xl max-w-lg">
                     <p className="text-foreground/80 text-right">
                       <span className="font-semibold text-foreground">tAImi</span> is an AI-powered platform that acts
-                      as a personal digital mentor. The chatbot instantly suggests:
+                      as a personal digital mentor.
+                    </p>
+                    <p className="text-foreground/80 text-right">
+                      Users describe their ideas in natural language, and the chatbot instantly suggests:
                     </p>
                   </div>
 
-                  <div className="grid md:grid-cols-2 md:grid-rows-2 gap-6">
-                    <Card className="border-0 card-shadow bg-card row-span-2">
-                      <CardHeader className="space-y-4 bg-">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <Card className="border-0 card-shadow bg-card">
+                      <CardHeader className="space-y-4">
+                        <GraduationCap className="h-10 w-10 text-[#1B2431]" />
                         <CardTitle className="text-xl">Training opportunities</CardTitle>
                       </CardHeader>
                     </Card>
 
-                    <Card className="border-0 card-shadow bg-card row-span-auto">
+                    <Card className="border-0 card-shadow bg-card">
                       <CardHeader className="space-y-4">
+                        <Target className="h-10 w-10 text-[#FEE17C]" />
                         <CardTitle className="text-xl">Funding and resources</CardTitle>
                       </CardHeader>
                     </Card>
 
-                    <Card className="border-0 card-shadow bg-card col-span-2">
+                    <Card className="border-0 card-shadow bg-card">
                       <CardHeader className="space-y-4">
+                        <Users className="h-10 w-10 text-[#A2EAF6]" />
                         <CardTitle className="text-xl">Local mentors or networks</CardTitle>
                       </CardHeader>
                     </Card>
+                  </div>
+
+                  <div className="mt-12 bg-soft-lavender/80 backdrop-blur-sm p-6 rounded-3xl">
+                    <p className="text-xl font-bold text-foreground">
+                      The system transforms uncertainty into concrete, guided actions.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -245,7 +255,7 @@ export default function HomePage() {
 
           {/* Slide 4 - Key Features */}
           <SwiperSlide>
-            <section className="slide-content bg-soft-blue py-20 relative">
+            <section className="slide-content bg-soft-blue py-20 relative rounded-t-3xl">
               <div className="container mx-auto px-4">
                 <div className="relative z-20">
                   <h2 className="text-4xl md:text-5xl font-bold text-left mb-16">Key Features</h2>
@@ -313,7 +323,7 @@ export default function HomePage() {
 
           {/* Slide 5 - Outcomes */}
           <SwiperSlide>
-            <section className="slide-content bg-soft-yellow py-20 relative">
+            <section className="slide-content bg-soft-yellow py-20 relative rounded-t-3xl">
               <div className="container mx-auto px-4">
                 <div className="max-w-5xl mx-auto relative z-20">
                   <h2 className="text-4xl md:text-5xl font-bold mb-16 text-left">Outcomes</h2>
