@@ -215,10 +215,7 @@ export default function HomePage() {
                   <div className="space-y-6 text-lg leading-relaxed mb-12 bg-soft-lavender/80 backdrop-blur-sm rounded-3xl max-w-lg">
                     <p className="text-foreground/80 text-right">
                       <span className="font-semibold text-foreground">tAImi</span> is an AI-powered platform that acts
-                      as a personal digital mentor.
-                    </p>
-                    <p className="text-foreground/80 text-right">
-                      Users describe their ideas in natural language, and the chatbot instantly suggests:
+                      as a personal digital mentor. The chatbot instantly suggests:
                     </p>
                   </div>
 
