@@ -35,7 +35,7 @@ export default function HomePage() {
   const getBlobSize = () => {
     if (activeSlide === 0 || activeSlide === 5) {
       return "w-[300px] h-[300px]" // Large in hero and CTA
-    } 
+    }
     return "w-[220px] h-[220px]" // Smaller in middle slides
   }
 
@@ -64,7 +64,7 @@ export default function HomePage() {
 
       <div
         className={`fixed pointer-events-none transition-all duration-[1500ms] ease-in-out ${getBlobSize()} ${getBlobPosition()}`}
-        style={{ zIndex: 10 }}
+        style={{ zIndex: 5 }}
       >
         <HolographicBlob />
       </div>
@@ -154,9 +154,9 @@ export default function HomePage() {
                   </div>
 
                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] flex items-center justify-center">
-                    {/* Glow effect behind avatar - z-10 */}
+                    {/* Glow effect behind avatar */}
                     <div className="absolute inset-0 bg-gradient-radial from-yellow-300/60 via-emerald-300/40 to-transparent blur-3xl animate-pulse-slow z-10" />
-                    <div className="absolute inset-0 bg-gradient-radial from-white/40 via-yellow-200/30 to-transparent blur-2xl z-20" />
+                    <div className="absolute inset-0 bg-gradient-radial from-white/40 via-yellow-200/30 to-transparent blur-2xl z-15" />
 
                     <Image
                       src="/images/design-mode/Designer%20%284%29(1).png"
@@ -169,8 +169,8 @@ export default function HomePage() {
                     />
                   </div>
 
-                  <div className="absolute bottom-8 right-8 z-30 max-w-[360px] z-20">
-                    <div className="bg-white/70 backdrop-blur-md rounded-3xl p-6 shadow-lg border border-white/50">
+                  <div className="absolute bottom-8 right-8 max-w-[360px] z-20">
+                    <div className="bg-white/80 backdrop-blur-md rounded-3xl p-6 shadow-lg border border-white/50">
                       <p className="text-lg md:text-xl text-foreground/80 leading-relaxed text-right">
                         AI Mentor for Rural Youth Entrepreneurship in Finland
                       </p>
@@ -216,8 +216,8 @@ export default function HomePage() {
                   <h2 className="text-4xl md:text-5xl font-bold mb-8 text-right">The Solution</h2>
                   <div className="space-y-6 text-lg leading-relaxed mb-12 bg-soft-lavender/80 backdrop-blur-sm rounded-3xl max-w-lg">
                     <p className="text-foreground/80 text-right">
-                      <span className="font-semibold text-foreground">tAImi</span> is an AI-powered
-                      platform that acts as a personal digital mentor.
+                      <span className="font-semibold text-foreground">tAImi</span> is an AI-powered platform that acts
+                      as a personal digital mentor.
                     </p>
                     <p className="text-foreground/80 text-right">
                       Users describe their ideas in natural language, and the chatbot instantly suggests:
@@ -278,47 +278,48 @@ export default function HomePage() {
                       </CardHeader>
                     </Card>
 
-                  <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
-                    <CardHeader className="space-y-6 p-8">
-                      <div className="w-16 h-16 rounded-2xl bg-[#FEE17C]/10 flex items-center justify-center">
-                        <BookOpen className="h-8 w-8 text-[#FEE17C]" />
-                      </div>
-                      <div className="space-y-4">
-                        <CardTitle className="text-2xl font-bold">Micro-learning Hub</CardTitle>
-                        <CardDescription className="text-base leading-relaxed">
-                          Curated training and resources for rural entrepreneurs
-                        </CardDescription>
-                      </div>
-                    </CardHeader>
-                  </Card>
+                    <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
+                      <CardHeader className="space-y-6 p-8">
+                        <div className="w-16 h-16 rounded-2xl bg-[#FEE17C]/10 flex items-center justify-center">
+                          <BookOpen className="h-8 w-8 text-[#FEE17C]" />
+                        </div>
+                        <div className="space-y-4">
+                          <CardTitle className="text-2xl font-bold">Micro-learning Hub</CardTitle>
+                          <CardDescription className="text-base leading-relaxed">
+                            Curated training and resources for rural entrepreneurs
+                          </CardDescription>
+                        </div>
+                      </CardHeader>
+                    </Card>
 
-                  <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
-                    <CardHeader className="space-y-6 p-8">
-                      <div className="w-16 h-16 rounded-2xl bg-[#A2EAF6]/10 flex items-center justify-center">
-                        <Users className="h-8 w-8 text-[#A2EAF6]" />
-                      </div>
-                      <div className="space-y-4">
-                        <CardTitle className="text-2xl font-bold">Community Space</CardTitle>
-                        <CardDescription className="text-base leading-relaxed">
-                          Connect with mentors and fellow entrepreneurs
-                        </CardDescription>
-                      </div>
-                    </CardHeader>
-                  </Card>
+                    <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
+                      <CardHeader className="space-y-6 p-8">
+                        <div className="w-16 h-16 rounded-2xl bg-[#A2EAF6]/10 flex items-center justify-center">
+                          <Users className="h-8 w-8 text-[#A2EAF6]" />
+                        </div>
+                        <div className="space-y-4">
+                          <CardTitle className="text-2xl font-bold">Community Space</CardTitle>
+                          <CardDescription className="text-base leading-relaxed">
+                            Connect with mentors and fellow entrepreneurs
+                          </CardDescription>
+                        </div>
+                      </CardHeader>
+                    </Card>
 
-                  <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
-                    <CardHeader className="space-y-6 p-8">
-                      <div className="w-16 h-16 rounded-2xl bg-[#C9E0DD]/10 flex items-center justify-center">
-                        <Network className="h-8 w-8 text-[#C9E0DD]" />
-                      </div>
-                      <div className="space-y-4">
-                        <CardTitle className="text-2xl font-bold">Open Architecture</CardTitle>
-                        <CardDescription className="text-base leading-relaxed">
-                          Replicable model for EU rural regions
-                        </CardDescription>
-                      </div>
-                    </CardHeader>
-                  </Card>
+                    <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
+                      <CardHeader className="space-y-6 p-8">
+                        <div className="w-16 h-16 rounded-2xl bg-[#C9E0DD]/10 flex items-center justify-center">
+                          <Network className="h-8 w-8 text-[#C9E0DD]" />
+                        </div>
+                        <div className="space-y-4">
+                          <CardTitle className="text-2xl font-bold">Open Architecture</CardTitle>
+                          <CardDescription className="text-base leading-relaxed">
+                            Replicable model for EU rural regions
+                          </CardDescription>
+                        </div>
+                      </CardHeader>
+                    </Card>
+                  </div>
                 </div>
               </div>
             </section>
