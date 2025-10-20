@@ -187,7 +187,7 @@ export default function HomePage() {
               <div className="container mx-auto px-4">
                 <div className="max-w-4xl mx-auto relative z-20">
                   <h2 className="text-4xl md:text-5xl font-bold mb-8">The Challenge</h2>
-                  <div className="text-lg leading-relaxed bg-soft-aqua/80 backdrop-blur-sm rounded-3xl space-y-3">
+                  <div className="text-lg leading-relaxed bg-soft-aqua/80 backdrop-blur-sm rounded-3xl space-y-3 max-w-2xl">
                     <p className="text-foreground/80">
                       In <span className="font-semibold text-foreground">Northern Ostrobothnia (Finland)</span>, rural
                       youth and unemployed people often lack access to information, mentors, and opportunities.
