@@ -23,6 +23,7 @@ import { useState } from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Mousewheel, Pagination } from "swiper/modules"
 import type { Swiper as SwiperType } from "swiper"
+import imageSrc from "../public/images/design-mode/avatar_01.png"
 
 // Import Swiper styles
 
@@ -44,7 +45,7 @@ export default function HomePage() {
       case 1: // Challenge - right side (content is on left)
         return "top-1/2 right-[10%] -translate-y-1/2"
       case 2: // Solution - left side (content is on right)
-        return "top-1/2 left-[10%] -translate-y-1/2"
+        return "top-[30%] left-[10%] -translate-y-1/2"
       case 3: // Features - bottom right
         return "bottom-[15%] right-[10%]"
       case 4: // Outcomes - top left
@@ -84,32 +85,35 @@ export default function HomePage() {
         >
           {/* Slide 1 - Hero */}
           <SwiperSlide>
-            <section className="slide-content bg-soft-yellow py-20 md:py-32 relative rounded-t-3xl">
+            <section className="slide-content bg-amber-50 py-20 md:py-32">
               <div className="container mx-auto px-4 h-full">
                 <div className="max-w-6xl mx-auto h-full relative">
-                  {/* Title - Top Left */}
-                  <div className="absolute top-8 z-30">
-                    <h1 className="text-8xl lg:text-8xl font-bold text-balance leading-[0.95] tracking-tight md:text-9xl text-popover">
-                      tAImi
+                  {/* Titolo Olografico - Top Left */}
+                  <div className="absolute top-8 z-10 lg:left-[5%]">
+                    <h1 
+                      className="holographic-title text-9xl leading-[0.95] tracking-wider md:text-[170px] font-display font-black"
+                      data-text="tAImi"
+                    >
+                      t<span className="tracking-tight after:invert-25 before:invert-25 text-[124px]">AI</span>mi
                     </h1>
                   </div>
 
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] flex items-center justify-center">
+                  <div className="flex items-center justify-center">
 
                     <Image
-                      src="/images/design-mode/Designer%20%284%29(1).png"
+                      src={imageSrc}
                       alt="Taimi - Your AI Mentor"
                       width={280}
                       height={280}
-                      className="object-contain drop-shadow-2xl relative"
-                      style={{ filter: "saturate(1.3) contrast(1.1) brightness(1.05)" }}
+                      className="object-contain drop-shadow-2xl relative z-20"
+                      style={{ filter: "saturate(1.2) contrast(1.1) brightness(1.05)" }}
                       priority
                     />
                   </div>
 
-                  <div className="absolute bottom-8 right-20 max-w-[360px] z-20">
-                    <div className="bg-white/80 backdrop-blur-md rounded-3xl p-6 shadow-lg border border-white/50">
-                      <p className="text-lg md:text-xl text-foreground/80 leading-relaxed text-right">
+                  <div className="absolute bottom-12 right-[14%] max-w-[360px] z-10">
+                    <div className="bg-white/60 backdrop-blur-lg rounded-3xl p-6 shadow-lg border border-white/50">
+                      <p className="text-lg md:text-xl text-foreground/70 leading-tight text-right font-medium">
                         AI Mentor for Rural Youth Entrepreneurship in Finland
                       </p>
                     </div>
@@ -120,12 +124,12 @@ export default function HomePage() {
           </SwiperSlide>
 
           {/* Slide 2 - The Challenge */}
-          <SwiperSlide>
-            <section className="slide-content bg-soft-aqua py-20 relative rounded-t-3xl">
+           <SwiperSlide>
+            <section className="slide-content bg-soft-aqua py-20">
               <div className="container mx-auto px-4">
-                <div className="max-w-4xl mx-auto relative z-20">
+                <div className="max-w-4xl mx-auto relative">
                   <h2 className="text-4xl md:text-5xl font-bold mb-8">The Challenge</h2>
-                  <div className="text-lg leading-relaxed bg-soft-aqua/80 backdrop-blur-sm rounded-3xl space-y-3 max-w-lg">
+                  <div className="text-lg leading-relaxed bg-soft-aqua/80 backdrop-blur-sm space-y-3 md:max-w-2xl">
                     <p className="text-foreground/80">
                       In <span className="font-semibold text-foreground">Northern Ostrobothnia (Finland)</span>, rural
                       youth and unemployed people often lack access to information, mentors, and opportunities.
@@ -146,11 +150,10 @@ export default function HomePage() {
 
           {/* Slide 3 - The Solution */}
           <SwiperSlide>
-            <section className="slide-content bg-soft-lavender py-20 relative rounded-t-3xl">
-              <div className="mx-auto px-4">
-                <div className="max-w-4xl mx-auto relative z-20">
+            <section className="slide-content bg-soft-lavender py-20">
+                <div className="max-w-4xl mx-auto relative items-stretch flex-col justify-center">
                   <h2 className="text-4xl md:text-5xl font-bold mb-8 text-right">The Solution</h2>
-                  <div className="space-y-6 text-lg leading-relaxed mb-12 bg-soft-lavender/80 backdrop-blur-sm rounded-3xl max-w-lg">
+                  <div className="space-y-6 text-lg leading-relaxed mb-12 bg-soft-lavender/80 backdrop-blur-sm">
                     <p className="text-foreground/80 text-right">
                       <span className="font-semibold text-foreground">tAImi</span> is an AI-powered platform that acts
                       as a personal digital mentor.
@@ -182,20 +185,13 @@ export default function HomePage() {
                       </CardHeader>
                     </Card>
                   </div>
-
-                  <div className="mt-12 bg-soft-lavender/80 backdrop-blur-sm p-6 rounded-3xl">
-                    <p className="text-xl font-bold text-foreground">
-                      The system transforms uncertainty into concrete, guided actions.
-                    </p>
-                  </div>
-                </div>
               </div>
             </section>
           </SwiperSlide>
 
           {/* Slide 4 - Key Features */}
           <SwiperSlide>
-            <section className="slide-content bg-soft-blue py-20 relative rounded-t-3xl">
+            <section className="slide-content bg-soft-blue py-20">
               <div className="container mx-auto px-4">
                   <h2 className="text-4xl md:text-5xl font-bold text-left mb-16">Key Features</h2>
                   <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
@@ -287,7 +283,7 @@ export default function HomePage() {
 
           {/* Slide 5 - Outcomes */}
           <SwiperSlide>
-            <section className="slide-content bg-soft-yellow py-20 relative rounded-t-3xl">
+            <section className="slide-content bg-soft-yellow py-20">
               <div className="container mx-auto px-4">
                 <div className="max-w-5xl mx-auto relative z-20">
                   <h2 className="text-4xl md:text-5xl font-bold mb-16 text-left">Outcomes</h2>
@@ -347,7 +343,7 @@ export default function HomePage() {
 
           {/* Slide 6 - CTA */}
           <SwiperSlide>
-            <section className="slide-content py-24 bg-secondary relative">
+            <section className="slide-content py-24 bg-secondary">
               <div className="container mx-auto px-4">
                 <div className="max-w-4xl mx-auto text-center space-y-8 relative z-20">
                   <h2 className="text-4xl md:text-5xl font-bold leading-tight text-primary">

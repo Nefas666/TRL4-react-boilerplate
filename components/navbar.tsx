@@ -32,11 +32,11 @@ export function Navbar() {
   return (
     <nav className="border-b bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80 sticky top-0 z-50 card-shadow grid grid-cols-3 gap-2 px-4 py-2.5">
         <div className="col-span-1">
-          <Link href="/" className="font-bold text-xl md:text-2xl hover:opacity-80 transition-opacity">
-            t<span className="text-primary">AI</span>mi
+          <Link href="/" className="font-display uppercase font-black holographic-text text-3xl md:text-2xl hover:opacity-80 transition-opacity">
+            tAImi
           </Link>
         </div>
-          <div className="col-span-2 place-self-end">
+          <div className="col-span-2 place-self-end flex space-x-2 justify-center sm:justify-end">
             {links.map((link) => {
               const Icon = link.icon
               const isActive = pathname === link.href

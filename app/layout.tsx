@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Space_Grotesk } from "next/font/google"
+import { Space_Grotesk,MuseoModerno } from "next/font/google"
+
 import localFont from "next/font/local"
 import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
@@ -11,33 +12,13 @@ const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
   display: "swap",
 })
-
-const clashDisplay = localFont({
-  src: [
-    {
-      path: "../public/fonts/ClashDisplay-Regular.woff2",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../public/fonts/ClashDisplay-Medium.woff2",
-      weight: "500",
-      style: "normal",
-    },
-    {
-      path: "../public/fonts/ClashDisplay-Semibold.woff2",
-      weight: "600",
-      style: "normal",
-    },
-    {
-      path: "../public/fonts/ClashDisplay-Bold.woff2",
-      weight: "700",
-      style: "normal",
-    },
-  ],
-  variable: "--font-clash-display",
+const museoModerno = MuseoModerno({
+  subsets: ["latin"],
+  variable: "--font-museo-moderno",
   display: "swap",
 })
+
+
 
 export const metadata: Metadata = {
   title: "Taimi - Educational Journey",
@@ -52,7 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`font-sans ${spaceGrotesk.variable} ${clashDisplay.variable}`}>
+      <body className={`font-sans ${spaceGrotesk.variable, museoModerno.variable}`}>
         <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
         <Analytics />
       </body>
