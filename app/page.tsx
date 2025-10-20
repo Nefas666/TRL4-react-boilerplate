@@ -70,7 +70,7 @@ export default function HomePage() {
       </div>
 
       <style jsx global>{`
-        .swiper-container {
+     .swiper-container {
           width: 100%;
           height: 100vh;
         }
