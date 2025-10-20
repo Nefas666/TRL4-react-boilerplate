@@ -143,14 +143,13 @@ export default function HomePage() {
         >
           {/* Slide 1 - Hero */}
           <SwiperSlide>
-            <section className="slide-content bg-soft-yellow py-20 md:py-32">
-              <div className="container mx-auto px-4">
-                <div className="max-w-6xl mx-auto">
-                  <div className="text-center mb-12">
-                    <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-8 text-balance leading-[0.95] tracking-tight">
-                      From Soil
-                      <br />
-                      to Systems
+            <section className="slide-content bg-soft-yellow py-20 md:py-32 relative rounded-t-3xl">
+              <div className="container mx-auto px-4 h-full">
+                <div className="max-w-6xl mx-auto h-full relative">
+                  {/* Title - Top Left */}
+                  <div className="absolute top-8 -left-4 z-30">
+                    <h1 className="text-6xl lg:text-8xl font-bold text-balance leading-[0.95] tracking-tight md:text-9xl text-popover">
+                      tAImi
                     </h1>
                   </div>
 
@@ -184,9 +183,9 @@ export default function HomePage() {
 
           {/* Slide 2 - The Challenge */}
           <SwiperSlide>
-            <section className="slide-content bg-soft-aqua py-20">
+            <section className="slide-content bg-soft-aqua py-20 relative rounded-t-3xl">
               <div className="container mx-auto px-4">
-                <div className="max-w-4xl mx-auto">
+                <div className="max-w-4xl mx-auto relative z-20">
                   <h2 className="text-4xl md:text-5xl font-bold mb-8">The Challenge</h2>
                   <div className="text-lg leading-relaxed bg-soft-aqua/80 backdrop-blur-sm rounded-3xl space-y-3 max-w-lg">
                     <p className="text-foreground/80">
@@ -211,16 +210,16 @@ export default function HomePage() {
 
           {/* Slide 3 - The Solution */}
           <SwiperSlide>
-            <section className="slide-content bg-soft-lavender py-20">
-              <div className="container mx-auto px-4">
-                <div className="max-w-4xl mx-auto">
-                  <h2 className="text-4xl md:text-5xl font-bold mb-8">The Solution</h2>
-                  <div className="space-y-6 text-lg leading-relaxed mb-12">
-                    <p className="text-foreground/80">
-                      <span className="font-semibold text-foreground">From Soil to Systems</span> is an AI-powered platform
-                      that acts as a personal digital mentor.
-                    </p>
+            <section className="slide-content bg-soft-lavender py-20 relative rounded-t-3xl">
+              <div className="mx-auto px-4">
+                <div className="max-w-4xl mx-auto relative z-20">
+                  <h2 className="text-4xl md:text-5xl font-bold mb-8 text-right">The Solution</h2>
+                  <div className="space-y-6 text-lg leading-relaxed mb-12 bg-soft-lavender/80 backdrop-blur-sm rounded-3xl max-w-lg">
                     <p className="text-foreground/80 text-right">
+                      <span className="font-semibold text-foreground">tAImi</span> is an AI-powered
+                      platform that acts as a personal digital mentor.
+                    </p>
+                    <p className="text-foreground/80">
                       Users describe their ideas in natural language, and the chatbot instantly suggests:
                     </p>
                   </div>
@@ -260,23 +259,24 @@ export default function HomePage() {
 
           {/* Slide 4 - Key Features */}
           <SwiperSlide>
-            <section className="slide-content bg-soft-blue py-20">
+            <section className="slide-content bg-soft-blue py-20 relative rounded-t-3xl">
               <div className="container mx-auto px-4">
-                <h2 className="text-4xl md:text-5xl font-bold text-left mb-16">Key Features</h2>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-                  <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
-                    <CardHeader className="space-y-6 p-8">
-                      <div className="w-16 h-16 rounded-2xl bg-[#1B2431]/10 flex items-center justify-center">
-                        <MessageSquare className="h-8 w-8 text-[#1B2431]" />
-                      </div>
-                      <div className="space-y-4">
-                        <CardTitle className="text-2xl font-bold">AI Chatbot-Mentor</CardTitle>
-                        <CardDescription className="text-base leading-relaxed">
-                          Natural language interface for personalized guidance
-                        </CardDescription>
-                      </div>
-                    </CardHeader>
-                  </Card>
+                <div className="relative z-20">
+                  <h2 className="text-4xl md:text-5xl font-bold text-left mb-16">Key Features</h2>
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+                    <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
+                      <CardHeader className="space-y-6 p-8">
+                        <div className="w-16 h-16 rounded-2xl bg-[#1B2431]/10 flex items-center justify-center">
+                          <MessageSquare className="h-8 w-8 text-[#1B2431]" />
+                        </div>
+                        <div className="space-y-4">
+                          <CardTitle className="text-2xl font-bold">AI Chatbot-Mentor</CardTitle>
+                          <CardDescription className="text-base leading-relaxed">
+                            Natural language interface for personalized guidance
+                          </CardDescription>
+                        </div>
+                      </CardHeader>
+                    </Card>
 
                     <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
                       <CardHeader className="space-y-6 p-8">
@@ -327,9 +327,9 @@ export default function HomePage() {
 
           {/* Slide 5 - Outcomes */}
           <SwiperSlide>
-            <section className="slide-content bg-soft-yellow py-20">
+            <section className="slide-content bg-soft-yellow py-20 relative rounded-t-3xl">
               <div className="container mx-auto px-4">
-                <div className="max-w-5xl mx-auto">
+                <div className="max-w-5xl mx-auto relative z-20">
                   <h2 className="text-4xl md:text-5xl font-bold mb-16 text-left">Outcomes</h2>
                   <div className="grid md:grid-cols-2 gap-8">
                     <Card className="border-0 card-shadow bg-card">
