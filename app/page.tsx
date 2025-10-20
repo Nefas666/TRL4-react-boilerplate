@@ -91,7 +91,7 @@ export default function HomePage() {
         .swiper-pagination-bullet {
           width: 12px;
           height: 12px;
-          background: rgba(27, 36, 49, 0.3);
+          background: rgba(255, 255, 255, 0.4);
           opacity: 1;
           margin: 8px 0 !important;
           transition: all 0.3s ease;
