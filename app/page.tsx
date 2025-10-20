@@ -64,7 +64,7 @@ export default function HomePage() {
 
       <div
         className={`fixed pointer-events-none transition-all duration-[1500ms] ease-in-out ${getBlobSize()} ${getBlobPosition()}`}
-        style={{ zIndex: 5 }}
+        style={{ zIndex: 20 }}
       >
         <HolographicBlob />
       </div>
