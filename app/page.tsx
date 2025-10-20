@@ -238,12 +238,6 @@ export default function HomePage() {
                       </CardHeader>
                     </Card>
                   </div>
-
-                  <div className="mt-12 bg-soft-lavender/80 backdrop-blur-sm p-6 rounded-3xl">
-                    <p className="text-xl font-bold text-foreground">
-                      The system transforms uncertainty into concrete, guided actions.
-                    </p>
-                  </div>
                 </div>
               </div>
             </section>
