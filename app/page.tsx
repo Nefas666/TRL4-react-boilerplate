@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -17,19 +17,57 @@ import {
 } from "lucide-react"
 import { Navbar } from "@/components/navbar"
 import HolographicBlob from "@/components/holographic-blob"
+import Image from "next/image"
+import { useState } from "react"
 
 // Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Mousewheel, Pagination } from 'swiper/modules'
+import { Swiper, SwiperSlide } from "swiper/react"
+import { Mousewheel, Pagination } from "swiper/modules"
+import type { Swiper as SwiperType } from "swiper"
 
 // Import Swiper styles
-import 'swiper/css'
-import 'swiper/css/pagination'
+import "swiper/css"
+import "swiper/css/pagination"
 
 export default function HomePage() {
+  const [activeSlide, setActiveSlide] = useState(0)
+
+  const getBlobSize = () => {
+    if (activeSlide === 0 || activeSlide === 5) {
+      return "w-[400px] h-[400px]" // Large in hero and CTA
+    }
+    return "w-[280px] h-[280px]" // Smaller in middle slides
+  }
+
+  const getBlobPosition = () => {
+    switch (activeSlide) {
+      case 0: // Hero - center
+        return "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+      case 1: // Challenge - right side (content is on left)
+        return "top-1/2 right-[10%] -translate-y-1/2"
+      case 2: // Solution - left side (content is on right)
+        return "top-1/2 left-[10%] -translate-y-1/2"
+      case 3: // Features - bottom right
+        return "bottom-[15%] right-[10%]"
+      case 4: // Outcomes - top left
+        return "top-[20%] left-[10%]"
+      case 5: // CTA - center
+        return "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+      default:
+        return "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+    }
+  }
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
+
+      <div
+        className={`fixed pointer-events-none transition-all duration-[1500ms] ease-in-out ${getBlobSize()} ${getBlobPosition()}`}
+        style={{ zIndex: 10 }}
+      >
+        <HolographicBlob />
+      </div>
 
       <style jsx global>{`
         .swiper-container {
@@ -101,29 +139,41 @@ export default function HomePage() {
           }}
           modules={[Mousewheel, Pagination]}
           className="swiper-container"
+          onSlideChange={(swiper: SwiperType) => setActiveSlide(swiper.activeIndex)}
         >
           {/* Slide 1 - Hero */}
           <SwiperSlide>
-            <section className="slide-content bg-soft-yellow pb-20 h-full max-h-[100vh]">
-              <div className="mx-auto px-4">
+            <section className="slide-content bg-soft-yellow py-20 md:py-32">
+              <div className="container mx-auto px-4">
                 <div className="max-w-6xl mx-auto">
                   <div className="text-center mb-12">
                     <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-8 text-balance leading-[0.95] tracking-tight">
-                      Taimi
+                      From Soil
+                      <br />
+                      to Systems
                     </h1>
-                    <p className="text-xl md:text-2xl text-foreground/70 max-w-3xl mx-auto leading-relaxed">
-                      AI Mentor for Rural Youth Entrepreneurship in Finland
-                    </p>
                   </div>
 
-                  <div className="max-w-md mx-auto">
-                    <div className="relative aspect-square w-full max-w-sm mx-auto">
-                      <HolographicBlob />
-                    </div>
-                    <div className="text-center mt-8 space-y-4">
-                      <h2 className="text-2xl font-bold">Your AI Assistant</h2>
-                      <p className="text-muted-foreground">
-                        How can I assist you today with your entrepreneurship journey?
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] flex items-center justify-center">
+                    {/* Glow effect behind avatar - z-10 */}
+                    <div className="absolute inset-0 bg-gradient-radial from-yellow-300/60 via-emerald-300/40 to-transparent blur-3xl animate-pulse-slow z-10" />
+                    <div className="absolute inset-0 bg-gradient-radial from-white/40 via-yellow-200/30 to-transparent blur-2xl z-40" />
+
+                    <Image
+                      src="/images/design-mode/Designer%20%284%29(1).png"
+                      alt="Taimi - Your AI Mentor"
+                      width={280}
+                      height={280}
+                      className="object-contain drop-shadow-2xl relative z-30"
+                      style={{ filter: "saturate(1.3) contrast(1.1) brightness(1.05)" }}
+                      priority
+                    />
+                  </div>
+
+                  <div className="absolute bottom-8 right-8 z-30 max-w-[360px]">
+                    <div className="bg-white/90 backdrop-blur-md rounded-3xl p-6 shadow-lg border border-white/50">
+                      <p className="text-lg md:text-xl text-foreground/80 leading-relaxed text-right">
+                        AI Mentor for Rural Youth Entrepreneurship in Finland
                       </p>
                     </div>
                   </div>
@@ -135,16 +185,17 @@ export default function HomePage() {
           {/* Slide 2 - The Challenge */}
           <SwiperSlide>
             <section className="slide-content bg-soft-aqua py-20">
-              <div className="mx-auto px-4">
-                <div className="max-w-5xl mx-auto flex-col justify-center items-center">
+              <div className="container mx-auto px-4">
+                <div className="max-w-4xl mx-auto">
                   <h2 className="text-4xl md:text-5xl font-bold mb-8">The Challenge</h2>
-                  <div className="space-y-6 text-lg leading-relaxed">
+                  <div className="text-lg leading-relaxed bg-soft-aqua/80 backdrop-blur-sm rounded-3xl space-y-3 max-w-lg">
                     <p className="text-foreground/80">
-                      In <span className="font-semibold text-foreground">Northern Ostrobothnia (Finland)</span>, rural youth
-                      and unemployed people often lack access to information, mentors, and opportunities.
+                      In <span className="font-semibold text-foreground">Northern Ostrobothnia (Finland)</span>, rural
+                      youth and unemployed people often lack access to information, mentors, and opportunities.
                     </p>
                     <p className="text-foreground/80">
-                      Bureaucratic complexity and scattered digital resources make it hard to start sustainable initiatives.
+                      Bureaucratic complexity and scattered digital resources make it hard to start sustainable
+                      initiatives.
                     </p>
                     <p className="text-foreground/80">
                       Existing training is often static and disconnected from real community needs.
@@ -161,20 +212,20 @@ export default function HomePage() {
           {/* Slide 3 - The Solution */}
           <SwiperSlide>
             <section className="slide-content bg-soft-lavender py-20">
-              <div className="mx-auto px-4">
-                <div className="max-w-5xl mx-auto">
+              <div className="container mx-auto px-4">
+                <div className="max-w-4xl mx-auto">
                   <h2 className="text-4xl md:text-5xl font-bold mb-8">The Solution</h2>
                   <div className="space-y-6 text-lg leading-relaxed mb-12">
                     <p className="text-foreground/80">
                       <span className="font-semibold text-foreground">From Soil to Systems</span> is an AI-powered platform
                       that acts as a personal digital mentor.
                     </p>
-                    <p className="text-foreground/80">
+                    <p className="text-foreground/80 text-right">
                       Users describe their ideas in natural language, and the chatbot instantly suggests:
                     </p>
                   </div>
 
-                  <div className="grid md:grid-cols-3 gap-6">
+                  <div className="grid md:grid-cols-2 gap-6">
                     <Card className="border-0 card-shadow bg-card">
                       <CardHeader className="space-y-4">
                         <GraduationCap className="h-10 w-10 text-[#1B2431]" />
@@ -197,7 +248,7 @@ export default function HomePage() {
                     </Card>
                   </div>
 
-                  <div className="mt-12">
+                  <div className="mt-12 bg-soft-lavender/80 backdrop-blur-sm p-6 rounded-3xl">
                     <p className="text-xl font-bold text-foreground">
                       The system transforms uncertainty into concrete, guided actions.
                     </p>
@@ -210,7 +261,7 @@ export default function HomePage() {
           {/* Slide 4 - Key Features */}
           <SwiperSlide>
             <section className="slide-content bg-soft-blue py-20">
-              <div className="max-w-5xl mx-auto px-4">
+              <div className="container mx-auto px-4">
                 <h2 className="text-4xl md:text-5xl font-bold text-left mb-16">Key Features</h2>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
                   <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
@@ -227,47 +278,48 @@ export default function HomePage() {
                     </CardHeader>
                   </Card>
 
-                  <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
-                    <CardHeader className="space-y-6 p-8">
-                      <div className="w-16 h-16 rounded-2xl bg-[#FEE17C]/10 flex items-center justify-center">
-                        <BookOpen className="h-8 w-8 text-[#FEE17C]" />
-                      </div>
-                      <div className="space-y-4">
-                        <CardTitle className="text-2xl font-bold">Micro-learning Hub</CardTitle>
-                        <CardDescription className="text-base leading-relaxed">
-                          Curated training and resources for rural entrepreneurs
-                        </CardDescription>
-                      </div>
-                    </CardHeader>
-                  </Card>
+                    <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
+                      <CardHeader className="space-y-6 p-8">
+                        <div className="w-16 h-16 rounded-2xl bg-[#FEE17C]/10 flex items-center justify-center">
+                          <BookOpen className="h-8 w-8 text-[#FEE17C]" />
+                        </div>
+                        <div className="space-y-4">
+                          <CardTitle className="text-2xl font-bold">Micro-learning Hub</CardTitle>
+                          <CardDescription className="text-base leading-relaxed">
+                            Curated training and resources for rural entrepreneurs
+                          </CardDescription>
+                        </div>
+                      </CardHeader>
+                    </Card>
 
-                  <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
-                    <CardHeader className="space-y-6 p-8">
-                      <div className="w-16 h-16 rounded-2xl bg-[#A2EAF6]/10 flex items-center justify-center">
-                        <Users className="h-8 w-8 text-[#A2EAF6]" />
-                      </div>
-                      <div className="space-y-4">
-                        <CardTitle className="text-2xl font-bold">Community Space</CardTitle>
-                        <CardDescription className="text-base leading-relaxed">
-                          Connect with mentors and fellow entrepreneurs
-                        </CardDescription>
-                      </div>
-                    </CardHeader>
-                  </Card>
+                    <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
+                      <CardHeader className="space-y-6 p-8">
+                        <div className="w-16 h-16 rounded-2xl bg-[#A2EAF6]/10 flex items-center justify-center">
+                          <Users className="h-8 w-8 text-[#A2EAF6]" />
+                        </div>
+                        <div className="space-y-4">
+                          <CardTitle className="text-2xl font-bold">Community Space</CardTitle>
+                          <CardDescription className="text-base leading-relaxed">
+                            Connect with mentors and fellow entrepreneurs
+                          </CardDescription>
+                        </div>
+                      </CardHeader>
+                    </Card>
 
-                  <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
-                    <CardHeader className="space-y-6 p-8">
-                      <div className="w-16 h-16 rounded-2xl bg-[#C9E0DD]/10 flex items-center justify-center">
-                        <Network className="h-8 w-8 text-[#C9E0DD]" />
-                      </div>
-                      <div className="space-y-4">
-                        <CardTitle className="text-2xl font-bold">Open Architecture</CardTitle>
-                        <CardDescription className="text-base leading-relaxed">
-                          Replicable model for EU rural regions
-                        </CardDescription>
-                      </div>
-                    </CardHeader>
-                  </Card>
+                    <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
+                      <CardHeader className="space-y-6 p-8">
+                        <div className="w-16 h-16 rounded-2xl bg-[#C9E0DD]/10 flex items-center justify-center">
+                          <Network className="h-8 w-8 text-[#C9E0DD]" />
+                        </div>
+                        <div className="space-y-4">
+                          <CardTitle className="text-2xl font-bold">Open Architecture</CardTitle>
+                          <CardDescription className="text-base leading-relaxed">
+                            Replicable model for EU rural regions
+                          </CardDescription>
+                        </div>
+                      </CardHeader>
+                    </Card>
+                  </div>
                 </div>
               </div>
             </section>
@@ -276,7 +328,7 @@ export default function HomePage() {
           {/* Slide 5 - Outcomes */}
           <SwiperSlide>
             <section className="slide-content bg-soft-yellow py-20">
-              <div className="mx-auto px-4">
+              <div className="container mx-auto px-4">
                 <div className="max-w-5xl mx-auto">
                   <h2 className="text-4xl md:text-5xl font-bold mb-16 text-left">Outcomes</h2>
                   <div className="grid md:grid-cols-2 gap-8">
@@ -335,15 +387,9 @@ export default function HomePage() {
 
           {/* Slide 6 - CTA */}
           <SwiperSlide>
-            <section className="slide-content py-24 bg-secondary">
+            <section className="slide-content py-24 bg-secondary relative">
               <div className="container mx-auto px-4">
-                <div className="max-w-4xl mx-auto text-center space-y-8">
-                  <div className="max-w-md mx-auto">
-                    <div className="relative aspect-square w-full max-w-sm mx-auto">
-                      <HolographicBlob />
-                    </div>
-                  </div>
-
+                <div className="max-w-4xl mx-auto text-center space-y-8 relative z-20">
                   <h2 className="text-4xl md:text-5xl font-bold leading-tight text-primary">
                     We believe that caring for soil
                     <br />
