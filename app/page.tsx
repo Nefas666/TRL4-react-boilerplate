@@ -163,13 +163,13 @@ export default function HomePage() {
                       alt="Taimi - Your AI Mentor"
                       width={280}
                       height={280}
-                      className="object-contain drop-shadow-2xl relative z-20"
+                      className="object-contain drop-shadow-2xl relative z-30"
                       style={{ filter: "saturate(1.3) contrast(1.1) brightness(1.05)" }}
                       priority
                     />
                   </div>
 
-                  <div className="absolute bottom-8 right-8 z-30 max-w-[260px]">
+                  <div className="absolute bottom-8 right-8 z-30 max-w-[360px]">
                     <div className="bg-white/90 backdrop-blur-md rounded-3xl p-6 shadow-lg border border-white/50">
                       <p className="text-lg md:text-xl text-foreground/80 leading-relaxed text-right">
                         AI Mentor for Rural Youth Entrepreneurship in Finland
