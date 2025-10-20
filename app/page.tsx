@@ -32,6 +32,13 @@ import "swiper/css/pagination"
 export default function HomePage() {
   const [activeSlide, setActiveSlide] = useState(0)
 
+  const getBlobSize = () => {
+    if (activeSlide === 0 || activeSlide === 5) {
+      return "w-[400px] h-[400px]" // Large in hero and CTA
+    }
+    return "w-[280px] h-[280px]" // Smaller in middle slides
+  }
+
   const getBlobPosition = () => {
     switch (activeSlide) {
       case 0: // Hero - center
@@ -56,7 +63,7 @@ export default function HomePage() {
       <Navbar />
 
       <div
-        className={`fixed w-[400px] h-[400px] pointer-events-none transition-all duration-1000 ease-out ${getBlobPosition()}`}
+        className={`fixed pointer-events-none transition-all duration-[1500ms] ease-in-out ${getBlobSize()} ${getBlobPosition()}`}
         style={{ zIndex: 10 }}
       >
         <HolographicBlob />
@@ -136,37 +143,38 @@ export default function HomePage() {
         >
           {/* Slide 1 - Hero */}
           <SwiperSlide>
-            <section className="slide-content bg-soft-yellow py-20 md:py-32 relative">
+            <section className="slide-content bg-soft-yellow py-20 md:py-32 relative rounded-t-3xl">
               <div className="container mx-auto px-4 h-full">
                 <div className="max-w-6xl mx-auto h-full relative">
                   {/* Title - Top Left */}
-                  <div className="absolute top-8 left-0 z-30">
-                    <h1 className="text-6xl lg:text-8xl font-bold text-balance leading-[0.95] tracking-tight md:text-9xl text-popover z-20">
+                  <div className="absolute top-8 -left-4 z-30">
+                    <h1 className="text-6xl lg:text-8xl font-bold text-balance leading-[0.95] tracking-tight md:text-9xl text-popover">
                       Taimi
                     </h1>
                   </div>
 
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-[300px] h-[300px] flex items-center justify-center">
-                    {/* Glow effect behind avatar */}
-                    <div className="absolute inset-0 bg-gradient-radial from-yellow-300/60 via-emerald-300/40 to-transparent blur-3xl animate-pulse-slow" />
-                    <div className="absolute inset-0 bg-gradient-radial from-white/40 via-yellow-200/30 to-transparent blur-2xl" />
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] flex items-center justify-center">
+                    {/* Glow effect behind avatar - z-10 */}
+                    <div className="absolute inset-0 bg-gradient-radial from-yellow-300/60 via-emerald-300/40 to-transparent blur-3xl animate-pulse-slow z-10" />
+                    <div className="absolute inset-0 bg-gradient-radial from-white/40 via-yellow-200/30 to-transparent blur-2xl z-10" />
 
-                    {/* Avatar image */}
                     <Image
                       src="/images/design-mode/Designer%20%284%29(1).png"
                       alt="Taimi - Your AI Mentor"
                       width={280}
                       height={280}
-                      className="object-contain drop-shadow-2xl relative z-10"
+                      className="object-contain drop-shadow-2xl relative z-20"
+                      style={{ filter: "saturate(1.3) contrast(1.1) brightness(1.05)" }}
                       priority
                     />
                   </div>
 
-                  {/* Description - Bottom Right */}
-                  <div className="absolute bottom-8 right-0 z-30 max-w-md">
-                    <p className="text-xl md:text-2xl text-foreground/70 leading-relaxed text-right">
-                      AI Mentor for Rural Youth Entrepreneurship in Finland
-                    </p>
+                  <div className="absolute bottom-8 right-8 z-30 max-w-md">
+                    <div className="bg-white/90 backdrop-blur-md rounded-3xl p-6 shadow-lg border border-white/50">
+                      <p className="text-lg md:text-xl text-foreground/80 leading-relaxed text-right">
+                        AI Mentor for Rural Youth Entrepreneurship in Finland
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -175,7 +183,7 @@ export default function HomePage() {
 
           {/* Slide 2 - The Challenge */}
           <SwiperSlide>
-            <section className="slide-content bg-soft-aqua py-20 relative">
+            <section className="slide-content bg-soft-aqua py-20 relative rounded-t-3xl">
               <div className="container mx-auto px-4">
                 <div className="max-w-4xl mx-auto relative z-20">
                   <h2 className="text-4xl md:text-5xl font-bold mb-8">The Challenge</h2>
@@ -202,7 +210,7 @@ export default function HomePage() {
 
           {/* Slide 3 - The Solution */}
           <SwiperSlide>
-            <section className="slide-content bg-soft-lavender py-20 relative">
+            <section className="slide-content bg-soft-lavender py-20 relative rounded-t-3xl">
               <div className="container mx-auto px-4">
                 <div className="max-w-4xl mx-auto relative z-20">
                   <h2 className="text-4xl md:text-5xl font-bold mb-8">The Solution</h2>
@@ -251,7 +259,7 @@ export default function HomePage() {
 
           {/* Slide 4 - Key Features */}
           <SwiperSlide>
-            <section className="slide-content bg-soft-blue py-20 relative">
+            <section className="slide-content bg-soft-blue py-20 relative rounded-t-3xl">
               <div className="container mx-auto px-4">
                 <div className="relative z-20">
                   <h2 className="text-4xl md:text-5xl font-bold text-left mb-16">Key Features</h2>
@@ -319,7 +327,7 @@ export default function HomePage() {
 
           {/* Slide 5 - Outcomes */}
           <SwiperSlide>
-            <section className="slide-content bg-soft-yellow py-20 relative">
+            <section className="slide-content bg-soft-yellow py-20 relative rounded-t-3xl">
               <div className="container mx-auto px-4">
                 <div className="max-w-5xl mx-auto relative z-20">
                   <h2 className="text-4xl md:text-5xl font-bold mb-16 text-left">Outcomes</h2>
