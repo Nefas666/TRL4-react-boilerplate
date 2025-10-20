@@ -64,7 +64,7 @@ export default function HomePage() {
 
       <div
         className={`fixed pointer-events-none transition-all duration-[1500ms] ease-in-out ${getBlobSize()} ${getBlobPosition()}`}
-        style={{ zIndex: 20 }}
+        style={{ zIndex: 5 }}
       >
         <HolographicBlob />
       </div>
@@ -226,7 +226,7 @@ export default function HomePage() {
                       </CardHeader>
                     </Card>
 
-                    <Card className="border-0 card-shadow bg-card">
+                    <Card className="border-0 card-shadow bg-card row-span-auto">
                       <CardHeader className="space-y-4">
                         <CardTitle className="text-xl">Funding and resources</CardTitle>
                       </CardHeader>
