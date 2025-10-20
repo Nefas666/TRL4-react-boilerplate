@@ -18,21 +18,47 @@ import {
 import { Navbar } from "@/components/navbar"
 import HolographicBlob from "@/components/holographic-blob"
 import Image from "next/image"
+import { useState } from "react"
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Mousewheel, Pagination } from "swiper/modules"
+import type { Swiper as SwiperType } from "swiper"
 
 // Import Swiper styles
 import "swiper/css"
 import "swiper/css/pagination"
 
 export default function HomePage() {
+  const [activeSlide, setActiveSlide] = useState(0)
+
+  const getBlobPosition = () => {
+    switch (activeSlide) {
+      case 0: // Hero - center
+        return "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+      case 1: // Challenge - right side (content is on left)
+        return "top-1/2 right-[10%] -translate-y-1/2"
+      case 2: // Solution - left side (content is on right)
+        return "top-1/2 left-[10%] -translate-y-1/2"
+      case 3: // Features - bottom right
+        return "bottom-[15%] right-[10%]"
+      case 4: // Outcomes - top left
+        return "top-[20%] left-[10%]"
+      case 5: // CTA - center
+        return "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+      default:
+        return "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+    }
+  }
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
 
-      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] z-10 pointer-events-none">
+      <div
+        className={`fixed w-[400px] h-[400px] pointer-events-none transition-all duration-1000 ease-out ${getBlobPosition()}`}
+        style={{ zIndex: 10 }}
+      >
         <HolographicBlob />
       </div>
 
@@ -106,6 +132,7 @@ export default function HomePage() {
           }}
           modules={[Mousewheel, Pagination]}
           className="swiper-container"
+          onSlideChange={(swiper: SwiperType) => setActiveSlide(swiper.activeIndex)}
         >
           {/* Slide 1 - Hero */}
           <SwiperSlide>
@@ -119,20 +146,24 @@ export default function HomePage() {
                     </h1>
                   </div>
 
-                  {/* Taimi Avatar - Center, overlaid on blob (only in hero) */}
                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-[300px] h-[300px] flex items-center justify-center">
+                    {/* Glow effect behind avatar */}
+                    <div className="absolute inset-0 bg-gradient-radial from-yellow-300/60 via-emerald-300/40 to-transparent blur-3xl animate-pulse-slow" />
+                    <div className="absolute inset-0 bg-gradient-radial from-white/40 via-yellow-200/30 to-transparent blur-2xl" />
+
+                    {/* Avatar image */}
                     <Image
                       src="/images/design-mode/Designer%20%284%29(1).png"
                       alt="Taimi - Your AI Mentor"
                       width={280}
                       height={280}
-                      className="object-contain drop-shadow-2xl"
+                      className="object-contain drop-shadow-2xl relative z-10"
                       priority
                     />
                   </div>
 
                   {/* Description - Bottom Right */}
-                  <div className="absolute bottom-8 right-0 z-20 max-w-md">
+                  <div className="absolute bottom-8 right-0 z-30 max-w-md">
                     <p className="text-xl md:text-2xl text-foreground/70 leading-relaxed text-right">
                       AI Mentor for Rural Youth Entrepreneurship in Finland
                     </p>
