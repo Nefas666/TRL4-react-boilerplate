@@ -146,15 +146,13 @@ export default function HomePage() {
             <section className="slide-content bg-soft-yellow py-20 md:py-32 relative rounded-t-3xl">
               <div className="container mx-auto px-4 h-full">
                 <div className="max-w-6xl mx-auto h-full relative">
-                  {/* Title - Top Left */}
-                  <div className="absolute top-8 z-30">
+                  <div className="absolute top-8 z-40">
                     <h1 className="text-8xl lg:text-8xl font-bold text-balance leading-[0.95] tracking-tight md:text-9xl text-popover">
                       tAImi
                     </h1>
                   </div>
 
                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] flex items-center justify-center">
-                    {/* Glow effect behind avatar */}
                     <div className="absolute inset-0 bg-gradient-radial from-yellow-300/60 via-emerald-300/40 to-transparent blur-3xl animate-pulse-slow z-10" />
                     <div className="absolute inset-0 bg-gradient-radial from-white/40 via-yellow-200/30 to-transparent blur-2xl z-15" />
 
@@ -169,9 +167,9 @@ export default function HomePage() {
                     />
                   </div>
 
-                  <div className="absolute bottom-8 right-8 max-w-[360px] z-20">
+                  <div className="absolute bottom-8 right-8 z-35 max-w-[360px]">
                     <div className="bg-white/80 backdrop-blur-md rounded-3xl p-6 shadow-lg border border-white/50">
-                      <p className="text-lg md:text-xl text-foreground/80 leading-relaxed text-right">
+                      <p className="text-lg md:text-xl text-foreground/90 leading-relaxed text-right">
                         AI Mentor for Rural Youth Entrepreneurship in Finland
                       </p>
                     </div>
