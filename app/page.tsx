@@ -34,15 +34,15 @@ export default function HomePage() {
 
   const getBlobSize = () => {
     if (activeSlide === 0 || activeSlide === 5) {
-      return "w-[400px] h-[400px]" // Large in hero and CTA
-    }
-    return "w-[280px] h-[280px]" // Smaller in middle slides
+      return "w-[300px] h-[300px]" // Large in hero and CTA
+    } 
+    return "w-[220px] h-[220px]" // Smaller in middle slides
   }
 
   const getBlobPosition = () => {
     switch (activeSlide) {
       case 0: // Hero - center
-        return "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        return "top-[25%] left-1/2 -translate-x-1/2 -translate-y-1/2"
       case 1: // Challenge - right side (content is on left)
         return "top-1/2 right-[10%] -translate-y-1/2"
       case 2: // Solution - left side (content is on right)
