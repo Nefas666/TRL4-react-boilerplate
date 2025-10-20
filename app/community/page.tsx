@@ -21,7 +21,9 @@ export default async function CommunityPage() {
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="text-4xl font-bold mb-2">Community</h1>
-            <p className="text-muted-foreground">Connect with fellow learners and share your journey</p>
+            <p className="text-muted-foreground">
+              Connect with fellow rural entrepreneurs, share experiences, and find local mentors
+            </p>
           </div>
           <Button className="gap-2">
             <Plus className="h-4 w-4" />
@@ -37,7 +39,7 @@ export default async function CommunityPage() {
 
         {(!posts || posts.length === 0) && (
           <div className="text-center py-12">
-            <p className="text-muted-foreground">No posts yet. Be the first to share!</p>
+            <p className="text-muted-foreground">No posts yet. Be the first to share your journey!</p>
           </div>
         )}
       </main>

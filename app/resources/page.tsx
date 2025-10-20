@@ -16,8 +16,10 @@ export default async function ResourcesPage() {
 
       <main className="flex-1 container mx-auto px-4 py-8">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-2">Educational Resources</h1>
-          <p className="text-muted-foreground">Discover courses, scholarships, and funding opportunities</p>
+          <h1 className="text-4xl font-bold mb-2">Learning Resources</h1>
+          <p className="text-muted-foreground">
+            Discover training opportunities, funding resources, and guides for sustainable rural entrepreneurship
+          </p>
         </div>
 
         <div className="mb-6">

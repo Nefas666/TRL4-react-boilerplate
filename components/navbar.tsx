@@ -10,21 +10,33 @@ export function Navbar() {
   const pathname = usePathname()
 
   const links = [
-    { href: "/", label: "Home", icon: Home },
-    { href: "/chat", label: "Chat", icon: MessageSquare },
-    { href: "/resources", label: "Resources", icon: BookOpen },
-    { href: "/community", label: "Community", icon: Users },
-    { href: "/profile", label: "Profile", icon: User },
+    { href: "/", label: "Home", icon: Home, activeColor: "bg-[#1B2431]", hoverColor: "nav-hover-primary" },
+    {
+      href: "/chat",
+      label: "Chat",
+      icon: MessageSquare,
+      activeColor: "bg-[#FEE17C]",
+      hoverColor: "nav-hover-secondary",
+    },
+    {
+      href: "/resources",
+      label: "Resources",
+      icon: BookOpen,
+      activeColor: "bg-[#A2EAF6]",
+      hoverColor: "nav-hover-accent",
+    },
+    { href: "/community", label: "Community", icon: Users, activeColor: "bg-[#C9E0DD]", hoverColor: "nav-hover-aqua" },
+    { href: "/profile", label: "Profile", icon: User, activeColor: "bg-[#BEC8F9]", hoverColor: "nav-hover-lavender" },
   ]
 
   return (
-    <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto px-4">
-        <div className="flex h-16 items-center justify-between">
-          <Link href="/" className="font-bold text-xl">
-            EduPlatform
+    <nav className="border-b bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80 sticky top-0 z-50 card-shadow grid grid-cols-3 gap-2 px-4 py-2.5">
+        <div className="col-span-1">
+          <Link href="/" className="font-bold text-xl md:text-2xl hover:opacity-80 transition-opacity">
+            t<span className="text-primary">AI</span>mi
           </Link>
-          <div className="flex items-center gap-1">
+        </div>
+          <div className="col-span-2 place-self-end">
             {links.map((link) => {
               const Icon = link.icon
               const isActive = pathname === link.href
@@ -32,9 +44,14 @@ export function Navbar() {
                 <Button
                   key={link.href}
                   asChild
-                  variant={isActive ? "default" : "ghost"}
+                  variant="ghost"
                   size="sm"
-                  className={cn("gap-2")}
+                  className={cn(
+                    "gap-2 font-medium rounded-full transition-all",
+                    isActive && link.activeColor,
+                    isActive && link.activeColor === "bg-[#FEE17C]" ? "text-foreground" : isActive && "text-white",
+                    !isActive && link.hoverColor,
+                  )}
                 >
                   <Link href={link.href}>
                     <Icon className="h-4 w-4" />
@@ -44,8 +61,6 @@ export function Navbar() {
               )
             })}
           </div>
-        </div>
-      </div>
     </nav>
   )
 }
