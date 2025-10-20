@@ -53,14 +53,14 @@ export default function HomePage() {
         .swiper-pagination-bullet {
           width: 12px;
           height: 12px;
-          background: rgba(27, 36, 49, 0.3);
+          background: rgba(255, 255, 255, 0.3);
           opacity: 1;
           margin: 8px 0 !important;
           transition: all 0.3s ease;
         }
         
         .swiper-pagination-bullet-active {
-          background: #1B2431;
+          background: rgba(255, 255, 255, 0.9);
           width: 12px;
           height: 32px;
           border-radius: 6px;
@@ -70,7 +70,7 @@ export default function HomePage() {
           overflow-y: auto;
           height: 100%;
           scrollbar-width: thin;
-          scrollbar-color: rgba(27, 36, 49, 0.3) transparent;
+          scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
         }
         
         .slide-content::-webkit-scrollbar {
@@ -82,7 +82,7 @@ export default function HomePage() {
         }
         
         .slide-content::-webkit-scrollbar-thumb {
-          background-color: rgba(27, 36, 49, 0.3);
+          background-color: rgba(255, 255, 255, 0.3);
           border-radius: 3px;
         }
       `}</style>
@@ -104,14 +104,12 @@ export default function HomePage() {
         >
           {/* Slide 1 - Hero */}
           <SwiperSlide>
-            <section className="slide-content bg-soft-yellow py-20 md:py-32">
-              <div className="container mx-auto px-4">
+            <section className="slide-content bg-soft-yellow pb-20 h-full max-h-[100vh]">
+              <div className="mx-auto px-4">
                 <div className="max-w-6xl mx-auto">
                   <div className="text-center mb-12">
                     <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-8 text-balance leading-[0.95] tracking-tight">
-                      From Soil
-                      <br />
-                      to Systems
+                      Taimi
                     </h1>
                     <p className="text-xl md:text-2xl text-foreground/70 max-w-3xl mx-auto leading-relaxed">
                       AI Mentor for Rural Youth Entrepreneurship in Finland
@@ -137,8 +135,8 @@ export default function HomePage() {
           {/* Slide 2 - The Challenge */}
           <SwiperSlide>
             <section className="slide-content bg-soft-aqua py-20">
-              <div className="container mx-auto px-4">
-                <div className="max-w-4xl mx-auto">
+              <div className="mx-auto px-4">
+                <div className="max-w-5xl mx-auto flex-col justify-center items-center">
                   <h2 className="text-4xl md:text-5xl font-bold mb-8">The Challenge</h2>
                   <div className="space-y-6 text-lg leading-relaxed">
                     <p className="text-foreground/80">
@@ -163,8 +161,8 @@ export default function HomePage() {
           {/* Slide 3 - The Solution */}
           <SwiperSlide>
             <section className="slide-content bg-soft-lavender py-20">
-              <div className="container mx-auto px-4">
-                <div className="max-w-4xl mx-auto">
+              <div className="mx-auto px-4">
+                <div className="max-w-5xl mx-auto">
                   <h2 className="text-4xl md:text-5xl font-bold mb-8">The Solution</h2>
                   <div className="space-y-6 text-lg leading-relaxed mb-12">
                     <p className="text-foreground/80">
@@ -212,7 +210,7 @@ export default function HomePage() {
           {/* Slide 4 - Key Features */}
           <SwiperSlide>
             <section className="slide-content bg-soft-blue py-20">
-              <div className="container mx-auto px-4">
+              <div className="max-w-5xl mx-auto px-4">
                 <h2 className="text-4xl md:text-5xl font-bold text-left mb-16">Key Features</h2>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
                   <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
@@ -278,7 +276,7 @@ export default function HomePage() {
           {/* Slide 5 - Outcomes */}
           <SwiperSlide>
             <section className="slide-content bg-soft-yellow py-20">
-              <div className="container mx-auto px-4">
+              <div className="mx-auto px-4">
                 <div className="max-w-5xl mx-auto">
                   <h2 className="text-4xl md:text-5xl font-bold mb-16 text-left">Outcomes</h2>
                   <div className="grid md:grid-cols-2 gap-8">

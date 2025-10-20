@@ -30,10 +30,10 @@ export function Navbar() {
   ]
 
   return (
-    <nav className="border-b bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80 sticky top-0 z-50 card-shadow grid grid-cols-3 gap-2 p-2">
+    <nav className="border-b bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80 sticky top-0 z-50 card-shadow grid grid-cols-3 gap-2 p-4">
         <div className="col-span-1">
-          <Link href="/" className="font-bold text-xl md:text-2xl hover:opacity-80 transition-opacity">
-            From<span className="text-primary">Soil</span>To<span className="text-primary">Systems</span>
+          <Link href="/" className="font-black text-2xl md:text-2xl hover:opacity-80 transition-opacity text-secondary tracking-widest">
+            <span className="text-primary">T</span>AI<span className="text-primary">MI</span>
           </Link>
         </div>
           <div className="col-span-2 place-self-end">
