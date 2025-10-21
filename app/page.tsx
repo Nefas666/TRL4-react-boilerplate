@@ -53,9 +53,9 @@ export default function HomePage() {
       case 4: // Outcomes - top left
         return "top-[55%] left-[70%]"
       case 5: // CTA - center
-        return "top-[70%] left-1/2 -translate-x-1/2 -translate-y-1/2"
+        return "top-[80%] left-1/2 -translate-x-1/2"
       default:
-        return "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        return "hidden"
     }
   }
 
@@ -198,8 +198,8 @@ export default function HomePage() {
                   <Card className="border-0 col-span-3 row-span-1 bg-soft-aqua">
                     <CardHeader className="space-y-6">
                       <div className="space-y-4">
-                        <CardTitle className="text-2xl font-display font-normal text-foreground/80">AI Chatbot-Mentor</CardTitle>
-                        <CardDescription className="text-xl text-foreground/80">
+                        <CardTitle className="text-3xl font-display font-normal text-foreground/80">AI Chatbot-Mentor</CardTitle>
+                        <CardDescription className="text-2xl text-foreground/80">
                           Natural language interface for personalized guidance
                         </CardDescription>
                       </div>
@@ -208,8 +208,8 @@ export default function HomePage() {
 
                   <Card className="border-0 row-span-2 col-start-4 bg-soft-yellow">
                     <CardHeader className="space-y-6">
-                      <CardTitle className="text-2xl font-display font-normal text-foreground/80">Micro-learning Hub</CardTitle>
-                      <CardDescription className="text-xl text-foreground/80">
+                      <CardTitle className="text-3xl font-display font-normal text-foreground/80">Micro-learning Hub</CardTitle>
+                      <CardDescription className="text-2xl text-foreground/80">
                         Curated training and resources for rural entrepreneurs
                       </CardDescription>
                     </CardHeader>
@@ -217,8 +217,8 @@ export default function HomePage() {
                   <Card className="border-0 col-span-2 row-start-2 bg-soft-lavender">
                     <CardHeader className="space-y-6">
                       <div className="space-y-4">
-                        <CardTitle className="text-2xl font-display font-normal text-foreground/80">Lorem Ipsum</CardTitle>
-                        <CardDescription className="text-xl text-foreground/80">
+                        <CardTitle className="text-3xl font-display font-normal text-foreground/80">Lorem Ipsum</CardTitle>
+                        <CardDescription className="text-2xl text-foreground/80">
                           Lorem ipsum dolor sit amet
                         </CardDescription>
                       </div>
@@ -231,31 +231,31 @@ export default function HomePage() {
 
           {/* Slide 5 - Outcomes */}
           <SwiperSlide>
-            <section className="slide-content bg-amber-50 py-20">
+            <section className="slide-content bg-amber-50 pt-16 pb-20">
               <div className="container mx-auto px-4">
                 <div className="max-w-5xl mx-auto">
-                  <h2 className="text-6xl md:text-7xl mb-8 font-medium font-display text-left text-foreground/80 tracking-wide">Outcomes</h2>
+                  <h2 className="text-6xl md:text-7xl mb-8 font-medium font-display text-right text-foreground/80 tracking-wide">Outcomes</h2>
                   <div className="grid md:grid-cols-4 grid-rows-2 gap-8">
                     <Card className="border-0 col-span-2 row-span-2 holographic-bg">
-                      <CardHeader className="space-y-4">
-                        <CardTitle className="text-2xl font-display font-normal text-foreground/80">Empowers rural youth</CardTitle>
-                        <CardDescription className="text-xl leading-relaxed text-foreground/80">
+                      <CardHeader className="space-y-2">
+                        <CardTitle className="text-3xl font-display font-normal text-foreground/80">Empowers rural youth</CardTitle>
+                        <CardDescription className="text-2xl leading-relaxed text-foreground/80">
                           Provides personalized guidance and removes barriers to entrepreneurship
                         </CardDescription>
                       </CardHeader>
                     </Card>
 
                     <Card className="border-0 col-span-2 row-span-1 bg-cream">
-                      <CardHeader className="space-y-4">
-                        <CardTitle className="text-2xl font-display font-normal text-foreground/80">Sustainable innovation</CardTitle>
-                        <CardDescription className="text-xl text-foreground/80">
+                      <CardHeader className="space-y-2">
+                        <CardTitle className="text-3xl font-display font-normal text-foreground/80">Sustainable innovation</CardTitle>
+                        <CardDescription className="text-2xl text-foreground/80">
                           Encourages new jobs in green sectors and sustainable practices
                         </CardDescription>
                       </CardHeader>
                     </Card>
 
                     <Card className="border-0 hidden">
-                      <CardHeader className="space-y-4 col-span-1 row-start-2">
+                      <CardHeader className="space-y-2 col-span-1 row-start-1">
                         {/* <CardTitle className="text-2xl font-display font-normal text-foreground/80">Strengthens networks</CardTitle>
                         <CardDescription className="text-xl text-foreground/80">
                           Builds local connections and promotes digital inclusion
@@ -264,9 +264,9 @@ export default function HomePage() {
                     </Card>
 
                     <Card className="border-0 col-span-1 bg-soft-yellow">
-                      <CardHeader className="space-y-4">
-                        <CardTitle className="text-2xl font-display font-normal text-foreground/80">Replicable model</CardTitle>
-                        <CardDescription className="text-xl text-foreground/80">
+                      <CardHeader className="space-y-2">
+                        <CardTitle className="text-3xl font-display font-normal text-foreground/80">Replicable model</CardTitle>
+                        <CardDescription className="text-2xl text-foreground/80">
                           Creates a framework for other EU rural regions
                         </CardDescription>
                       </CardHeader>
@@ -279,16 +279,15 @@ export default function HomePage() {
 
           {/* Slide 6 - CTA */}
           <SwiperSlide>
-            <section className="slide-content py-24 holographic-bg">
+            <section className="slide-content py-20 holographic-bg">
               <div className="container mx-auto px-4 z-30">
                 <div className="max-w-5xl mx-auto text-center space-y-8 relative z-30">
-                  <h2 className="text-6xl md:text-7xl font-normal font-display leading-tight text-primary tracking-wide">
+                  <h2 className="text-6xl md:text-7xl font-semibold font-display leading-tighter text-foreground/80 tracking-wide">
                     We believe that caring for soil
-                    <br />
                     means caring for life
                   </h2>
-                  <p className="text-xl leading-relaxed max-w-2xl mx-auto text-primary">
-                    We can regenerate not just the land, but the way we live together. Let's grow this vision. Together.
+                  <p className="text-2xl leading-relaxed max-w-2xl mx-auto text-foreground/80">
+                    We can regenerate not just the land, but the way we live together. Let's grow this vision together.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
                     <Button
