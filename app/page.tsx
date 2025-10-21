@@ -178,7 +178,7 @@ export default function HomePage() {
 
                   <Card className="border-0 row-span-1 bg-chart-2/80">
                     <CardHeader className="space-y-4">
-                      <CardTitle className="text-2xl font-display font-normal text-foreground/80">
+                      <CardTitle className="text-3xl font-display font-normal text-foreground/80">
                         Local mentors or networks
                       </CardTitle>
                     </CardHeader>
@@ -199,7 +199,9 @@ export default function HomePage() {
                   <Card className="border-0 col-span-3 row-span-1 bg-soft-aqua">
                     <CardHeader className="space-y-6">
                       <div className="space-y-4">
-                        <CardTitle className="text-3xl font-display font-normal text-foreground/80">AI Chatbot-Mentor</CardTitle>
+                        <CardTitle className="text-3xl font-display font-normal text-foreground/80">
+                          AI Chatbot-Mentor
+                        </CardTitle>
                         <CardDescription className="text-2xl text-foreground/80">
                           Natural language interface for personalized guidance
                         </CardDescription>
@@ -209,7 +211,9 @@ export default function HomePage() {
 
                   <Card className="border-0 row-span-2 col-start-4 bg-soft-yellow">
                     <CardHeader className="space-y-6">
-                      <CardTitle className="text-3xl font-display font-normal text-foreground/80">Micro-learning Hub</CardTitle>
+                      <CardTitle className="text-3xl font-display font-normal text-foreground/80">
+                        Micro-learning Hub
+                      </CardTitle>
                       <CardDescription className="text-2xl text-foreground/80">
                         Curated training and resources for rural entrepreneurs
                       </CardDescription>
@@ -218,7 +222,9 @@ export default function HomePage() {
                   <Card className="border-0 col-span-2 row-start-2 bg-soft-lavender">
                     <CardHeader className="space-y-6">
                       <div className="space-y-4">
-                        <CardTitle className="text-3xl font-display font-normal text-foreground/80">Lorem Ipsum</CardTitle>
+                        <CardTitle className="text-3xl font-display font-normal text-foreground/80">
+                          Lorem Ipsum
+                        </CardTitle>
                         <CardDescription className="text-2xl text-foreground/80">
                           Lorem ipsum dolor sit amet
                         </CardDescription>
@@ -235,11 +241,15 @@ export default function HomePage() {
             <section className="slide-content bg-amber-50 pt-16 pb-20">
               <div className="container mx-auto px-4">
                 <div className="max-w-5xl mx-auto">
-                  <h2 className="text-6xl md:text-7xl mb-8 font-medium font-display text-right text-foreground/80 tracking-wide">Outcomes</h2>
+                  <h2 className="text-6xl md:text-7xl mb-8 font-medium font-display text-right text-foreground/80 tracking-wide">
+                    Outcomes
+                  </h2>
                   <div className="grid md:grid-cols-4 grid-rows-2 gap-8">
                     <Card className="border-0 col-span-2 row-span-2 holographic-bg">
                       <CardHeader className="space-y-2">
-                        <CardTitle className="text-3xl font-display font-normal text-foreground/80">Empowers rural youth</CardTitle>
+                        <CardTitle className="text-3xl font-display font-normal text-foreground/80">
+                          Empowers rural youth
+                        </CardTitle>
                         <CardDescription className="text-2xl leading-relaxed text-foreground/80">
                           Provides personalized guidance and removes barriers to entrepreneurship
                         </CardDescription>
@@ -248,7 +258,9 @@ export default function HomePage() {
 
                     <Card className="border-0 col-span-2 row-span-1 bg-cream">
                       <CardHeader className="space-y-2">
-                        <CardTitle className="text-3xl font-display font-normal text-foreground/80">Sustainable innovation</CardTitle>
+                        <CardTitle className="text-3xl font-display font-normal text-foreground/80">
+                          Sustainable innovation
+                        </CardTitle>
                         <CardDescription className="text-2xl text-foreground/80">
                           Encourages new jobs in green sectors and sustainable practices
                         </CardDescription>
@@ -266,7 +278,9 @@ export default function HomePage() {
 
                     <Card className="border-0 col-span-1 bg-soft-yellow">
                       <CardHeader className="space-y-2">
-                        <CardTitle className="text-3xl font-display font-normal text-foreground/80">Replicable model</CardTitle>
+                        <CardTitle className="text-3xl font-display font-normal text-foreground/80">
+                          Replicable model
+                        </CardTitle>
                         <CardDescription className="text-2xl text-foreground/80">
                           Creates a framework for other EU rural regions
                         </CardDescription>
@@ -284,8 +298,7 @@ export default function HomePage() {
               <div className="container mx-auto px-4 z-30">
                 <div className="max-w-5xl mx-auto text-center space-y-8 relative z-30">
                   <h2 className="text-6xl md:text-7xl font-semibold font-display leading-tighter text-foreground/80 tracking-wide">
-                    We believe that caring for soil
-                    means caring for life
+                    We believe that caring for soil means caring for life
                   </h2>
                   <p className="text-2xl leading-relaxed max-w-2xl mx-auto text-foreground/80">
                     We can regenerate not just the land, but the way we live together. Let's grow this vision together.
@@ -320,7 +333,11 @@ export default function HomePage() {
         </Swiper>
       </main>
 
-      <footer className="bg-amber-50 py-12">
+      <footer
+        className={`fixed bottom-0 left-0 right-0 bg-amber-50 py-12 transition-all duration-500 z-20 ${
+          activeSlide === 5 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-full pointer-events-none"
+        }`}
+      >
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center space-y-4">
             <Link
