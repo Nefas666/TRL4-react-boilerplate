@@ -34,8 +34,8 @@ export default function CommunityPage() {
       <main className="flex-1 container mx-auto px-4 py-8 max-w-4xl">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-4xl font-bold mb-2 font-display">Community</h1>
-            <p className="text-muted-foreground">
+            <h1 className="text-6xl md:text-7xl mb-8 font-medium font-display tracking-wide text-foreground/80">Community</h1>
+           <p className="text-2xl font-light text-foreground/80">
               Connect with fellow rural entrepreneurs, share experiences, and find local mentors
             </p>
           </div>

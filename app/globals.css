@@ -485,23 +485,23 @@
   .nav-hover-lavender:hover {
     background-color: rgba(190, 200, 249, 0.4);
   }
-  .nav-hover-primary:active {
+  .nav-active-primary:active {
     background-color: rgba(27, 36, 49, 0.4);
   }
 
-  .nav-hover-secondary:active {
+  .nav-active-secondary:active {
     background-color: rgba(254, 225, 124, 0.4);
   }
 
-  .nav-hover-accent:active {
+  .nav-active-accent:active {
     background-color: rgba(162, 234, 246, 0.4);
   }
 
-  .nav-hover-aqua:active {
+  .nav-active-aqua:active {
     background-color: rgba(201, 224, 221, 0.4);
   }
 
-  .nav-hover-lavender:active {
+  .nav-active-lavender:active {
     background-color: rgba(190, 200, 249, 0.4);
   }
 

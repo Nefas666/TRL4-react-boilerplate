@@ -165,7 +165,7 @@ export default function ChatPage() {
           <ArrowLeft className="h-5 w-5 text-primary" />
         </Button>
 
-        <h1 className="text-xl font-semibold text-primary tracking-tight">
+        <h1 className="text-xl font-normal text-primary/80 tracking-tight font-display">
           {inputMode === "voice" ? "Speaking AI Chat" : "AI Chat"}
         </h1>
 
@@ -217,10 +217,12 @@ export default function ChatPage() {
           </div>
         ) : (
           /* Empty State - Welcome Screen */
-          <div className="flex-1 flex flex-col items-center justify-between px-6 py-12 max-w-2xl mx-auto w-full">
+          <div className="flex-1 flex flex-col items-center justify-between px-6 py-12 max-w-6xl mx-auto w-full">
             <div className="text-center space-y-8 mt-8">
-              <h2 className="text-3xl md:text-4xl font-semibold text-primary leading-tight px-4">
-                I'm Taimi, your AI Assistant. Type or tell me: how can I assist you today?
+              <h2 className="text-6xl md:text-7xl mb-8 font-medium font-display tracking-wide text-foreground/80">
+                Hello, I'm <span className="font-display font-black text-6xl text-foreground/80">
+              t<span className="text-[54px]">AI</span>mi</span>
+              <br/>How can I help you today?
               </h2>
             </div>
 

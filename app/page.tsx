@@ -41,9 +41,9 @@ export default function HomePage() {
         return "top-[55%] left-[70%]"
       case 5: // CTA - center
         //return "bottom-[5%] left-1/2 -translate-x-1/2" // Positioned blob below CTAs for better text visibility
-        return "top-[60%] left-1/2 -translate-x-1/2"
+        return "top-[60%] left-1/2 -translate-x-1/2 opacity-10 transition-opacity"
       default:
-        return "opacity-20"
+        return "opacity-0"
     }
   }
 
@@ -171,7 +171,7 @@ export default function HomePage() {
                 <div className="grid md:grid-cols-2 grid-rows-2 gap-6">
                   <Card className="border-0 col-span-1 row-span-2 holographic-bg">
                     <CardHeader className="space-y-4 flex items-center justify-center">
-                      <CardTitle className="text-2xl text-foreground/80 font-display font-normal text-center">
+                      <CardTitle className="text-3xl text-foreground/80 font-display font-normal text-center">
                         Training opportunities
                       </CardTitle>
                     </CardHeader>
@@ -179,7 +179,7 @@ export default function HomePage() {
 
                   <Card className="border-0 bg-chart-3/70 row-end-2 col-span-1">
                     <CardHeader className="space-y-4">
-                      <CardTitle className="text-2xl text-foreground/80 font-display font-normal text-center">
+                      <CardTitle className="text-3xl text-foreground/80 font-display font-normal text-center">
                         Funding and resources
                       </CardTitle>
                     </CardHeader>
@@ -187,7 +187,7 @@ export default function HomePage() {
 
                   <Card className="border-0 row-span-1 bg-chart-2/80">
                     <CardHeader className="space-y-4">
-                      <CardTitle className="text-2xl font-display font-normal text-foreground/80 text-center">
+                      <CardTitle className="text-3xl font-display font-normal text-foreground/80 text-center">
                         Local mentors and networks
                       </CardTitle>
                     </CardHeader>
