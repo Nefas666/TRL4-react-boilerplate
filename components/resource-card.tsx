@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { ExternalLink } from "lucide-react"
+import { ExternalLink, FileVideo, FileText, Download } from "lucide-react"
 import type { Resource } from "@/lib/types"
 
 interface ResourceCardProps {
@@ -14,9 +14,23 @@ export function ResourceCard({ resource }: ResourceCardProps) {
     course: "bg-primary/10 text-primary-foreground border-primary/20",
     scholarship: "bg-secondary/10 text-secondary-foreground border-secondary/20",
     funding: "bg-accent/10 text-accent-foreground border-accent/20",
+    paper: "bg-red-500/10 text-red-700 dark:text-red-400 border-red-500/20",
+    video: "bg-blue-500/10 text-blue-700 dark:text-blue-400 border-blue-500/20",
   }
 
-  const categoryColor = categoryColors[resource.category.toLowerCase()] || "bg-muted text-muted-foreground"
+  const categoryColor = categoryColors[resource.type.toLowerCase()] || "bg-muted text-muted-foreground"
+
+  const formatFileSize = (bytes: number | null) => {
+    if (!bytes) return ""
+    const mb = bytes / (1024 * 1024)
+    return `${mb.toFixed(2)} MB`
+  }
+
+  const getResourceIcon = () => {
+    if (resource.type === "video") return <FileVideo className="h-4 w-4" />
+    if (resource.type === "paper") return <FileText className="h-4 w-4" />
+    return null
+  }
 
   return (
     <Card className="flex flex-col h-full border-0 soft-shadow hover:soft-shadow-lg transition-all">
@@ -26,8 +40,12 @@ export function ResourceCard({ resource }: ResourceCardProps) {
             <CardTitle className="text-lg font-bold line-clamp-2">{resource.title}</CardTitle>
             <CardDescription className="mt-3">
               <Badge className={cn("text-sm font-medium rounded-full px-3 py-1", categoryColor)}>
-                {resource.category}
+                {getResourceIcon()}
+                <span className={cn(getResourceIcon() && "ml-1.5")}>{resource.type}</span>
               </Badge>
+              {resource.file_size && (
+                <span className="ml-2 text-xs text-muted-foreground">{formatFileSize(resource.file_size)}</span>
+              )}
             </CardDescription>
           </div>
         </div>
@@ -45,7 +63,14 @@ export function ResourceCard({ resource }: ResourceCardProps) {
         )}
       </CardContent>
       <CardFooter>
-        {resource.url ? (
+        {resource.file_url ? (
+          <Button asChild className="w-full font-medium rounded-full" size="default">
+            <a href={resource.file_url} target="_blank" rel="noopener noreferrer">
+              {resource.type === "video" ? "Watch Video" : "View PDF"}
+              <Download className="ml-2 h-4 w-4" />
+            </a>
+          </Button>
+        ) : resource.url ? (
           <Button asChild className="w-full font-medium rounded-full" size="default">
             <a href={resource.url} target="_blank" rel="noopener noreferrer">
               View Details

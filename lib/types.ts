@@ -12,10 +12,14 @@ export interface Resource {
   title: string
   description: string | null
   category: string
-  type: "course" | "scholarship" | "funding" | "article"
+  type: "course" | "scholarship" | "funding" | "article" | "paper" | "video"
   url: string | null
   image_url: string | null
   tags: string[] | null
+  file_url: string | null
+  file_type: string | null
+  file_size: number | null
+  uploaded_by: string | null
   created_at: string
   updated_at: string
 }

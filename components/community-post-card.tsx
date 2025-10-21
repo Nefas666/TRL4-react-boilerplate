@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Heart, MessageCircle } from "lucide-react"
+import Link from "next/link"
 import type { CommunityPost } from "@/lib/types"
 
 interface CommunityPostCardProps {
@@ -18,7 +19,7 @@ export function CommunityPostCard({ post }: CommunityPostCardProps) {
       .toUpperCase() || "U"
 
   return (
-    <Card>
+    <Card className="hover:soft-shadow-lg transition-all">
       <CardHeader>
         <div className="flex items-center gap-3">
           <Avatar>
@@ -31,12 +32,14 @@ export function CommunityPostCard({ post }: CommunityPostCardProps) {
         </div>
       </CardHeader>
       <CardContent>
-        <h3 className="font-semibold text-lg mb-2">{post.title}</h3>
+        <Link href={`/community/${post.id}`}>
+          <h3 className="font-semibold text-lg mb-2 font-display hover:text-primary transition-colors">{post.title}</h3>
+        </Link>
         <p className="text-sm text-muted-foreground line-clamp-3">{post.content}</p>
         {post.tags && post.tags.length > 0 && (
           <div className="flex flex-wrap gap-1 mt-3">
             {post.tags.map((tag) => (
-              <Badge key={tag} variant="outline" className="text-xs">
+              <Badge key={tag} variant="outline" className="text-xs rounded-full">
                 {tag}
               </Badge>
             ))}
@@ -48,9 +51,11 @@ export function CommunityPostCard({ post }: CommunityPostCardProps) {
           <Heart className="h-4 w-4" />
           <span className="text-xs">{post.likes_count}</span>
         </Button>
-        <Button variant="ghost" size="sm" className="gap-2">
-          <MessageCircle className="h-4 w-4" />
-          <span className="text-xs">{post.comments_count}</span>
+        <Button variant="ghost" size="sm" className="gap-2" asChild>
+          <Link href={`/community/${post.id}`}>
+            <MessageCircle className="h-4 w-4" />
+            <span className="text-xs">{post.comments_count}</span>
+          </Link>
         </Button>
       </CardFooter>
     </Card>
