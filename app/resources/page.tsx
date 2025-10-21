@@ -24,8 +24,9 @@ export default async function ResourcesPage() {
         <div className="mb-8">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <h1 className="text-4xl font-bold mb-2 font-display">Learning Resources</h1>
-              <p className="text-muted-foreground">
+              <h1 className="text-6xl md:text-7xl mb-8 font-medium font-display tracking-wide text-foreground/80">Learning Resources</h1>
+
+              <p className="text-2xl font-light text-foreground/80">
                 Discover training opportunities, funding resources, and guides for sustainable rural entrepreneurship
               </p>
             </div>
