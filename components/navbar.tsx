@@ -10,7 +10,7 @@ export function Navbar() {
   const pathname = usePathname()
 
   const links = [
-    { href: "/", label: "Home", icon: Home, activeColor: "bg-[#1B2431]", hoverColor: "nav-hover-primary" },
+    { href: "/", label: "Home", icon: Home, activeColor: "holographic-bg", hoverColor: "holographic-bg" },
     {
       href: "/chat",
       label: "Chat",
@@ -30,13 +30,13 @@ export function Navbar() {
   ]
 
   return (
-    <nav className="border-b bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80 sticky top-0 z-50 card-shadow grid grid-cols-3 gap-2 px-4 py-2.5">
+    <nav className="border-b bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80 sticky top-0 z-50 card-shadow grid grid-cols-3 gap-2 px-4 py-2.5 flex items-center justify-center">
         <div className="col-span-1">
-          <Link href="/" className="font-display uppercase font-black holographic-text text-3xl md:text-2xl hover:opacity-80 transition-opacity">
-            tAImi
+          <Link href="/" className="font-display font-black holographic-title lg:text-[36px] text-2xl hover:opacity-80 transition-opacity">
+            t<span className="text-[32px]">AI</span>mi
           </Link>
         </div>
-          <div className="col-span-2 place-self-end flex space-x-2 justify-center sm:justify-end">
+          <div className="col-span-2 flex space-x-2 justify-end items-center">
             {links.map((link) => {
               const Icon = link.icon
               const isActive = pathname === link.href

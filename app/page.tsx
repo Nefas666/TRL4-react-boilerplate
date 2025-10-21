@@ -111,9 +111,9 @@ export default function HomePage() {
                     />
                   </div>
 
-                  <div className="absolute bottom-12 right-[14%] max-w-[360px] z-10">
+                  <div className="absolute bottom-12 right-[12%] max-w-[360px] z-10">
                     <div className="bg-white/60 backdrop-blur-lg rounded-3xl p-6 shadow-lg border border-white/50">
-                      <p className="text-lg md:text-xl text-foreground/70 leading-tight text-right font-medium">
+                      <p className="text-xl md:text-2xl text-foreground/70 leading-tight text-right font-light">
                         AI Mentor for Rural Youth Entrepreneurship in Finland
                       </p>
                     </div>
@@ -128,17 +128,17 @@ export default function HomePage() {
             <section className="slide-content bg-soft-aqua py-20">
               <div className="container mx-auto px-4">
                 <div className="max-w-4xl mx-auto relative">
-                  <h2 className="text-4xl md:text-5xl font-bold mb-8">The Challenge</h2>
-                  <div className="text-lg leading-relaxed bg-soft-aqua/80 backdrop-blur-sm space-y-3 md:max-w-2xl">
-                    <p className="text-foreground/80">
+                  <h2 className="text-6xl md:text-7xl mb-8 font-medium font-display tracking-wide">The Challenge</h2>
+                  <div className="text-2xl leading-relaxed bg-soft-aqua/80 backdrop-blur-sm space-y-3 md:max-w-2xl">
+                    <p className="text-foreground/80 font-light">
                       In <span className="font-semibold text-foreground">Northern Ostrobothnia (Finland)</span>, rural
                       youth and unemployed people often lack access to information, mentors, and opportunities.
                     </p>
-                    <p className="text-foreground/80">
+                    <p className="text-foreground/80 font-light">
                       Bureaucratic complexity and scattered digital resources make it hard to start sustainable
                       initiatives.
                     </p>
-                    <p className="text-foreground/80">
+                    <p className="text-foreground/80 font-light">
                       Existing training is often static and disconnected from real community needs.
                     </p>
                    
@@ -152,36 +152,35 @@ export default function HomePage() {
           <SwiperSlide>
             <section className="slide-content bg-soft-lavender py-20">
                 <div className="max-w-4xl mx-auto relative items-stretch flex-col justify-center">
-                  <h2 className="text-4xl md:text-5xl font-bold mb-8 text-right">The Solution</h2>
-                  <div className="space-y-6 text-lg leading-relaxed mb-12 bg-soft-lavender/80 backdrop-blur-sm">
-                    <p className="text-foreground/80 text-right">
-                      <span className="font-semibold text-foreground">tAImi</span> is an AI-powered platform that acts
+                  <h2 className="text-6xl md:text-7xl mb-8 font-medium font-display text-right text-foreground/80 tracking-wide">The Solution</h2>
+                  <div className="space-y-6 text-lg leading-relaxed mb-12 bg-soft-lavender/80 backdrop-blur-sm text-2xl">
+                    <p className="text-foreground/80 text-right text-2xl font-light">
+                     <Link href="/" className="font-display font-black holographic-title lg:text-[36px] text-2xl hover:opacity-80 transition-opacity">
+            t<span className="text-[30px]">AI</span>mi
+          </Link> is an AI-powered platform that acts
                       as a personal digital mentor.
                     </p>
-                    <p className="text-foreground/80 text-right">
+                    <p className="text-right text-2xl text-foreground/80 font-light">
                       Users describe their ideas in natural language, and the chatbot instantly suggests:
                     </p>
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <Card className="border-0 card-shadow bg-card">
-                      <CardHeader className="space-y-4">
-                        <GraduationCap className="h-10 w-10 text-[#1B2431]" />
-                        <CardTitle className="text-xl">Training opportunities</CardTitle>
+                  <div className="grid md:grid-cols-2 grid-rows-2 gap-6">
+                    <Card className="border-0 col-span-1 row-span-2 holographic-bg">
+                      <CardHeader className="space-y-4 flex items-center justify-center">
+                        <CardTitle className="text-2xl text-foreground/80 font-display font-normal text-center">Training opportunities</CardTitle>
                       </CardHeader>
                     </Card>
 
-                    <Card className="border-0 card-shadow bg-card">
+                    <Card className="border-0 bg-chart-3/70 row-end-2 col-span-1">
                       <CardHeader className="space-y-4">
-                        <Target className="h-10 w-10 text-[#FEE17C]" />
-                        <CardTitle className="text-xl">Funding and resources</CardTitle>
+                        <CardTitle className="text-2xl text-foreground/80 font-display font-normal text-center">Funding and resources</CardTitle>
                       </CardHeader>
                     </Card>
 
-                    <Card className="border-0 card-shadow bg-card">
+                    <Card className="border-0 row-span-1 bg-chart-2/80">
                       <CardHeader className="space-y-4">
-                        <Users className="h-10 w-10 text-[#A2EAF6]" />
-                        <CardTitle className="text-xl">Local mentors or networks</CardTitle>
+                        <CardTitle className="text-2xl text-foreground/80 font-display font-normal text-center">Local mentors or networks</CardTitle>
                       </CardHeader>
                     </Card>
                   </div>
@@ -191,17 +190,14 @@ export default function HomePage() {
 
           {/* Slide 4 - Key Features */}
           <SwiperSlide>
-            <section className="slide-content bg-soft-blue py-20">
+            <section className="slide-content bg-soft-yellow py-20">
               <div className="container mx-auto px-4">
-                  <h2 className="text-4xl md:text-5xl font-bold text-left mb-16">Key Features</h2>
-                  <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-                    <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
+                  <h2 className="text-6xl md:text-7xl mb-8 font-medium font-display text-right text-foreground/80 tracking-wide">Key Features</h2>
+                  <div className="grid grid-cols-4 grid-rows-2 gap-4 max-w-7xl mx-auto">
+                    <Card className="border-0 col-span-3 row-span-1">
                       <CardHeader className="space-y-6 p-8">
-                        <div className="w-16 h-16 rounded-2xl bg-[#1B2431]/10 flex items-center justify-center">
-                          <MessageSquare className="h-8 w-8 text-[#1B2431]" />
-                        </div>
                         <div className="space-y-4">
-                          <CardTitle className="text-2xl font-bold">AI Chatbot-Mentor</CardTitle>
+                          <CardTitle className="text-2xl font-display font-normal">AI Chatbot-Mentor</CardTitle>
                           <CardDescription className="text-base leading-relaxed">
                             Natural language interface for personalized guidance
                           </CardDescription>
@@ -209,69 +205,20 @@ export default function HomePage() {
                       </CardHeader>
                     </Card>
 
-                    <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
+                    <Card className="border-0 row-span-2 col-start-4 bg-chart-1">
                       <CardHeader className="space-y-6 p-8">
-                        <div className="w-16 h-16 rounded-2xl bg-[#FEE17C]/10 flex items-center justify-center">
-                          <BookOpen className="h-8 w-8 text-[#FEE17C]" />
-                        </div>
-                        <div className="space-y-4">
-                          <CardTitle className="text-2xl font-bold">Micro-learning Hub</CardTitle>
+                          <CardTitle className="text-2xl font-display font-normal">Micro-learning Hub</CardTitle>
                           <CardDescription className="text-base leading-relaxed">
                             Curated training and resources for rural entrepreneurs
                           </CardDescription>
-                        </div>
                       </CardHeader>
                     </Card>
-                    <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
+                    <Card className="border-0 col-span-2 row-start-2">
                       <CardHeader className="space-y-6 p-8">
-                        <div className="w-16 h-16 rounded-2xl bg-[#FEE17C]/10 flex items-center justify-center">
-                          <BookOpen className="h-8 w-8 text-[#FEE17C]" />
-                        </div>
                         <div className="space-y-4">
-                          <CardTitle className="text-2xl font-bold">Micro-learning Hub</CardTitle>
+                          <CardTitle className="text-2xl font-display font-normal">Micro-learning Hub</CardTitle>
                           <CardDescription className="text-base leading-relaxed">
                             Curated training and resources for rural entrepreneurs
-                          </CardDescription>
-                        </div>
-                      </CardHeader>
-                    </Card>
-
-                    <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
-                      <CardHeader className="space-y-6 p-8">
-                        <div className="w-16 h-16 rounded-2xl bg-[#A2EAF6]/10 flex items-center justify-center">
-                          <Users className="h-8 w-8 text-[#A2EAF6]" />
-                        </div>
-                        <div className="space-y-4">
-                          <CardTitle className="text-2xl font-bold">Community Space</CardTitle>
-                          <CardDescription className="text-base leading-relaxed">
-                            Connect with mentors and fellow entrepreneurs
-                          </CardDescription>
-                        </div>
-                      </CardHeader>
-                    </Card>
-                    <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
-                      <CardHeader className="space-y-6 p-8">
-                        <div className="w-16 h-16 rounded-2xl bg-[#A2EAF6]/10 flex items-center justify-center">
-                          <Users className="h-8 w-8 text-[#A2EAF6]" />
-                        </div>
-                        <div className="space-y-4">
-                          <CardTitle className="text-2xl font-bold">Community Space</CardTitle>
-                          <CardDescription className="text-base leading-relaxed">
-                            Connect with mentors and fellow entrepreneurs
-                          </CardDescription>
-                        </div>
-                      </CardHeader>
-                    </Card>
-
-                    <Card className="border-0 card-shadow hover:card-shadow-hover transition-shadow bg-card">
-                      <CardHeader className="space-y-6 p-8">
-                        <div className="w-16 h-16 rounded-2xl bg-[#C9E0DD]/10 flex items-center justify-center">
-                          <Network className="h-8 w-8 text-[#C9E0DD]" />
-                        </div>
-                        <div className="space-y-4">
-                          <CardTitle className="text-2xl font-bold">Open Architecture</CardTitle>
-                          <CardDescription className="text-base leading-relaxed">
-                            Replicable model for EU rural regions
                           </CardDescription>
                         </div>
                       </CardHeader>
@@ -285,7 +232,7 @@ export default function HomePage() {
           <SwiperSlide>
             <section className="slide-content bg-soft-yellow py-20">
               <div className="container mx-auto px-4">
-                <div className="max-w-5xl mx-auto relative z-20">
+                <div className="max-w-5xl mx-auto">
                   <h2 className="text-4xl md:text-5xl font-bold mb-16 text-left">Outcomes</h2>
                   <div className="grid md:grid-cols-2 gap-8">
                     <Card className="border-0 card-shadow bg-card">
