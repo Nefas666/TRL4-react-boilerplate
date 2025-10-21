@@ -41,6 +41,7 @@ export default function HomePage() {
         return "top-[55%] left-[70%]"
       case 5: // CTA - center
         return "bottom-[5%] left-1/2 -translate-x-1/2" // Positioned blob below CTAs for better text visibility
+        return "top-[80%] left-1/2 -translate-x-1/2"
       default:
         return "hidden"
     }
