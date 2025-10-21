@@ -178,7 +178,7 @@ export default function HomePage() {
 
                   <Card className="border-0 row-span-1 bg-chart-2/80">
                     <CardHeader className="space-y-4">
-                      <CardTitle className="text-2xl font-display font-normal text-foreground/80">
+                      <CardTitle className="text-3xl font-display font-normal text-foreground/80">
                         Local mentors or networks
                       </CardTitle>
                     </CardHeader>
@@ -294,8 +294,8 @@ export default function HomePage() {
 
           {/* Slide 6 - CTA */}
           <SwiperSlide>
-            <section className="slide-content py-20 holographic-bg flex flex-col">
-              <div className="container mx-auto px-4 z-30 flex-1 flex items-center">
+            <section className="slide-content py-20 holographic-bg">
+              <div className="container mx-auto px-4 z-30">
                 <div className="max-w-5xl mx-auto text-center space-y-8 relative z-30">
                   <h2 className="text-6xl md:text-7xl font-semibold font-display leading-tighter text-foreground/80 tracking-wide">
                     We believe that caring for soil means caring for life
@@ -334,22 +334,22 @@ export default function HomePage() {
       </main>
 
       <footer
-        className={`fixed bottom-0 left-0 right-0 bg-transparent py-6 z-20 transition-opacity duration-500 ${
-          activeSlide === 5 ? "opacity-100" : "opacity-0 pointer-events-none"
+        className={`fixed bottom-0 left-0 right-0 bg-amber-50 py-12 transition-all duration-500 z-20 ${
+          activeSlide === 5 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-full pointer-events-none"
         }`}
       >
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center space-y-3">
+          <div className="max-w-4xl mx-auto text-center space-y-4">
             <Link
               href="/"
-              className="font-display font-black holographic-title lg:text-[32px] text-xl hover:opacity-80 transition-opacity inline-block"
+              className="font-display font-black holographic-title lg:text-[36px] text-2xl hover:opacity-80 transition-opacity"
             >
-              t<span className="text-[26px]">AI</span>mi
+              t<span className="text-[30px]">AI</span>mi
             </Link>
-            <p className="text-base font-muted text-foreground/70">is the AI tool made for From Soil to Systems</p>
-            <p className="text-sm text-foreground/60">A collaboration between Markesing and Settevoci</p>
-            <p className="text-xs text-foreground/50">+39-3463321502 • info@markesing.com</p>
-            <p className="text-xs text-foreground/50">&copy; 2025 All rights reserved</p>
+            <p className="text-lg font-muted">is the AI tool made for From Soil to Systems</p>
+            <p className="text-sm text-muted-foreground">A collaboration between Markesing and Settevoci</p>
+            <p className="text-xs text-muted-foreground">+39-3463321502 • info@markesing.com</p>
+            <p className="text-xs text-muted-foreground">&copy; 2025 All rights reserved</p>
           </div>
         </div>
       </footer>
