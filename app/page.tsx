@@ -41,7 +41,6 @@ export default function HomePage() {
         return "top-[55%] left-[70%]"
       case 5: // CTA - center
         return "bottom-[5%] left-1/2 -translate-x-1/2" // Positioned blob below CTAs for better text visibility
-        return "top-[80%] left-1/2 -translate-x-1/2"
       default:
         return "hidden"
     }
@@ -328,29 +327,31 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
-
-              <footer className="bg-transparent py-8 mt-auto">
-                <div className="container mx-auto px-4">
-                  <div className="max-w-4xl mx-auto text-center space-y-4">
-                    <Link
-                      href="/"
-                      className="font-display font-black holographic-title lg:text-[36px] text-2xl hover:opacity-80 transition-opacity"
-                    >
-                      t<span className="text-[30px]">AI</span>mi
-                    </Link>
-                    <p className="text-lg font-muted text-foreground/70">
-                      is the AI tool made for From Soil to Systems
-                    </p>
-                    <p className="text-sm text-foreground/60">A collaboration between Markesing and Settevoci</p>
-                    <p className="text-xs text-foreground/50">+39-3463321502 • info@markesing.com</p>
-                    <p className="text-xs text-foreground/50">&copy; 2025 All rights reserved</p>
-                  </div>
-                </div>
-              </footer>
             </section>
           </SwiperSlide>
         </Swiper>
       </main>
+
+      <footer
+        className={`fixed bottom-0 left-0 right-0 bg-transparent py-6 z-20 transition-opacity duration-500 ${
+          activeSlide === 5 ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+      >
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center space-y-3">
+            <Link
+              href="/"
+              className="font-display font-black holographic-title lg:text-[32px] text-xl hover:opacity-80 transition-opacity inline-block"
+            >
+              t<span className="text-[26px]">AI</span>mi
+            </Link>
+            <p className="text-base font-muted text-foreground/70">is the AI tool made for From Soil to Systems</p>
+            <p className="text-sm text-foreground/60">A collaboration between Markesing and Settevoci</p>
+            <p className="text-xs text-foreground/50">+39-3463321502 • info@markesing.com</p>
+            <p className="text-xs text-foreground/50">&copy; 2025 All rights reserved</p>
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }
