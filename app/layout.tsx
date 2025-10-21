@@ -21,8 +21,12 @@ const museoModerno = MuseoModerno({
 
 
 export const metadata: Metadata = {
-  title: "Taimi - Educational Journey",
-  description: "Discover courses, scholarships, and funding opportunities with AI assistance",
+  title: 'tAImi - AI Mentor for Rural Youth Entrepreneurship',
+  description: 'AI-powered platform for rural youth entrepreneurship in Northern Ostrobothnia, Finland',
+  openGraph: {
+    title: 'tAImi - AI Mentor for Rural Youth',
+    description: 'Empowering rural communities through AI mentorship',
+  },
   generator: "001100 010010 011110 100001 101101 110011",
 }
 

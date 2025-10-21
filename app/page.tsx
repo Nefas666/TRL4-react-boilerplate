@@ -36,19 +36,19 @@ export default function HomePage() {
       case 2: // Solution - left side (content is on right)
         return "top-[30%] left-[10%] -translate-y-1/2"
       case 3: // Features - bottom right
-        return "bottom-[12.5%] right-[32.5%]"
+        return "bottom-[25.5%] right-[32.5%]"
       case 4: // Outcomes - top left
         return "top-[55%] left-[70%]"
       case 5: // CTA - center
-        return "bottom-[5%] left-1/2 -translate-x-1/2" // Positioned blob below CTAs for better text visibility
-        return "top-[80%] left-1/2 -translate-x-1/2"
+        //return "bottom-[5%] left-1/2 -translate-x-1/2" // Positioned blob below CTAs for better text visibility
+        return "top-[60%] left-1/2 -translate-x-1/2"
       default:
-        return "hidden"
+        return "opacity-20"
     }
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen h-100 flex flex-col">
       <Navbar />
 
       <div
@@ -81,12 +81,21 @@ export default function HomePage() {
                 <div className="max-w-6xl mx-auto h-full relative">
                   {/* Titolo Olografico - Top Left */}
                   <div className="absolute top-8 z-10 lg:left-[5%]">
-                    <h1
-                      className="holographic-title text-9xl leading-[0.95] tracking-wider md:text-[170px] font-display font-black"
-                      data-text="tAImi"
-                    >
-                      t<span className="tracking-tight after:invert-25 before:invert-25 text-[124px]">AI</span>mi
-                    </h1>
+                    <div className="relative group">
+                      <h1
+                        className="holographic-title text-9xl leading-[0.95] tracking-wider md:text-[170px] font-display font-black"
+                        data-text="tAImi">
+                        t<span className="tracking-tight after:invert-25 before:invert-25 text-[124px]">AI</span>mi
+                      </h1>
+                      <div className="absolute left-0 top-[110%] mt-2 w-[320px] opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 z-50">
+                      <div className="bg-white/60 backdrop-blur-lg rounded-3xl p-6 shadow-lg border border-white/50">
+                        <p className="text-base text-foreground/70 leading-tight font-light">
+                          <span className="font-medium">taimi</span> (Finnish) means "seedling" or "sapling" — 
+                          a young plant that grows into something greater with the right care and guidance.
+                        </p>
+                      </div>
+                    </div>
+                    </div>
                   </div>
 
                   <div className="flex items-center justify-center">
@@ -178,8 +187,8 @@ export default function HomePage() {
 
                   <Card className="border-0 row-span-1 bg-chart-2/80">
                     <CardHeader className="space-y-4">
-                      <CardTitle className="text-3xl font-display font-normal text-foreground/80">
-                        Local mentors or networks
+                      <CardTitle className="text-2xl font-display font-normal text-foreground/80 text-center">
+                        Local mentors and networks
                       </CardTitle>
                     </CardHeader>
                   </Card>
@@ -333,11 +342,7 @@ export default function HomePage() {
         </Swiper>
       </main>
 
-      <footer
-        className={`fixed bottom-0 left-0 right-0 bg-amber-50 py-12 transition-all duration-500 z-20 ${
-          activeSlide === 5 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-full pointer-events-none"
-        }`}
-      >
+      <footer className={`fixed bottom-0 left-0 right-0 bg-amber-50 py-12 transition-all duration-500 ${activeSlide === 5 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-full pointer-events-none'}`}>
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center space-y-4">
             <Link
