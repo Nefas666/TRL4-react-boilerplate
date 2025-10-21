@@ -3,18 +3,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import {
-  MessageSquare,
-  BookOpen,
-  Users,
-  ArrowRight,
-  Network,
-  GraduationCap,
-  Target,
-  TrendingUp,
-  Globe,
-  CheckCircle2,
-} from "lucide-react"
+import { MessageSquare, ArrowRight } from "lucide-react"
 import { Navbar } from "@/components/navbar"
 import HolographicBlob from "@/components/holographic-blob"
 import Image from "next/image"
@@ -27,7 +16,6 @@ import imageSrc from "../public/images/design-mode/avatar_01.png"
 
 // Import Swiper styles
 
-
 export default function HomePage() {
   const [activeSlide, setActiveSlide] = useState(0)
 
@@ -35,9 +23,8 @@ export default function HomePage() {
     if (activeSlide === 0) {
       return "w-[300px] h-[300px]" // Large in hero and CTA
     } else if (activeSlide === 5) {
-      return "w-[90px] h-[90px]"
-    } else
-      return "w-[220px] h-[220px]" // Smaller in middle slides
+      return "w-[70px] h-[70px]" // Made blob smaller at CTA slide for better text visibility
+    } else return "w-[220px] h-[220px]" // Smaller in middle slides
   }
 
   const getBlobPosition = () => {
@@ -53,6 +40,7 @@ export default function HomePage() {
       case 4: // Outcomes - top left
         return "top-[55%] left-[70%]"
       case 5: // CTA - center
+        return "bottom-[5%] left-1/2 -translate-x-1/2" // Positioned blob below CTAs for better text visibility
         return "top-[80%] left-1/2 -translate-x-1/2"
       default:
         return "hidden"
@@ -65,7 +53,8 @@ export default function HomePage() {
 
       <div
         className={`fixed pointer-events-none transition-all duration-[1500ms] ease-in-out ${getBlobSize()} ${getBlobPosition()}`}
-        style={{ zIndex: 10 }}>
+        style={{ zIndex: 10 }}
+      >
         <HolographicBlob />
       </div>
 
@@ -101,9 +90,8 @@ export default function HomePage() {
                   </div>
 
                   <div className="flex items-center justify-center">
-
                     <Image
-                      src={imageSrc}
+                      src={imageSrc || "/placeholder.svg"}
                       alt="Taimi - Your AI Mentor"
                       width={280}
                       height={280}
@@ -143,7 +131,6 @@ export default function HomePage() {
                     <p className="text-foreground/80 font-light">
                       Existing training is often static and disconnected from real community needs.
                     </p>
-
                   </div>
                 </div>
               </div>
@@ -154,12 +141,18 @@ export default function HomePage() {
           <SwiperSlide>
             <section className="slide-content bg-soft-lavender py-20">
               <div className="max-w-4xl mx-auto relative items-stretch flex-col justify-center">
-                <h2 className="text-6xl md:text-7xl mb-8 font-medium font-display text-right text-foreground/80 tracking-wide">The Solution</h2>
+                <h2 className="text-6xl md:text-7xl mb-8 font-medium font-display text-right text-foreground/80 tracking-wide">
+                  The Solution
+                </h2>
                 <div className="space-y-6 text-lg leading-relaxed mb-12 bg-soft-lavender/80 backdrop-blur-sm text-2xl">
                   <p className="text-foreground/80 text-right text-2xl font-light">
-                    <Link href="/" className="font-display font-black holographic-title lg:text-[36px] text-2xl hover:opacity-80 transition-opacity">
+                    <Link
+                      href="/"
+                      className="font-display font-black holographic-title lg:text-[36px] text-2xl hover:opacity-80 transition-opacity"
+                    >
                       t<span className="text-[30px]">AI</span>mi
-                    </Link> is an AI-powered platform that acts as a personal digital mentor.
+                    </Link>{" "}
+                    is an AI-powered platform that acts as a personal digital mentor.
                   </p>
                   <p className="text-right text-2xl text-foreground/80 font-light">
                     Users describe their ideas in natural language, and the chatbot instantly suggests:
@@ -169,19 +162,25 @@ export default function HomePage() {
                 <div className="grid md:grid-cols-2 grid-rows-2 gap-6">
                   <Card className="border-0 col-span-1 row-span-2 holographic-bg">
                     <CardHeader className="space-y-4 flex items-center justify-center">
-                      <CardTitle className="text-2xl text-foreground/80 font-display font-normal text-center">Training opportunities</CardTitle>
+                      <CardTitle className="text-2xl text-foreground/80 font-display font-normal text-center">
+                        Training opportunities
+                      </CardTitle>
                     </CardHeader>
                   </Card>
 
                   <Card className="border-0 bg-chart-3/70 row-end-2 col-span-1">
                     <CardHeader className="space-y-4">
-                      <CardTitle className="text-2xl text-foreground/80 font-display font-normal text-center">Funding and resources</CardTitle>
+                      <CardTitle className="text-2xl text-foreground/80 font-display font-normal text-center">
+                        Funding and resources
+                      </CardTitle>
                     </CardHeader>
                   </Card>
 
                   <Card className="border-0 row-span-1 bg-chart-2/80">
                     <CardHeader className="space-y-4">
-                      <CardTitle className="text-2xl text-foreground/80 font-display font-normal text-center">Local mentors or networks</CardTitle>
+                      <CardTitle className="text-2xl font-display font-normal text-foreground/80">
+                        Local mentors or networks
+                      </CardTitle>
                     </CardHeader>
                   </Card>
                 </div>
@@ -193,7 +192,9 @@ export default function HomePage() {
           <SwiperSlide>
             <section className="slide-content bg-soft-yellow/40 py-20">
               <div className="container mx-auto px-4">
-                <h2 className="text-6xl md:text-7xl mb-8 font-medium font-display text-right text-foreground/80 tracking-wide">Key Features</h2>
+                <h2 className="text-6xl md:text-7xl mb-8 font-medium font-display text-right text-foreground/80 tracking-wide">
+                  Key Features
+                </h2>
                 <div className="grid grid-cols-4 grid-rows-2 gap-4 max-w-7xl mx-auto">
                   <Card className="border-0 col-span-3 row-span-1 bg-soft-aqua">
                     <CardHeader className="space-y-6">
@@ -322,7 +323,10 @@ export default function HomePage() {
       <footer className="bg-amber-50 py-12">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center space-y-4">
-            <Link href="/" className="font-display font-black holographic-title lg:text-[36px] text-2xl hover:opacity-80 transition-opacity">
+            <Link
+              href="/"
+              className="font-display font-black holographic-title lg:text-[36px] text-2xl hover:opacity-80 transition-opacity"
+            >
               t<span className="text-[30px]">AI</span>mi
             </Link>
             <p className="text-lg font-muted">is the AI tool made for From Soil to Systems</p>
