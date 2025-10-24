@@ -10,7 +10,10 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Upload, FileVideo, FileText, Loader2 } from "lucide-react"
+import { Upload, FileVideo, FileText, Loader2, AlertCircle } from "lucide-react"
+import { Alert, AlertDescription } from "@/components/ui/alert"
+
+const MAX_FILE_SIZE = 100 * 1024 * 1024 // 100MB in bytes
 
 export default function UploadResourcePage() {
   const router = useRouter()
@@ -25,7 +28,14 @@ export default function UploadResourcePage() {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0]
     if (selectedFile) {
+      if (selectedFile.size > MAX_FILE_SIZE) {
+        setError(`File size exceeds 100MB limit. Your file is ${(selectedFile.size / (1024 * 1024)).toFixed(2)}MB`)
+        setFile(null)
+        return
+      }
+
       setFile(selectedFile)
+      setError("")
       if (!title) {
         setTitle(selectedFile.name.replace(/\.[^/.]+$/, ""))
       }
@@ -36,6 +46,11 @@ export default function UploadResourcePage() {
     e.preventDefault()
     if (!file) {
       setError("Please select a file to upload")
+      return
+    }
+
+    if (file.size > MAX_FILE_SIZE) {
+      setError(`File size exceeds 100MB limit. Your file is ${(file.size / (1024 * 1024)).toFixed(2)}MB`)
       return
     }
 
@@ -77,6 +92,10 @@ export default function UploadResourcePage() {
     return <FileVideo className="h-12 w-12 text-blue-500" />
   }
 
+  const formatFileSize = (bytes: number) => {
+    return `${(bytes / (1024 * 1024)).toFixed(2)} MB`
+  }
+
   return (
     <div className="container mx-auto max-w-2xl py-12">
       <Card>
@@ -106,7 +125,12 @@ export default function UploadResourcePage() {
                     disabled={uploading}
                   />
                   <p className="mt-1 text-xs text-muted-foreground">PDF or Video (MP4, WebM, OGG, MOV) up to 100MB</p>
-                  {file && <p className="mt-2 text-sm font-medium text-foreground">{file.name}</p>}
+                  {file && (
+                    <div className="mt-2 space-y-1">
+                      <p className="text-sm font-medium text-foreground">{file.name}</p>
+                      <p className="text-xs text-muted-foreground">{formatFileSize(file.size)}</p>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -169,7 +193,12 @@ export default function UploadResourcePage() {
             </div>
 
             {/* Error Message */}
-            {error && <div className="rounded-lg bg-destructive/10 p-3 text-sm text-destructive">{error}</div>}
+            {error && (
+              <Alert variant="destructive">
+                <AlertCircle className="h-4 w-4" />
+                <AlertDescription>{error}</AlertDescription>
+              </Alert>
+            )}
 
             {/* Submit Button */}
             <div className="flex gap-4">
