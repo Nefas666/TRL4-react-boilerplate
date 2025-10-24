@@ -3,8 +3,7 @@
 import { useState, useMemo } from "react"
 import { ResourceCard } from "@/components/resource-card"
 import { Input } from "@/components/ui/input"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Search } from "lucide-react"
+import { Search, Video, FileText } from "lucide-react"
 import type { Resource } from "@/lib/types"
 
 interface ResourcesListProps {
@@ -56,46 +55,59 @@ export function ResourcesList({ resources }: ResourcesListProps) {
         />
       </div>
 
-      {/* Tabs */}
-      <Tabs value={activeTab} onValueChange={setActiveTab}>
-        <TabsList>
-          <TabsTrigger value="all">All ({resources.length})</TabsTrigger>
-          <TabsTrigger value="videos">Videos ({videoCount})</TabsTrigger>
-          <TabsTrigger value="pdfs">PDFs ({pdfCount})</TabsTrigger>
-        </TabsList>
+      <div className="flex gap-6">
+        {/* Vertical Tab List */}
+        <div className="flex flex-col gap-1 min-w-[200px] border-r border-border pr-4">
+          <button
+            onClick={() => setActiveTab("all")}
+            className={`flex items-center gap-3 px-4 py-3 text-left rounded-lg transition-colors ${
+              activeTab === "all" ? "bg-primary text-primary-foreground" : "hover:bg-muted text-muted-foreground"
+            }`}
+          >
+            <span className="font-medium">All Resources</span>
+            <span className="ml-auto text-sm opacity-70">({resources.length})</span>
+          </button>
 
-        <TabsContent value="all" className="mt-6">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredResources.map((resource) => (
-              <ResourceCard key={resource.id} resource={resource} />
-            ))}
-          </div>
-        </TabsContent>
+          <button
+            onClick={() => setActiveTab("videos")}
+            className={`flex items-center gap-3 px-4 py-3 text-left rounded-lg transition-colors ${
+              activeTab === "videos" ? "bg-primary text-primary-foreground" : "hover:bg-muted text-muted-foreground"
+            }`}
+          >
+            <Video className="h-4 w-4" />
+            <span className="font-medium">Videos</span>
+            <span className="ml-auto text-sm opacity-70">({videoCount})</span>
+          </button>
 
-        <TabsContent value="videos" className="mt-6">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredResources.map((resource) => (
-              <ResourceCard key={resource.id} resource={resource} />
-            ))}
-          </div>
-        </TabsContent>
-
-        <TabsContent value="pdfs" className="mt-6">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredResources.map((resource) => (
-              <ResourceCard key={resource.id} resource={resource} />
-            ))}
-          </div>
-        </TabsContent>
-      </Tabs>
-
-      {filteredResources.length === 0 && (
-        <div className="text-center py-12">
-          <p className="text-muted-foreground">
-            {searchQuery ? "No resources found matching your search" : "No resources found"}
-          </p>
+          <button
+            onClick={() => setActiveTab("pdfs")}
+            className={`flex items-center gap-3 px-4 py-3 text-left rounded-lg transition-colors ${
+              activeTab === "pdfs" ? "bg-primary text-primary-foreground" : "hover:bg-muted text-muted-foreground"
+            }`}
+          >
+            <FileText className="h-4 w-4" />
+            <span className="font-medium">PDFs</span>
+            <span className="ml-auto text-sm opacity-70">({pdfCount})</span>
+          </button>
         </div>
-      )}
+
+        {/* Tab Content */}
+        <div className="flex-1">
+          {filteredResources.length > 0 ? (
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredResources.map((resource) => (
+                <ResourceCard key={resource.id} resource={resource} />
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground">
+                {searchQuery ? "No resources found matching your search" : "No resources found"}
+              </p>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   )
 }
