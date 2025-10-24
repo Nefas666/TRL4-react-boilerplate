@@ -30,19 +30,19 @@ export default function HomePage() {
   const getBlobPosition = () => {
     switch (activeSlide) {
       case 0: // Hero - center
-        return "top-[35%] left-[50%] md:left-[60%] -translate-x-1/2 -translate-y-1/2" // Centered on mobile
+        return "top-[35%] left-[50%] md:left-[60%] -translate-x-1/2 -translate-y-1/2 z-10" // Centered on mobile
       case 1: // Challenge - right side (content is on left)
-        return "top-1/2 right-[5%] md:right-[10%] -translate-y-1/2"
+        return "top-1/2 right-[5%] md:right-[10%] -translate-y-1/2 z-10"
       case 2: // Solution - left side (content is on right)
-        return "top-[30%] left-[5%] md:left-[10%] -translate-y-1/2"
+        return "top-[30%] left-[5%] md:left-[10%] -translate-y-1/2 z-10"
       case 3: // Features - bottom right
-        return "bottom-[25.5%] right-[15%] md:right-[32.5%]"
+        return "bottom-[25.5%] right-[15%] md:right-[32.5%] z-10"
       case 4: // Outcomes - top left
-        return "top-[55%] left-[50%] md:left-[70%]"
+        return "top-[55%] left-[50%] md:left-[70%] z-10"
       case 5: // CTA - center
-        return "top-[60%] left-1/2 -translate-x-1/2 opacity-10 transition-opacity"
+        return "top-[60%] left-1/2 -translate-x-1/2 opacity-20 transition-opacity z-10"
       default:
-        return "opacity-0"
+        return "hidden"
     }
   }
 
@@ -104,11 +104,11 @@ export default function HomePage() {
 
                   <div className="flex items-center justify-center mt-20 md:mt-0">
                     <Image
-                      src={imageSrc || "/placeholder.svg"}
+                      src={imageSrc}
                       alt="Taimi - Your AI Mentor"
                       width={200}
                       height={200}
-                      className="md:w-[280px] md:h-[280px] object-contain drop-shadow-2xl relative z-20"
+                      className="md:w-[480px] md:h-[480px] object-contain drop-shadow-2xl relative z-30"
                       style={{ filter: "saturate(1.2) contrast(1.1) brightness(1.05)" }}
                       priority
                     />
@@ -257,14 +257,14 @@ export default function HomePage() {
 
           {/* Slide 5 - Outcomes */}
           <SwiperSlide>
-            <section className="slide-content bg-amber-50 py-12 md:py-20 px-4">
+            <section className="slide-content bg-amber-50 py-12 px-4">
               <div className="container mx-auto h-full flex items-center">
-                <div className="max-w-5xl mx-auto w-full">
-                  <h2 className="text-4xl md:text-6xl lg:text-7xl mb-6 md:mb-8 font-medium font-display text-right text-foreground/80 tracking-wide">
+                <div className="max-w-5xl mx-auto w-full space-y-4">
+                  <h2 className="text-4xl md:text-6xl lg:text-7xl font-medium font-display text-right text-foreground/80 tracking-wide">
                     Outcomes
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-6 md:gap-8">
-                    <Card className="border-0 md:col-span-2 md:row-span-2 holographic-bg">
+                    <Card className="border-0 md:col-span-2 md:row-span-1 holographic-bg">
                       <CardHeader className="space-y-2">
                         <CardTitle className="text-2xl md:text-3xl font-display font-normal text-foreground/80">
                           Empowers rural youth
@@ -286,7 +286,7 @@ export default function HomePage() {
                       </CardHeader>
                     </Card>
 
-                    <Card className="border-0 md:col-span-1 bg-soft-yellow">
+                    <Card className="border-0 md:col-span-3 bg-soft-yellow">
                       <CardHeader className="space-y-2">
                         <CardTitle className="text-2xl md:text-3xl font-display font-normal text-foreground/80">
                           Replicable model
@@ -344,21 +344,23 @@ export default function HomePage() {
       </main>
 
       <footer
-        className={`fixed bottom-0 left-0 right-0 bg-amber-50 py-8 md:py-12 transition-all duration-500 ${activeSlide === 5 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-full pointer-events-none"}`}
+        className={`fixed bottom-0 left-0 right-0 max-w-[320px] px-4  rounded-tr-[50px] bg-amber-50 py-4 md:py-6  transition-all duration-500 ${activeSlide === 5 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-full pointer-events-none"}`}
       >
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center space-y-3 md:space-y-4">
+        <div className="flex items-center justify-center">
+          <div className="col-span-2">
             <Link
               href="/"
-              className="font-display font-black holographic-title text-2xl md:text-3xl lg:text-[36px] hover:opacity-80 transition-opacity"
+              className="font-display font-black holographic-title text-2xl lg:text-[36px] hover:opacity-80 transition-opacity"
             >
-              t<span className="text-xl md:text-2xl lg:text-[30px]">AI</span>mi
+              t<span className="text-xl lg:text-[30px]">AI</span>mi
             </Link>
-            <p className="text-base md:text-lg font-muted">is the AI tool made for From Soil to Systems</p>
-            <p className="text-sm text-muted-foreground">A collaboration between Markesing and Settevoci</p>
-            <p className="text-xs text-muted-foreground">+39-3463321502 • info@markesing.com</p>
-            <p className="text-xs text-muted-foreground">&copy; 2025 All rights reserved</p>
-          </div>
+            <div className="col-span-1">
+            <p className="text-xs text-black/75">is the AI tool made for From Soil to Systems</p>
+            <p className="text-[10px] text-black/55">A collaboration between Markesing and Settevoci</p>
+            <p className="text-[8px] text-muted-foreground">+39-3463321502 • info@markesing.com</p>
+            <p className="text-[8px] text-muted-foreground">&copy; 2025 All rights reserved</p>
+            </div>
+            </div>
         </div>
       </footer>
     </div>
