@@ -36,12 +36,12 @@ export function ResourceCard({ resource }: ResourceCardProps) {
   const coverGradient = getTagGradient(resource.tags)
 
   return (
-    <Card className="flex flex-col h-full border-0 soft-shadow hover:soft-shadow-lg transition-all">
-      <div className={cn("h-32 w-full relative rounded-t-[1.5rem]", coverGradient)}>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent rounded-t-[1.5rem]" />
+    <Card className="flex flex-col h-full border-0 soft-shadow hover:soft-shadow-lg transition-all overflow-hidden">
+      <div className={cn("h-24 w-full relative", coverGradient)}>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
       </div>
 
-      <CardHeader className="pt-4">
+      <CardHeader className="-mt-4">
         <div className="flex items-start justify-between gap-2">
           <div className="flex-1">
             <CardTitle className="text-lg font-bold line-clamp-2">{resource.title}</CardTitle>

@@ -1,54 +1,48 @@
 export function getTagGradient(tags: string[] | null): string {
   if (!tags || tags.length === 0) {
-    return "bg-gradient-to-br from-[#bec8f9]/30 via-[#a2eaf6]/30 to-[#c9e0dd]/30"
+    return "bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900"
   }
 
   // Use first tag to determine gradient
   const primaryTag = tags[0].toLowerCase()
 
-  // Define gradient mappings using the holographic palette colors
-  // Colors: #bec8f9 (lavender), #a2eaf6 (sky blue), #c9e0dd (aqua), #fee17c (yellow), #1b2431 (navy)
+  // Define gradient mappings for common tags
   const gradientMap: Record<string, string> = {
-    // AI/ML related - cool tones
-    ai: "bg-gradient-to-br from-[#bec8f9]/40 via-[#a2eaf6]/40 to-[#c9e0dd]/30",
-    "machine learning": "bg-gradient-to-br from-[#a2eaf6]/40 via-[#bec8f9]/40 to-[#c9e0dd]/30",
-    "deep learning": "bg-gradient-to-br from-[#bec8f9]/50 via-[#a2eaf6]/40 to-[#bec8f9]/30",
-    "neural networks": "bg-gradient-to-br from-[#bec8f9]/40 via-[#c9e0dd]/30 to-[#a2eaf6]/40",
+    // AI/ML related
+    ai: "bg-gradient-to-br from-purple-400 via-pink-400 to-red-400",
+    "machine learning": "bg-gradient-to-br from-blue-400 via-purple-400 to-pink-400",
+    "deep learning": "bg-gradient-to-br from-indigo-400 via-purple-400 to-pink-400",
+    "neural networks": "bg-gradient-to-br from-violet-400 via-purple-400 to-fuchsia-400",
 
-    // Programming languages - varied palette
-    python: "bg-gradient-to-br from-[#a2eaf6]/40 via-[#fee17c]/30 to-[#c9e0dd]/30",
-    javascript: "bg-gradient-to-br from-[#fee17c]/40 via-[#fee17c]/30 to-[#c9e0dd]/20",
-    typescript: "bg-gradient-to-br from-[#a2eaf6]/40 via-[#bec8f9]/40 to-[#1b2431]/20",
-    java: "bg-gradient-to-br from-[#fee17c]/40 via-[#c9e0dd]/30 to-[#a2eaf6]/30",
-    "c++": "bg-gradient-to-br from-[#1b2431]/30 via-[#bec8f9]/40 to-[#a2eaf6]/30",
+    // Programming languages
+    python: "bg-gradient-to-br from-blue-400 via-blue-500 to-yellow-400",
+    javascript: "bg-gradient-to-br from-yellow-300 via-yellow-400 to-yellow-500",
+    typescript: "bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700",
+    java: "bg-gradient-to-br from-red-400 via-orange-400 to-red-500",
+    "c++": "bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600",
 
-    // Web development - bright and airy
-    web: "bg-gradient-to-br from-[#a2eaf6]/40 via-[#c9e0dd]/40 to-[#bec8f9]/30",
-    frontend: "bg-gradient-to-br from-[#bec8f9]/40 via-[#fee17c]/30 to-[#a2eaf6]/30",
-    backend: "bg-gradient-to-br from-[#c9e0dd]/40 via-[#a2eaf6]/40 to-[#bec8f9]/30",
-    fullstack: "bg-gradient-to-br from-[#bec8f9]/40 via-[#a2eaf6]/40 to-[#fee17c]/30",
+    // Web development
+    web: "bg-gradient-to-br from-cyan-400 via-blue-400 to-indigo-400",
+    frontend: "bg-gradient-to-br from-pink-400 via-rose-400 to-red-400",
+    backend: "bg-gradient-to-br from-green-400 via-emerald-400 to-teal-400",
+    fullstack: "bg-gradient-to-br from-purple-400 via-violet-400 to-indigo-400",
 
-    // Data science - aqua tones
-    "data science": "bg-gradient-to-br from-[#c9e0dd]/40 via-[#a2eaf6]/40 to-[#bec8f9]/30",
-    statistics: "bg-gradient-to-br from-[#a2eaf6]/40 via-[#bec8f9]/40 to-[#c9e0dd]/30",
-    analytics: "bg-gradient-to-br from-[#c9e0dd]/40 via-[#a2eaf6]/30 to-[#fee17c]/20",
+    // Data science
+    "data science": "bg-gradient-to-br from-teal-400 via-cyan-400 to-blue-400",
+    statistics: "bg-gradient-to-br from-blue-400 via-indigo-400 to-purple-400",
+    analytics: "bg-gradient-to-br from-emerald-400 via-teal-400 to-cyan-400",
 
-    // Mathematics & Science - cool professional
-    mathematics: "bg-gradient-to-br from-[#bec8f9]/40 via-[#a2eaf6]/40 to-[#c9e0dd]/30",
-    physics: "bg-gradient-to-br from-[#a2eaf6]/40 via-[#c9e0dd]/40 to-[#bec8f9]/30",
-    chemistry: "bg-gradient-to-br from-[#c9e0dd]/40 via-[#a2eaf6]/30 to-[#fee17c]/20",
-    biology: "bg-gradient-to-br from-[#c9e0dd]/40 via-[#fee17c]/30 to-[#a2eaf6]/30",
+    // Mathematics & Science
+    mathematics: "bg-gradient-to-br from-indigo-400 via-blue-400 to-cyan-400",
+    physics: "bg-gradient-to-br from-blue-400 via-cyan-400 to-teal-400",
+    chemistry: "bg-gradient-to-br from-green-400 via-emerald-400 to-teal-400",
+    biology: "bg-gradient-to-br from-green-400 via-lime-400 to-emerald-400",
 
-    // General topics - warm and inviting
-    tutorial: "bg-gradient-to-br from-[#fee17c]/40 via-[#c9e0dd]/30 to-[#a2eaf6]/30",
-    research: "bg-gradient-to-br from-[#1b2431]/20 via-[#bec8f9]/40 to-[#c9e0dd]/30",
-    beginner: "bg-gradient-to-br from-[#fee17c]/30 via-[#c9e0dd]/40 to-[#a2eaf6]/30",
-    advanced: "bg-gradient-to-br from-[#1b2431]/30 via-[#bec8f9]/40 to-[#a2eaf6]/40",
-
-    // File types
-    video: "bg-gradient-to-br from-[#a2eaf6]/40 via-[#bec8f9]/40 to-[#c9e0dd]/30",
-    pdf: "bg-gradient-to-br from-[#fee17c]/30 via-[#c9e0dd]/40 to-[#bec8f9]/30",
-    paper: "bg-gradient-to-br from-[#bec8f9]/40 via-[#c9e0dd]/30 to-[#fee17c]/20",
+    // General topics
+    tutorial: "bg-gradient-to-br from-orange-400 via-amber-400 to-yellow-400",
+    research: "bg-gradient-to-br from-slate-400 via-gray-400 to-zinc-400",
+    beginner: "bg-gradient-to-br from-green-300 via-emerald-300 to-teal-300",
+    advanced: "bg-gradient-to-br from-red-400 via-rose-400 to-pink-400",
   }
 
   // Check for exact match
@@ -63,14 +57,14 @@ export function getTagGradient(tags: string[] | null): string {
     }
   }
 
-  // Generate a consistent gradient based on tag hash using palette colors
+  // Generate a consistent gradient based on tag hash
   const hash = primaryTag.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0)
   const gradients = [
-    "bg-gradient-to-br from-[#bec8f9]/40 via-[#a2eaf6]/40 to-[#c9e0dd]/30",
-    "bg-gradient-to-br from-[#a2eaf6]/40 via-[#c9e0dd]/40 to-[#fee17c]/30",
-    "bg-gradient-to-br from-[#c9e0dd]/40 via-[#bec8f9]/40 to-[#a2eaf6]/30",
-    "bg-gradient-to-br from-[#fee17c]/30 via-[#c9e0dd]/40 to-[#bec8f9]/30",
-    "bg-gradient-to-br from-[#bec8f9]/40 via-[#fee17c]/30 to-[#a2eaf6]/40",
+    "bg-gradient-to-br from-rose-400 via-pink-400 to-fuchsia-400",
+    "bg-gradient-to-br from-amber-400 via-orange-400 to-red-400",
+    "bg-gradient-to-br from-lime-400 via-green-400 to-emerald-400",
+    "bg-gradient-to-br from-cyan-400 via-sky-400 to-blue-400",
+    "bg-gradient-to-br from-violet-400 via-purple-400 to-indigo-400",
   ]
 
   return gradients[hash % gradients.length]
