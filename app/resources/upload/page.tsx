@@ -65,12 +65,30 @@ export default function UploadResourcePage() {
       formData.append("category", category)
       formData.append("tags", tags)
 
+      const controller = new AbortController()
+      const timeoutId = setTimeout(() => controller.abort(), 5 * 60 * 1000) // 5 minute timeout
+
       const response = await fetch("/api/upload", {
         method: "POST",
         body: formData,
+        signal: controller.signal,
       })
 
-      const data = await response.json()
+      clearTimeout(timeoutId)
+
+      let data
+      const contentType = response.headers.get("content-type")
+      if (contentType && contentType.includes("application/json")) {
+        data = await response.json()
+      } else {
+        const text = await response.text()
+        console.error("[v0] Non-JSON response:", text)
+        throw new Error(
+          response.status === 413
+            ? "File is too large. The server rejected the upload. Try a smaller file or contact support."
+            : `Upload failed: ${text.substring(0, 100)}`,
+        )
+      }
 
       if (!response.ok) {
         throw new Error(data.error || "Upload failed")
@@ -78,7 +96,16 @@ export default function UploadResourcePage() {
 
       router.push("/resources")
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to upload file")
+      if (err instanceof Error) {
+        if (err.name === "AbortError") {
+          setError("Upload timed out. Please try again with a smaller file or check your connection.")
+        } else {
+          setError(err.message)
+        }
+      } else {
+        setError("Failed to upload file. Please try again.")
+      }
+      console.error("[v0] Upload error:", err)
     } finally {
       setUploading(false)
     }

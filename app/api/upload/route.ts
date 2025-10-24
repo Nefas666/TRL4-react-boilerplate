@@ -21,7 +21,20 @@ export async function POST(request: Request) {
 
     console.log("[v0] User authenticated:", user.id)
 
-    const formData = await request.formData()
+    let formData
+    try {
+      formData = await request.formData()
+    } catch (error) {
+      console.error("[v0] Error parsing form data:", error)
+      return NextResponse.json(
+        {
+          error: "Failed to parse upload data. The file might be too large or the request was interrupted.",
+          details: error instanceof Error ? error.message : "Unknown error",
+        },
+        { status: 413 },
+      )
+    }
+
     const file = formData.get("file") as File
     const title = formData.get("title") as string
     const description = formData.get("description") as string
