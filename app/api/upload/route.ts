@@ -2,6 +2,8 @@ import { put } from "@vercel/blob"
 import { NextResponse } from "next/server"
 import { createServerClient } from "@/lib/supabase/server"
 
+const MAX_FILE_SIZE = 100 * 1024 * 1024 // 100MB
+
 export async function POST(request: Request) {
   try {
     console.log("[v0] Upload request received")
@@ -41,11 +43,14 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Invalid file type. Only PDF and video files are allowed." }, { status: 400 })
     }
 
-    // Validate file size (max 100MB)
-    const maxSize = 100 * 1024 * 1024 // 100MB
-    if (file.size > maxSize) {
+    if (file.size > MAX_FILE_SIZE) {
       console.log("[v0] File too large:", file.size)
-      return NextResponse.json({ error: "File size exceeds 100MB limit" }, { status: 400 })
+      return NextResponse.json(
+        {
+          error: `File size exceeds 100MB limit. Your file is ${(file.size / (1024 * 1024)).toFixed(2)}MB`,
+        },
+        { status: 400 },
+      )
     }
 
     console.log("[v0] Uploading to Vercel Blob...")
