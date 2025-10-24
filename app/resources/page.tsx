@@ -1,9 +1,8 @@
 import { createServerClient } from "@/lib/supabase/server"
-import { ResourceCard } from "@/components/resource-card"
+import { ResourcesList } from "@/components/resources-list"
 import { Navbar } from "@/components/navbar"
-import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { Search, Upload } from "lucide-react"
+import { Upload } from "lucide-react"
 import Link from "next/link"
 import type { Resource } from "@/lib/types"
 
@@ -24,7 +23,9 @@ export default async function ResourcesPage() {
         <div className="mb-8">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <h1 className="text-6xl md:text-7xl mb-8 font-medium font-display tracking-wide text-foreground/80">Learning Resources</h1>
+              <h1 className="text-6xl md:text-7xl mb-8 font-medium font-display tracking-wide text-foreground/80">
+                Learning Resources
+              </h1>
 
               <p className="text-2xl font-light text-foreground/80">
                 Discover training opportunities, funding resources, and guides for sustainable rural entrepreneurship
@@ -41,24 +42,7 @@ export default async function ResourcesPage() {
           </div>
         </div>
 
-        <div className="mb-6">
-          <div className="relative max-w-md">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <Input placeholder="Search resources..." className="pl-10" />
-          </div>
-        </div>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {resources?.map((resource: Resource) => (
-            <ResourceCard key={resource.id} resource={resource} />
-          ))}
-        </div>
-
-        {(!resources || resources.length === 0) && (
-          <div className="text-center py-12">
-            <p className="text-muted-foreground">No resources found</p>
-          </div>
-        )}
+        <ResourcesList resources={(resources as Resource[]) || []} />
       </main>
     </div>
   )
