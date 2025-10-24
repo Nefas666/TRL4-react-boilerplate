@@ -410,15 +410,16 @@
   }
 
   /* ===== SWIPER CUSTOMIZATION ===== */
+  /* Make swiper full viewport height minus navbar */
   .swiper-container {
     width: 100%;
-    /* Adjust height to account for footer */
-    height: calc(100vh - 200px);
+    height: calc(100vh - 80px); /* Account for navbar height */
   }
 
   .swiper-slide {
     display: flex;
     flex-direction: column;
+    height: 100%; /* Ensure slide takes full height */
   }
 
   .swiper-pagination {
@@ -447,7 +448,11 @@
 
   .slide-content {
     overflow-y: auto;
-    height: 100%;
+    /* Make slide content fill the entire viewport */
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     scrollbar-width: thin;
     scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
   }
@@ -663,6 +668,25 @@
   @media (max-width: 768px) {
     .card-interactive:hover {
       transform: translateY(-4px) scale(1.01);
+    }
+
+    /* Mobile-specific swiper adjustments */
+    .swiper-container {
+      height: calc(100vh - 64px); /* Smaller navbar on mobile */
+    }
+
+    .swiper-pagination {
+      right: 10px !important;
+    }
+
+    .swiper-pagination-bullet {
+      width: 8px;
+      height: 8px;
+    }
+
+    .swiper-pagination-bullet-active {
+      width: 8px;
+      height: 24px;
     }
   }
 }
