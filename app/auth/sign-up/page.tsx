@@ -59,7 +59,15 @@ export default function SignUpPage() {
       if (error) throw error
       router.push("/auth/sign-up-success")
     } catch (error: unknown) {
-      setError(error instanceof Error ? error.message : "An error occurred")
+      const errorMessage = error instanceof Error ? error.message : "An error occurred"
+
+      if (errorMessage.includes("invalid") && errorMessage.includes("email")) {
+        setError(
+          "This email address cannot be used. Please use a real email address (Gmail, Outlook, etc.) or enable Dev Mode for testing. See documentation for details.",
+        )
+      } else {
+        setError(errorMessage)
+      }
     } finally {
       setIsLoading(false)
     }

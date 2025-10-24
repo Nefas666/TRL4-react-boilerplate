@@ -30,10 +30,12 @@ This guide explains how to test the authentication system in both development an
    NEXT_PUBLIC_DEV_MODE=false
    \`\`\`
 
-2. **Sign up with test credentials**:
-   - Email: `dev@test.com`
-   - Password: `TestUser123!`
+2. **Sign up with real email credentials**:
+   - Email: Use a **real email address** (Gmail, Outlook, Yahoo, etc.)
+   - Password: `TestUser123!` (or any password with at least 8 characters)
    - Display Name: `Dev Test User`
+   
+   ⚠️ **Important**: Supabase blocks test/disposable email domains like `test.com`, `example.com`, etc. You must use a real email provider.
 
 3. **Confirm the email**:
    
@@ -44,13 +46,13 @@ This guide explains how to test the authentication system in both development an
    **Method B - Manual confirmation in Supabase Dashboard**:
    - Go to your Supabase project dashboard
    - Navigate to Authentication > Users
-   - Find the user with email `dev@test.com`
+   - Find your user
    - Click the three dots menu (⋮)
    - Select "Confirm email"
 
 4. **Log in**:
    - Go to `/auth/login`
-   - Enter the test credentials
+   - Enter your credentials
    - You should be redirected to `/profile`
 
 ## Testing the Complete Flow
@@ -172,6 +174,13 @@ This guide explains how to test the authentication system in both development an
 ### Dev mode not working
 - **Solution**: Ensure `NEXT_PUBLIC_DEV_MODE=true` and restart dev server
 
+### "Email address is invalid"
+- **Cause**: Supabase blocks test/disposable email domains (test.com, example.com, etc.)
+- **Solution**: 
+  - Use a real email address from Gmail, Outlook, Yahoo, or another legitimate provider
+  - OR enable Dev Mode for testing without email validation
+  - OR configure Supabase to allow test domains (Advanced: Dashboard > Authentication > Settings > Email Auth)
+
 ## Test Checklist
 
 Use this checklist to ensure all authentication features are working:
@@ -193,11 +202,14 @@ Use this checklist to ensure all authentication features are working:
 ## Credentials for Testing
 
 ### Development Test User
-- **Email**: `dev@test.com`
-- **Password**: `TestUser123!`
-- **Display Name**: `Dev Test User`
 
-**Note**: You need to create this user through the sign-up flow first, then confirm the email.
+**Recommended approach**: Use your own real email address for testing
+
+**Alternative - Dev Mode**: 
+- Enable `NEXT_PUBLIC_DEV_MODE=true` in `.env.local`
+- Use the "Bypass Auth" button to skip authentication entirely
+
+**Note**: The email `dev@test.com` will NOT work because Supabase blocks the `test.com` domain. You must use a real email provider.
 
 ### Creating Additional Test Users
 

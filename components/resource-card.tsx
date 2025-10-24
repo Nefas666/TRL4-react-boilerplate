@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils"
+import { getTagGradient } from "@/lib/gradient-utils"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -32,9 +33,15 @@ export function ResourceCard({ resource }: ResourceCardProps) {
     return null
   }
 
+  const coverGradient = getTagGradient(resource.tags)
+
   return (
-    <Card className="flex flex-col h-full border-0 soft-shadow hover:soft-shadow-lg transition-all">
-      <CardHeader>
+    <Card className="flex flex-col h-full border-0 soft-shadow hover:soft-shadow-lg transition-all overflow-hidden">
+      <div className={cn("h-24 w-full relative", coverGradient)}>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+      </div>
+
+      <CardHeader className="-mt-4">
         <div className="flex items-start justify-between gap-2">
           <div className="flex-1">
             <CardTitle className="text-lg font-bold line-clamp-2">{resource.title}</CardTitle>
