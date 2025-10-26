@@ -153,36 +153,7 @@ export default function ChatPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-cream">
-      <Navbar />
-      {/* Header */}
-      <header className="flex items-center justify-between px-6 py-4 border-b border-border/30">
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={() => router.push("/")}
-          className="rounded-full w-12 h-12 bg-white/60 hover:bg-white/80 transition-all"
-        >
-          <ArrowLeft className="h-5 w-5 text-primary" />
-        </Button>
-
-        <h1 className="text-xl font-normal text-primary/80 tracking-tight font-display">
-          {inputMode === "voice" ? "Speaking AI Chat" : "AI Chat"}
-        </h1>
-
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={() => setInputMode(inputMode === "voice" ? "text" : "voice")}
-          className="rounded-full w-12 h-12 bg-white/60 hover:bg-white/80 transition-all"
-        >
-          {inputMode === "voice" ? (
-            <MessageSquare className="h-5 w-5 text-primary" />
-          ) : (
-            <Mic className="h-5 w-5 text-primary" />
-          )}
-        </Button>
-      </header>
-
+      <Navbar />     
       {/* Main Content */}
       <main className="flex-1 flex flex-col overflow-hidden">
         {hasMessages ? (
