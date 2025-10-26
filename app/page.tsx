@@ -21,26 +21,27 @@ export default function HomePage() {
 
   const getBlobSize = () => {
     if (activeSlide === 0) {
-      return "w-[300px] h-[300px] md:w-[400px] md:h-[400px]" // Added responsive sizing
+      return "w-[300px] h-[300px] md:w-[200px] md:h-[200px]" // Added responsive sizing
     } else if (activeSlide === 5) {
       return "w-[70px] h-[70px] md:w-[100px] md:h-[100px]"
     } else return "w-[180px] h-[180px] md:w-[220px] md:h-[220px]"
   }
 
   const getBlobPosition = () => {
+    const baseOpacity = "opacity-0 lg:opacity-100"
     switch (activeSlide) {
       case 0: // Hero - center
-        return "top-[35%] left-[50%] md:left-[60%] -translate-x-1/2 -translate-y-1/2 z-10" // Centered on mobile
+        return "md:top-[35%] top-[45%] left-[50%] md:left-[60%] -translate-x-1/2 -translate-y-1/2 z-10 opacity-100"
       case 1: // Challenge - right side (content is on left)
-        return "top-1/2 right-[5%] md:right-[10%] -translate-y-1/2 z-10"
+        return `top-1/2 right-[5%] md:right-[10%] -translate-y-1/2 z-10 ${baseOpacity}`
       case 2: // Solution - left side (content is on right)
-        return "top-[30%] left-[5%] md:left-[10%] -translate-y-1/2 z-10"
+        return `top-[30%] left-[5%] md:left-[10%] -translate-y-1/2 z-10 ${baseOpacity}`
       case 3: // Features - bottom right
-        return "bottom-[25.5%] right-[15%] md:right-[32.5%] z-10"
+        return `bottom-[25.5%] right-[15%] md:right-[32.5%] z-10 ${baseOpacity}`
       case 4: // Outcomes - top left
-        return "top-[55%] left-[50%] md:left-[70%] z-10"
+        return `top-[55%] left-[50%] md:left-[70%] z-10 ${baseOpacity}`
       case 5: // CTA - center
-        return "top-[60%] left-1/2 -translate-x-1/2 opacity-20 transition-opacity z-10"
+        return `top-[60%] left-1/2 -translate-x-1/2 opacity-20 transition-opacity z-10 ${baseOpacity.replace('lg:opacity-100', '')}`
       default:
         return "hidden"
     }
@@ -79,14 +80,14 @@ export default function HomePage() {
               <div className="container mx-auto h-full flex items-center">
                 <div className="max-w-6xl mx-auto w-full h-full relative flex flex-col justify-center">
                   {/* Titolo Olografico - Top Left */}
-                  <div className="absolute top-4 md:top-8 left-0 md:left-[5%] z-10">
+                  <div className="relative text-center lg:absolute -top-24 md:top-8 left-0 md:left-[5%]  z-10">
                     <div className="relative group">
                       <h1
-                        className="holographic-title text-6xl md:text-9xl lg:text-[170px] leading-[0.95] tracking-wider font-display font-black"
+                        className="holographic-title text-8xl md:text-9xl lg:text-[170px] leading-[0.95] tracking-wider font-display font-black"
                         data-text="tAImi"
                       >
                         t
-                        <span className="tracking-tight after:invert-25 before:invert-25 text-[80px] md:text-[124px]">
+                        <span className="tracking-tight after:invert-75 lg:after:invert-25 lg:before:invert-25 text-[90px] md:text-[124px]">
                           AI
                         </span>
                         mi
@@ -102,7 +103,7 @@ export default function HomePage() {
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-center mt-20 md:mt-0">
+                  <div className="flex items-center justify-center md:mt-0">
                     <Image
                       src={imageSrc}
                       alt="Taimi - Your AI Mentor"
@@ -114,9 +115,9 @@ export default function HomePage() {
                     />
                   </div>
 
-                  <div className="absolute bottom-8 md:bottom-12 right-0 md:right-[12%] max-w-[320px] md:max-w-[360px] z-10">
-                    <div className="bg-white/60 backdrop-blur-lg rounded-3xl p-4 md:p-6 shadow-lg border border-white/50">
-                      <p className="text-lg md:text-xl lg:text-2xl text-foreground/70 leading-tight text-right font-light">
+                  <div className="absolute bottom-28 md:bottom-12 right-[5%] lg:right-[12%] max-w-[320px] md:max-w-[360px] z-40 lg:z-10">
+                    <div className="lg:bg-white/60 bg-white/80 backdrop-blur-lg rounded-3xl p-4 md:p-6 shadow-lg border border-white/50">
+                      <p className="text-lg md:text-xl lg:text-2xl text-foreground/70 leading-tight text-center lg:text-right font-light">
                         AI Mentor for Rural Youth Entrepreneurship in Finland
                       </p>
                     </div>
@@ -344,7 +345,7 @@ export default function HomePage() {
       </main>
 
       <footer
-        className={`fixed bottom-0 left-0 right-0 max-w-[320px] px-4  rounded-tr-[50px] bg-amber-50 py-4 md:py-6  transition-all duration-500 ${activeSlide === 5 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-full pointer-events-none"}`}
+        className={`fixed bottom-0 left-0 right-0 md:max-w-[320px] max-w-screen px-4 md:rounded-tl-none rounded-tl-[50px] rounded-tr-[50px] bg-amber-50 py-4 md:py-6  transition-all duration-500 ${activeSlide === 5 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-full pointer-events-none"}`}
       >
         <div className="flex items-center justify-center">
           <div className="col-span-2">
