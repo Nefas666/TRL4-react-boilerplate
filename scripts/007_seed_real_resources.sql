@@ -33,7 +33,7 @@ INSERT INTO public.resources (title, description, category, type, file_type, tag
   'article',
   'application/pdf',
   ARRAY['regenerative agriculture', 'sustainable farming', 'research', 'definitions'],
-  'PLACEHOLDER_regenerative_agriculture.pdf'
+  'paper_regenerative_agriculture.pdf'
 ),
 (
   'IPCC Special Report on Climate Change and Land',
@@ -42,7 +42,7 @@ INSERT INTO public.resources (title, description, category, type, file_type, tag
   'article',
   'application/pdf',
   ARRAY['climate change', 'IPCC', 'land degradation', 'food security', 'greenhouse gases'],
-  'PLACEHOLDER_ipcc_land_report.pdf'
+  'paper_ipcc_land_report.pdf'
 ),
 (
   'Compost: Truth or Consequences',
@@ -51,7 +51,7 @@ INSERT INTO public.resources (title, description, category, type, file_type, tag
   'article',
   'application/pdf',
   ARRAY['compost', 'soil health', 'organic matter', 'carbon sequestration'],
-  'PLACEHOLDER_compost_truth.pdf'
+  'paper_compost_truth.pdf'
 ),
 (
   'Soil Health Principles (USDA NRCS)',
@@ -60,7 +60,7 @@ INSERT INTO public.resources (title, description, category, type, file_type, tag
   'article',
   'application/pdf',
   ARRAY['soil health', 'USDA', 'NRCS', 'conservation', 'best practices'],
-  'PLACEHOLDER_soil_health_principles.pdf'
+  'paper_soil_health_principles.pdf'
 ),
 (
   'AI for Sustainable Farming (EU JRC)',
@@ -69,7 +69,7 @@ INSERT INTO public.resources (title, description, category, type, file_type, tag
   'article',
   'application/pdf',
   ARRAY['AI', 'sustainable farming', 'precision agriculture', 'EU', 'technology'],
-  'PLACEHOLDER_ai_sustainable_farming.pdf'
+  'paper_ai_sustainable_farming.pdf'
 ),
 (
   'Biodiversity Mapping Starter Kit',
@@ -78,7 +78,7 @@ INSERT INTO public.resources (title, description, category, type, file_type, tag
   'article',
   'application/pdf',
   ARRAY['biodiversity', 'mapping', 'conservation', 'monitoring', 'tools'],
-  'PLACEHOLDER_biodiversity_mapping.pdf'
+  'paper_biodiversity_mapping.pdf'
 ),
 (
   'EU Opportunities for Green Entrepreneurship',
@@ -87,5 +87,5 @@ INSERT INTO public.resources (title, description, category, type, file_type, tag
   'funding',
   'application/pdf',
   ARRAY['funding', 'entrepreneurship', 'EU', 'green business', 'opportunities'],
-  'PLACEHOLDER_eu_green_opportunities.pdf'
+  'paper_eu_green_opportunities.pdf'
 );

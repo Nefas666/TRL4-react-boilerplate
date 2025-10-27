@@ -62,31 +62,31 @@ Run this SQL script, replacing the placeholder URLs with your actual Supabase st
 -- Replace [YOUR_PROJECT_ID] with your actual Supabase project ID
 
 UPDATE public.resources 
-SET file_url = 'https://[YOUR_PROJECT_ID].supabase.co/storage/v1/object/public/learning-resources/regenerative_agriculture.pdf'
+SET file_url = 'https://xwjmdcfwqxvkvpcdllhz.supabase.co/storage/v1/object/public/learning-resources/paper_regenerative_agriculture.pdf'
 WHERE file_url = 'PLACEHOLDER_regenerative_agriculture.pdf';
 
 UPDATE public.resources 
-SET file_url = 'https://[YOUR_PROJECT_ID].supabase.co/storage/v1/object/public/learning-resources/ipcc_land_report.pdf'
+SET file_url = 'https://xwjmdcfwqxvkvpcdllhz.supabase.co/storage/v1/object/public/learning-resources/paper_ipcc_land_report.pdf'
 WHERE file_url = 'PLACEHOLDER_ipcc_land_report.pdf';
 
 UPDATE public.resources 
-SET file_url = 'https://[YOUR_PROJECT_ID].supabase.co/storage/v1/object/public/learning-resources/compost_truth.pdf'
+SET file_url = 'https://xwjmdcfwqxvkvpcdllhz.supabase.co/storage/v1/object/public/learning-resources/paper_compost_truth.pdf'
 WHERE file_url = 'PLACEHOLDER_compost_truth.pdf';
 
 UPDATE public.resources 
-SET file_url = 'https://[YOUR_PROJECT_ID].supabase.co/storage/v1/object/public/learning-resources/soil_health_principles.pdf'
+SET file_url = 'https://xwjmdcfwqxvkvpcdllhz.supabase.co/storage/v1/object/public/learning-resources/paper_soil_health_principles.pdf'
 WHERE file_url = 'PLACEHOLDER_soil_health_principles.pdf';
 
 UPDATE public.resources 
-SET file_url = 'https://[YOUR_PROJECT_ID].supabase.co/storage/v1/object/public/learning-resources/ai_sustainable_farming.pdf'
+SET file_url = 'https://xwjmdcfwqxvkvpcdllhz.supabase.co/storage/v1/object/public/learning-resources/paper_ai_sustainable_farming.pdf'
 WHERE file_url = 'PLACEHOLDER_ai_sustainable_farming.pdf';
 
 UPDATE public.resources 
-SET file_url = 'https://[YOUR_PROJECT_ID].supabase.co/storage/v1/object/public/learning-resources/biodiversity_mapping.pdf'
+SET file_url = 'https://xwjmdcfwqxvkvpcdllhz.supabase.co/storage/v1/object/public/learning-resources/paper_biodiversity_mapping.pdf'
 WHERE file_url = 'PLACEHOLDER_biodiversity_mapping.pdf';
 
 UPDATE public.resources 
-SET file_url = 'https://[YOUR_PROJECT_ID].supabase.co/storage/v1/object/public/learning-resources/eu_green_opportunities.pdf'
+SET file_url = 'https://xwjmdcfwqxvkvpcdllhz.supabase.co/storage/v1/object/public/learning-resources/paper_eu_green_opportunities.pdf'
 WHERE file_url = 'PLACEHOLDER_eu_green_opportunities.pdf';
 \`\`\`
 
