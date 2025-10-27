@@ -4,7 +4,7 @@ import { useState, useMemo } from "react"
 import { ResourceCard } from "@/components/resource-card"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
-import { Search, Video, FileText, Tag } from "lucide-react"
+import { Search, Video, FileText, Tag, Newspaper } from "lucide-react"
 import { getAllTags, getTagColor } from "@/lib/tag-colors"
 import { cn } from "@/lib/utils"
 import type { Resource } from "@/lib/types"
@@ -27,7 +27,9 @@ export function ResourcesList({ resources }: ResourcesListProps) {
     if (activeTab === "videos") {
       filtered = filtered.filter((r) => r.type === "video")
     } else if (activeTab === "pdfs") {
-      filtered = filtered.filter((r) => r.type === "pdf")
+      filtered = filtered.filter((r) => r.type === "paper")
+    } else if (activeTab === "articles") {
+      filtered = filtered.filter((r) => r.type === "article")
     } else if (activeTab === "tags") {
       // Show all when in tags tab, filtering happens by selected tags
       filtered = resources
@@ -56,7 +58,8 @@ export function ResourcesList({ resources }: ResourcesListProps) {
   }, [resources, searchQuery, activeTab, selectedTags])
 
   const videoCount = resources.filter((r) => r.type === "video").length
-  const pdfCount = resources.filter((r) => r.type === "pdf").length
+  const pdfCount = resources.filter((r) => r.type === "paper").length
+  const articleCount = resources.filter((r) => r.type === "article").length
 
   const toggleTag = (tag: string) => {
     setSelectedTags((prev) => (prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]))
@@ -75,21 +78,21 @@ export function ResourcesList({ resources }: ResourcesListProps) {
         />
       </div>
 
-      <div className="flex gap-6">
-        {/* Vertical Tab List */}
-        <div className="flex flex-col gap-1 min-w-[200px] border-r border-border pr-4">
+      <div className="flex flex-col md:flex-row gap-6">
+        {/* Tab List - Horizontal on mobile, Vertical on desktop */}
+        <div className="flex md:flex-col gap-1 md:min-w-[200px] md:border-r md:border-border md:pr-4 overflow-x-auto md:overflow-x-visible pb-2 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0">
           <button
             onClick={() => {
               setActiveTab("all")
               setSelectedTags([])
             }}
             className={cn(
-              "flex items-center gap-3 px-4 py-3 text-left rounded-lg transition-colors",
+              "flex items-center gap-3 px-4 py-3 rounded-lg transition-colors whitespace-nowrap flex-shrink-0",
               activeTab === "all" ? "bg-primary text-primary-foreground" : "hover:bg-muted text-muted-foreground",
             )}
           >
             <span className="font-medium">All Resources</span>
-            <span className="ml-auto text-sm opacity-70">({resources.length})</span>
+            <span className="text-sm opacity-70">({resources.length})</span>
           </button>
 
           <button
@@ -98,13 +101,13 @@ export function ResourcesList({ resources }: ResourcesListProps) {
               setSelectedTags([])
             }}
             className={cn(
-              "flex items-center gap-3 px-4 py-3 text-left rounded-lg transition-colors",
+              "flex items-center gap-3 px-4 py-3 rounded-lg transition-colors whitespace-nowrap flex-shrink-0",
               activeTab === "videos" ? "bg-primary text-primary-foreground" : "hover:bg-muted text-muted-foreground",
             )}
           >
             <Video className="h-4 w-4" />
             <span className="font-medium">Videos</span>
-            <span className="ml-auto text-sm opacity-70">({videoCount})</span>
+            <span className="text-sm opacity-70">({videoCount})</span>
           </button>
 
           <button
@@ -113,40 +116,59 @@ export function ResourcesList({ resources }: ResourcesListProps) {
               setSelectedTags([])
             }}
             className={cn(
-              "flex items-center gap-3 px-4 py-3 text-left rounded-lg transition-colors",
+              "flex items-center gap-3 px-4 py-3 rounded-lg transition-colors whitespace-nowrap flex-shrink-0",
               activeTab === "pdfs" ? "bg-primary text-primary-foreground" : "hover:bg-muted text-muted-foreground",
             )}
           >
             <FileText className="h-4 w-4" />
             <span className="font-medium">PDFs</span>
-            <span className="ml-auto text-sm opacity-70">({pdfCount})</span>
+            <span className="text-sm opacity-70">({pdfCount})</span>
+          </button>
+
+          <button
+            onClick={() => {
+              setActiveTab("articles")
+              setSelectedTags([])
+            }}
+            className={cn(
+              "flex items-center gap-3 px-4 py-3 rounded-lg transition-colors whitespace-nowrap flex-shrink-0",
+              activeTab === "articles" ? "bg-primary text-primary-foreground" : "hover:bg-muted text-muted-foreground",
+            )}
+          >
+            <Newspaper className="h-4 w-4" />
+            <span className="font-medium">Articles</span>
+            <span className="text-sm opacity-70">({articleCount})</span>
           </button>
 
           <button
             onClick={() => setActiveTab("tags")}
             className={cn(
-              "flex items-center gap-3 px-4 py-3 text-left rounded-lg transition-colors",
+              "flex items-center gap-3 px-4 py-3 rounded-lg transition-colors whitespace-nowrap flex-shrink-0",
               activeTab === "tags" ? "bg-primary text-primary-foreground" : "hover:bg-muted text-muted-foreground",
             )}
           >
             <Tag className="h-4 w-4" />
             <span className="font-medium">By Tags</span>
           </button>
+        </div>
 
+        {/* Tab Content */}
+        <div className="flex-1 min-w-0">
+          {/* Tag filters - shown when tags tab is active */}
           {activeTab === "tags" && (
-            <div className="mt-4 space-y-2 pl-2">
-              <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide px-2">Filter by tags</p>
-              <div className="flex flex-col gap-1.5 max-h-[400px] overflow-y-auto">
+            <div className="mb-6 space-y-3">
+              <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Filter by tags</p>
+              <div className="flex flex-wrap gap-2">
                 {allTags.map((tag) => (
                   <button
                     key={tag}
                     onClick={() => toggleTag(tag)}
                     className={cn(
-                      "text-left px-3 py-2 rounded-lg text-sm transition-colors",
-                      selectedTags.includes(tag) ? "bg-primary/10 border border-primary/20" : "hover:bg-muted",
+                      "transition-all",
+                      selectedTags.includes(tag) ? "ring-2 ring-primary ring-offset-2" : "",
                     )}
                   >
-                    <Badge className={cn("text-xs font-medium rounded-full px-2.5 py-0.5 border-0", getTagColor(tag))}>
+                    <Badge className={cn("text-xs font-medium rounded-full px-3 py-1 border-0", getTagColor(tag))}>
                       {tag}
                     </Badge>
                   </button>
@@ -155,17 +177,15 @@ export function ResourcesList({ resources }: ResourcesListProps) {
               {selectedTags.length > 0 && (
                 <button
                   onClick={() => setSelectedTags([])}
-                  className="text-xs text-muted-foreground hover:text-foreground px-2 py-1"
+                  className="text-xs text-muted-foreground hover:text-foreground underline"
                 >
-                  Clear filters
+                  Clear all filters
                 </button>
               )}
             </div>
           )}
-        </div>
 
-        {/* Tab Content */}
-        <div className="flex-1">
+          {/* Resources grid */}
           {filteredResources.length > 0 ? (
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredResources.map((resource) => (

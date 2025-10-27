@@ -12,7 +12,7 @@ export interface Resource {
   title: string
   description: string | null
   category: string
-  type: "course" | "scholarship" | "funding" | "article" | "pdf" | "video"
+  type: "course" | "scholarship" | "funding" | "article" | "paper" | "video"
   url: string | null
   image_url: string | null
   tags: string[] | null
