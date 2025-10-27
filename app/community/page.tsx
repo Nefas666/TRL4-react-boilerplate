@@ -40,7 +40,7 @@ export default function CommunityPage() {
             </p>
           </div>
           <Button className="gap-2 rounded-full">
-            <Plus className="h-4 w-4" />
+            <Plus className="h-4 w-4 pt-8 md:pt-0" />
             New Post
           </Button>
         </div>

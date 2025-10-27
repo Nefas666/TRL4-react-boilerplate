@@ -116,7 +116,7 @@ export function Navbar() {
                 </div>
 
                 <SheetHeader>
-                  <SheetTitle className="font-display font-black text-3xl text-left text-foreground">
+                  <SheetTitle className="font-display font-black text-3xl text-left text-foreground/80">
                     t<span className="text-[28px]">AI</span>mi
                   </SheetTitle>
                 </SheetHeader>
