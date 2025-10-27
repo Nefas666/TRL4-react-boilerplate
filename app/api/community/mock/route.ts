@@ -10,7 +10,7 @@ const mockPosts = [
       "I recently moved to a rural area and want to start a small sustainable farm. Does anyone have experience with this? What are the first steps I should take?",
     tags: ["farming", "sustainability", "beginner"],
     likes_count: 24,
-    comments_count: 8,
+    comments_count: 2,
     created_at: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
     updated_at: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
     profiles: {
@@ -30,7 +30,7 @@ const mockPosts = [
       "After 3 years of hard work, my agritourism business is finally profitable! I wanted to share my journey and some lessons learned. The key was combining traditional farming with educational workshops for visitors. Happy to answer any questions!",
     tags: ["agritourism", "success-story", "business"],
     likes_count: 45,
-    comments_count: 12,
+    comments_count: 2,
     created_at: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(),
     updated_at: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(),
     profiles: {
@@ -50,7 +50,7 @@ const mockPosts = [
       "Does anyone know about EU funding programs for rural development? I have a project idea for a cooperative farm but need financial support to get started.",
     tags: ["funding", "eu-programs", "cooperative"],
     likes_count: 18,
-    comments_count: 6,
+    comments_count: 2,
     created_at: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(),
     updated_at: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(),
     profiles: {
@@ -70,7 +70,7 @@ const mockPosts = [
       "I want to get organic certification for my farm. The process seems complicated. Can anyone share their experience with the certification process in Italy?",
     tags: ["organic", "certification", "regulations"],
     likes_count: 31,
-    comments_count: 15,
+    comments_count: 2,
     created_at: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
     updated_at: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
     profiles: {
