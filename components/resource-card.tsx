@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils"
 import { getTagGradient } from "@/lib/gradient-utils"
+import { getTagColor } from "@/lib/tag-colors"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -37,39 +38,47 @@ export function ResourceCard({ resource }: ResourceCardProps) {
 
   return (
     <Card className="flex flex-col h-full border-0 soft-shadow hover:soft-shadow-lg transition-all">
-      <div className={cn("h-32 w-full relative rounded-t-[1.5rem]", coverGradient)}>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent rounded-t-[1.5rem]" />
+      <div className={cn("h-32 w-full relative rounded-t-lg", coverGradient)}>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent rounded-t-lg" />
       </div>
 
-      <CardHeader className="pt-4">
+      <CardHeader className="pt-4 pb-3 space-y-2">
         <div className="flex items-start justify-between gap-2">
-          <div className="flex-1">
-            <CardTitle className="text-lg font-bold line-clamp-2">{resource.title}</CardTitle>
-            <CardDescription className="mt-3">
-              <Badge className={cn("text-sm font-medium rounded-full px-3 py-1", categoryColor)}>
-                {getResourceIcon()}
-                <span className={cn(getResourceIcon() && "ml-1.5")}>{resource.type}</span>
-              </Badge>
-              {resource.file_size && (
-                <span className="ml-2 text-xs text-muted-foreground">{formatFileSize(resource.file_size)}</span>
-              )}
-            </CardDescription>
+          <div className="flex-1 min-h-[3.5rem]">
+            <CardTitle className="text-lg font-bold line-clamp-2 leading-snug">{resource.title}</CardTitle>
           </div>
         </div>
+        <CardDescription className="flex items-center gap-2 flex-wrap">
+          <Badge className={cn("text-sm font-medium rounded-full px-3 py-1", categoryColor)}>
+            {getResourceIcon()}
+            <span className={cn(getResourceIcon() && "ml-1.5")}>{resource.type}</span>
+          </Badge>
+          {resource.file_size && (
+            <span className="text-xs text-muted-foreground">{formatFileSize(resource.file_size)}</span>
+          )}
+        </CardDescription>
       </CardHeader>
-      <CardContent className="flex-1">
-        <p className="text-sm leading-relaxed line-clamp-3 text-muted-foreground">{resource.description}</p>
+
+      <CardContent className="flex-1 flex flex-col gap-3 pb-3">
+        <p className="text-sm leading-relaxed line-clamp-3 text-muted-foreground min-h-[3.75rem]">
+          {resource.description}
+        </p>
+
         {resource.tags && resource.tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mt-4">
-            {resource.tags.slice(0, 3).map((tag) => (
-              <Badge key={tag} variant="outline" className="text-xs font-medium rounded-full">
+          <div className="flex flex-wrap gap-2 min-h-[2rem]">
+            {resource.tags.map((tag) => (
+              <Badge
+                key={tag}
+                className={cn("text-xs font-medium rounded-full px-2.5 py-0.5 border-0", getTagColor(tag))}
+              >
                 {tag}
               </Badge>
             ))}
           </div>
         )}
       </CardContent>
-      <CardFooter>
+
+      <CardFooter className="pt-0">
         {resource.file_url ? (
           <Button asChild className="w-full font-medium rounded-full" size="default">
             <a href={resource.file_url} target="_blank" rel="noopener noreferrer">
