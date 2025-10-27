@@ -27,7 +27,7 @@ export function ResourcesList({ resources }: ResourcesListProps) {
     if (activeTab === "videos") {
       filtered = filtered.filter((r) => r.type === "video")
     } else if (activeTab === "pdfs") {
-      filtered = filtered.filter((r) => r.type === "paper")
+      filtered = filtered.filter((r) => r.type === "pdf")
     } else if (activeTab === "articles") {
       filtered = filtered.filter((r) => r.type === "article")
     } else if (activeTab === "tags") {
@@ -58,7 +58,7 @@ export function ResourcesList({ resources }: ResourcesListProps) {
   }, [resources, searchQuery, activeTab, selectedTags])
 
   const videoCount = resources.filter((r) => r.type === "video").length
-  const pdfCount = resources.filter((r) => r.type === "paper").length
+  const pdfCount = resources.filter((r) => r.type === "pdf").length
   const articleCount = resources.filter((r) => r.type === "article").length
 
   const toggleTag = (tag: string) => {
