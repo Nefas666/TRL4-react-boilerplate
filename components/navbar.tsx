@@ -69,7 +69,7 @@ export function Navbar() {
             </Link>
           </div>
 
-          <div className="hidden md:flex space-x-2 items-center holographic-bg">
+          <div className="hidden md:flex space-x-2 items-center">
             {links.map((link) => {
               const Icon = link.icon
               const isActive = pathname === link.href
