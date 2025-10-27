@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { MessageSquare, Home, BookOpen, Users, User, Menu } from "lucide-react"
+import { MessageSquare, Home, BookOpen, Users, User, EllipsisVertical } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { useState } from "react"
@@ -69,7 +69,7 @@ export function Navbar() {
             </Link>
           </div>
 
-          <div className="hidden md:flex space-x-2 items-center">
+          <div className="hidden md:flex space-x-2 items-center holographic-bg">
             {links.map((link) => {
               const Icon = link.icon
               const isActive = pathname === link.href
@@ -81,7 +81,7 @@ export function Navbar() {
                   variant="ghost"
                   size="sm"
                   className={cn(
-                    "gap-2 font-medium rounded-full transition-all duration-200",
+                    "gap-2 font-medium py-4 rounded-full transition-all duration-200",
                     isActive ? [link.activeBg, link.activeText] : "text-foreground/70",
                     !isActive && [link.hoverBg, "hover:text-foreground"],
                   )}
@@ -95,15 +95,15 @@ export function Navbar() {
             })}
           </div>
 
-          <div className="md:hidden">
+          <div className="md:hidden bg-card/95 backdrop-blur md:bg-transparent">
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="rounded-full">
-                  <Menu className="h-6 w-6" />
+                  <EllipsisVertical className="h-6 w-6" />
                   <span className="sr-only">Open menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+              <SheetContent side="right" className="w-screen">
                 <SheetHeader>
                   <SheetTitle className="font-display font-black holographic-title text-3xl text-left">
                     t<span className="text-[28px]">AI</span>mi
