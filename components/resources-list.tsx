@@ -27,7 +27,7 @@ export function ResourcesList({ resources }: ResourcesListProps) {
     if (activeTab === "videos") {
       filtered = filtered.filter((r) => r.type === "video")
     } else if (activeTab === "pdfs") {
-      filtered = filtered.filter((r) => r.type === "paper")
+      filtered = filtered.filter((r) => r.type === "pdf")
     } else if (activeTab === "tags") {
       // Show all when in tags tab, filtering happens by selected tags
       filtered = resources
@@ -56,7 +56,7 @@ export function ResourcesList({ resources }: ResourcesListProps) {
   }, [resources, searchQuery, activeTab, selectedTags])
 
   const videoCount = resources.filter((r) => r.type === "video").length
-  const pdfCount = resources.filter((r) => r.type === "paper").length
+  const pdfCount = resources.filter((r) => r.type === "pdf").length
 
   const toggleTag = (tag: string) => {
     setSelectedTags((prev) => (prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]))

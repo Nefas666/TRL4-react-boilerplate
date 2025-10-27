@@ -65,7 +65,7 @@ export default async function ProfilePage() {
             </CardHeader>
             <CardContent>
               {profile?.bio && <p className="text-sm text-muted-foreground mb-4">{profile.bio}</p>}
-              <Button variant="outline" className="w-full gap-2 bg-transparent">
+              <Button variant="outline" className="w-full gap-2 bg-transparent cursor-pointer">
                 <LogOut className="h-4 w-4" />
                 Sign Out
               </Button>

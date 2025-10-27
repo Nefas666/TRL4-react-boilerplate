@@ -41,7 +41,7 @@ export default function HomePage() {
       case 4: // Outcomes - top left
         return `top-[55%] left-[50%] md:left-[70%] z-10 ${baseOpacity}`
       case 5: // CTA - center
-        return `top-[60%] left-1/2 -translate-x-1/2 opacity-20 transition-opacity z-10 ${baseOpacity.replace('lg:opacity-100', '')}`
+        return `top-[60%] left-1/2 -translate-x-1/2 transition-opacity z-10 ${baseOpacity.replace('lg:opacity-100', '')}`
       default:
         return "hidden"
     }
