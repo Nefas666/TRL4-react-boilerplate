@@ -103,20 +103,20 @@ export function Navbar() {
                   <span className="sr-only">Open menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-screen">
+              <SheetContent side="right" className="w-screen bg-background">
                 <div className="absolute top-4 right-4">
                   <Button
                     variant="ghost"
                     size="icon"
                     onClick={() => setIsOpen(false)}
-                    className="rounded-full w-12 h-12 bg-white/60 hover:bg-white/80 transition-all"
+                    className="rounded-full w-14 h-14 bg-white/60 hover:bg-white/80 transition-all"
                   >
                     <X className="h-6 w-6 text-primary" />
                   </Button>
                 </div>
 
                 <SheetHeader>
-                  <SheetTitle className="font-display font-black holographic-title saturate-200 text-3xl text-left">
+                  <SheetTitle className="font-display font-black text-3xl text-left text-foreground">
                     t<span className="text-[28px]">AI</span>mi
                   </SheetTitle>
                 </SheetHeader>
