@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { MessageSquare, Home, BookOpen, Users, User, EllipsisVertical } from "lucide-react"
+import { MessageSquare, Home, BookOpen, Users, User, EllipsisVertical, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { useState } from "react"
@@ -104,6 +104,17 @@ export function Navbar() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-screen">
+                <div className="absolute top-4 right-4">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => setIsOpen(false)}
+                    className="rounded-full w-12 h-12 bg-white/60 hover:bg-white/80 transition-all"
+                  >
+                    <X className="h-6 w-6 text-primary" />
+                  </Button>
+                </div>
+
                 <SheetHeader>
                   <SheetTitle className="font-display font-black holographic-title text-3xl text-left">
                     t<span className="text-[28px]">AI</span>mi
