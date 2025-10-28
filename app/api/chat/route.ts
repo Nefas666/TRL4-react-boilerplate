@@ -2,8 +2,14 @@ import { type NextRequest, NextResponse } from "next/server"
 
 export async function POST(req: NextRequest) {
   try {
+    console.log("[v0] Chat API called")
+
     if (!process.env.OPENAI_API_KEY) {
-      return NextResponse.json({ error: "OpenAI API key is not configured" }, { status: 500 })
+      console.error("[v0] OpenAI API key is not configured")
+      return NextResponse.json(
+        { error: "OpenAI API key is not configured. Please add OPENAI_API_KEY to your environment variables." },
+        { status: 500 },
+      )
     }
 
     const OpenAI = (await import("openai")).default
@@ -12,9 +18,13 @@ export async function POST(req: NextRequest) {
       apiKey: process.env.OPENAI_API_KEY,
     })
 
-    const { message, isFirstMessage } = await req.json()
+    const body = await req.json()
+    console.log("[v0] Request body:", body)
+
+    const { message, isFirstMessage } = body
 
     if (!message) {
+      console.error("[v0] Message is missing from request")
       return NextResponse.json({ error: "Message is required" }, { status: 400 })
     }
 
@@ -52,6 +62,7 @@ export async function POST(req: NextRequest) {
       content: message,
     })
 
+    console.log("[v0] Calling OpenAI API...")
     const completion = await openai.chat.completions.create({
       model: "gpt-4o",
       messages: messages as any,
@@ -60,10 +71,31 @@ export async function POST(req: NextRequest) {
     })
 
     const responseMessage = completion.choices[0]?.message?.content || "Sorry, I couldn't generate a response."
+    console.log("[v0] OpenAI response received")
 
     return NextResponse.json({ message: responseMessage })
-  } catch (error) {
-    console.error("OpenAI API error:", error)
-    return NextResponse.json({ error: "Failed to process message" }, { status: 500 })
+  } catch (error: any) {
+    console.error("[v0] Chat API error:", error)
+    console.error("[v0] Error details:", {
+      message: error?.message,
+      status: error?.status,
+      type: error?.type,
+    })
+
+    if (error?.status === 401) {
+      return NextResponse.json(
+        { error: "Invalid OpenAI API key. Please check your OPENAI_API_KEY environment variable." },
+        { status: 500 },
+      )
+    }
+
+    if (error?.status === 429) {
+      return NextResponse.json({ error: "OpenAI API rate limit exceeded. Please try again later." }, { status: 429 })
+    }
+
+    return NextResponse.json(
+      { error: `Failed to process message: ${error?.message || "Unknown error"}` },
+      { status: 500 },
+    )
   }
 }
