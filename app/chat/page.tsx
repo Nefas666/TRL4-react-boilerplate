@@ -61,6 +61,8 @@ export default function ChatPage() {
   const [isListening, setIsListening] = useState(false)
   const [messages, setMessages] = useState<ChatMessageType[]>([])
   const [showWelcomeContent, setShowWelcomeContent] = useState(false)
+  const [isInputDisabled, setIsInputDisabled] = useState(true)
+  const [showTooltip, setShowTooltip] = useState(false)
   const [hasStartedChat, setHasStartedChat] = useState(false)
   const [input, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
@@ -88,6 +90,19 @@ export default function ChatPage() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [showWelcomeContent])
+
+  useEffect(() => {
+    // After 3.5 seconds, show welcome content and enable input
+    const timer = setTimeout(() => {
+      setShowWelcomeContent(true)
+      // Enable input after fade-in animation completes (1s animation + 0.5s buffer)
+      setTimeout(() => {
+        setIsInputDisabled(false)
+      }, 1500)
+    }, 3500)
+
+    return () => clearTimeout(timer)
+  }, [])
 
   // Initialize Speech Recognition
   useEffect(() => {
@@ -158,7 +173,7 @@ export default function ChatPage() {
   }
 
   const handleSendMessage = async (messageText: string) => {
-    if (!messageText.trim() || isLoading) return
+    if (!messageText.trim() || isLoading || isInputDisabled) return
 
     if (!hasStartedChat) {
       setHasStartedChat(true)
@@ -309,7 +324,7 @@ export default function ChatPage() {
             <div className="relative flex items-center justify-center my-auto">
               <div
                 className={`w-[280px] h-[280px] md:w-[320px] md:h-[320px] transition-all duration-1000 ${
-                  showWelcomeContent ? "opacity-30 scale-90" : "opacity-100 scale-100"
+                  showWelcomeContent ? "opacity-0 scale-90" : "opacity-100 scale-100"
                 }`}
               >
                 <HolographicBlob />
@@ -332,7 +347,8 @@ export default function ChatPage() {
                           <button
                             key={index}
                             onClick={() => handleStarterClick(topic)}
-                            className="group relative flex items-center cursor-pointer gap-3 p-4 rounded-2xl bg-white/80 hover:bg-white/90 backdrop-blur-lg border border-white/50 transition-all duration-300 hover:scale-[1.02] hover:shadow-md text-left"
+                            disabled={isInputDisabled}
+                            className="group relative flex items-center cursor-pointer gap-3 p-4 rounded-2xl bg-white/80 hover:bg-white/90 backdrop-blur-lg border border-white/50 transition-all duration-300 hover:scale-[1.02] hover:shadow-md text-left disabled:opacity-50 disabled:cursor-not-allowed"
                           >
                             <span className="text-2xl flex-shrink-0">{topic.emoji}</span>
                             <span className="text-sm font-medium text-primary/80 group-hover:text-primary transition-colors">
@@ -348,7 +364,7 @@ export default function ChatPage() {
             </div>
 
             <div
-              className={`text-center space-y-4 mb-8 transition-opacity duration-700 ${
+              className={`text-center space-y-4 mb-8 transition-opacity duration-1000 ${
                 showWelcomeContent ? "opacity-0" : "opacity-100"
               }`}
             >
@@ -364,10 +380,17 @@ export default function ChatPage() {
       </main>
 
       <div
-        className="pb-8 px-6 border-t border-border/30 pt-6"
-        onMouseEnter={handleInputAreaInteraction}
-        onFocus={handleInputAreaInteraction}
+        className="pb-8 px-6 border-t border-border/30 pt-6 relative"
+        onMouseEnter={() => isInputDisabled && setShowTooltip(true)}
+        onMouseLeave={() => setShowTooltip(false)}
       >
+        {showTooltip && isInputDisabled && (
+          <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 px-4 py-2 bg-primary text-white text-sm rounded-lg shadow-lg animate-in fade-in slide-in-from-bottom-2 duration-300 whitespace-nowrap">
+            Taimi vuole dirti qualcosa prima di iniziare ✨
+            <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-8 border-transparent border-t-primary" />
+          </div>
+        )}
+
         {inputMode === "voice" ? (
           <div className="max-w-2xl mx-auto">
             <div className="flex items-center justify-center gap-6">
@@ -375,7 +398,8 @@ export default function ChatPage() {
                 variant="ghost"
                 size="icon"
                 onClick={() => setInputMode("text")}
-                className="rounded-full w-14 h-14 bg-white/60 hover:bg-white/80 transition-all"
+                disabled={isInputDisabled}
+                className="rounded-full w-14 h-14 bg-white/60 hover:bg-white/80 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <MessageSquare className="h-6 w-6 text-primary" />
               </Button>
@@ -393,8 +417,9 @@ export default function ChatPage() {
 
                 <Button
                   onClick={handleMicToggle}
+                  disabled={isInputDisabled}
                   size="icon"
-                  className={`relative rounded-full w-20 h-20 transition-all duration-300 ${
+                  className={`relative rounded-full w-20 h-20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed ${
                     isListening ? "bg-soft-aqua hover:bg-soft-aqua/90 scale-110" : "bg-white/80 hover:bg-white/90"
                   }`}
                 >
@@ -412,7 +437,8 @@ export default function ChatPage() {
                     recognitionRef.current.stop()
                   }
                 }}
-                className="rounded-full w-14 h-14 bg-white/60 hover:bg-white/80 transition-all"
+                disabled={isInputDisabled}
+                className="rounded-full w-14 h-14 bg-white/60 hover:bg-white/80 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <X className="h-6 w-6 text-primary" />
               </Button>
@@ -436,7 +462,8 @@ export default function ChatPage() {
                 variant="ghost"
                 size="icon"
                 onClick={() => setInputMode("voice")}
-                className="rounded-full w-12 h-12 bg-white/60 hover:bg-white/80 transition-all flex-shrink-0 cursor-pointer"
+                disabled={isInputDisabled}
+                className="rounded-full w-12 h-12 bg-white/60 hover:bg-white/80 transition-all flex-shrink-0 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Mic className="h-6 w-6 text-primary" />
               </Button>
@@ -445,15 +472,15 @@ export default function ChatPage() {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Type your message..."
-                disabled={isLoading}
-                className="flex-1 rounded-full bg-white/60 backdrop-blur-lg border-white/50 px-6 py-6 text-base focus:bg-white/80 transition-all cursor-pointer"
+                disabled={isLoading || isInputDisabled}
+                className="flex-1 rounded-full bg-white/60 backdrop-blur-lg border-white/50 px-6 py-6 text-base focus:bg-white/80 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               />
 
               <Button
                 type="submit"
-                disabled={isLoading || !input.trim()}
+                disabled={isLoading || !input.trim() || isInputDisabled}
                 size="icon"
-                className="rounded-full w-12 h-12 bg-primary hover:bg-primary/90 disabled:opacity-50 flex-shrink-0 cursor-pointer"
+                className="rounded-full w-12 h-12 bg-primary hover:bg-primary/90 disabled:opacity-50 flex-shrink-0 disabled:cursor-not-allowed"
               >
                 <Send className="h-5 w-5 text-white" />
               </Button>
