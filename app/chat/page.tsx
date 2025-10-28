@@ -60,13 +60,14 @@ export default function ChatPage() {
   const [inputMode, setInputMode] = useState<InputMode>("voice")
   const [isListening, setIsListening] = useState(false)
   const [messages, setMessages] = useState<ChatMessageType[]>([])
-  const [hasStartedChat, setHasStartedChat] = useState(false)
+  const [hasScrolled, setHasScrolled] = useState(false)
   const [input, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [transcript, setTranscript] = useState("")
   const [showStarters, setShowStarters] = useState(true)
   const recognitionRef = useRef<any>(null)
   const messagesEndRef = useRef<HTMLDivElement>(null)
+  const mainRef = useRef<HTMLDivElement>(null)
   const router = useRouter()
 
   const scrollToBottom = () => {
@@ -77,7 +78,26 @@ export default function ChatPage() {
     scrollToBottom()
   }, [messages])
 
-  // Initialize Speech Recognition
+  useEffect(() => {
+    const handleScroll = () => {
+      if (mainRef.current && mainRef.current.scrollTop > 50 && !hasScrolled) {
+        setHasScrolled(true)
+        setMessages([WELCOME_MESSAGE])
+      }
+    }
+
+    const mainElement = mainRef.current
+    if (mainElement) {
+      mainElement.addEventListener("scroll", handleScroll)
+    }
+
+    return () => {
+      if (mainElement) {
+        mainElement.removeEventListener("scroll", handleScroll)
+      }
+    }
+  }, [hasScrolled])
+
   useEffect(() => {
     if (typeof window !== "undefined" && "webkitSpeechRecognition" in window) {
       const SpeechRecognition = (window as any).webkitSpeechRecognition
@@ -133,10 +153,6 @@ export default function ChatPage() {
       recognitionRef.current.stop()
       setIsListening(false)
     } else {
-      if (!hasStartedChat) {
-        setHasStartedChat(true)
-        setMessages([WELCOME_MESSAGE])
-      }
       setTranscript("")
       recognitionRef.current.start()
       setIsListening(true)
@@ -146,12 +162,19 @@ export default function ChatPage() {
   const handleSendMessage = async (messageText: string) => {
     if (!messageText.trim() || isLoading) return
 
-    if (!hasStartedChat) {
-      setHasStartedChat(true)
+    if (!hasScrolled) {
+      setHasScrolled(true)
       setMessages([WELCOME_MESSAGE])
+      setTimeout(() => {
+        sendUserMessage(messageText)
+      }, 500)
+      return
     }
 
-    // Nascondi i topic suggeriti dopo il primo messaggio
+    sendUserMessage(messageText)
+  }
+
+  const sendUserMessage = async (messageText: string) => {
     setShowStarters(false)
 
     const userMessage: ChatMessageType = {
@@ -226,90 +249,96 @@ export default function ChatPage() {
         </Button>
       </div>
 
-      <main className="flex-1 flex flex-col overflow-y-scroll">
-        {hasStartedChat ? (
-          <div className="flex-1 px-6 py-6 max-w-4xl mx-auto w-full">
-            <div className="space-y-4">
-              {messages.map((message) => (
-                <ChatMessage key={message.id} message={message} />
-              ))}
+      <main ref={mainRef} className="flex-1 flex flex-col overflow-y-scroll">
+        <div
+          className={`flex-1 flex flex-col items-center justify-between px-6 py-12 max-w-6xl mx-auto w-full transition-opacity duration-1000 ${
+            hasScrolled ? "opacity-0 pointer-events-none absolute" : "opacity-100"
+          }`}
+        >
+          <div className="text-center space-y-8 mt-8">
+            <h2 className="text-6xl md:text-7xl mb-8 font-medium font-display tracking-wide text-foreground/80">
+              Hello, I'm{" "}
+              <span className="font-display font-black text-6xl text-foreground/80">
+                t<span className="text-[54px]">AI</span>mi
+              </span>
+              <br />
+              How can I help you today?
+            </h2>
+          </div>
 
-              {/* Topic suggeriti - mostrati solo all'inizio */}
-              {showStarters && messages.length === 1 && !isLoading && (
-                <div className="flex flex-col gap-3 my-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                  <div className="flex items-center gap-2 text-sm text-primary/60 px-2">
-                    <Sparkles className="h-4 w-4" />
-                    <span>Try asking about...</span>
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                    {STARTER_TOPICS.map((topic, index) => (
-                      <button
-                        key={index}
-                        onClick={() => handleStarterClick(topic)}
-                        className="group relative flex items-center cursor-pointer gap-3 p-4 rounded-2xl bg-white/60 hover:bg-white/80 backdrop-blur-lg border border-white/50 transition-all duration-300 hover:scale-[1.02] hover:shadow-md text-left"
-                      >
-                        <span className="text-2xl flex-shrink-0">{topic.emoji}</span>
-                        <span className="text-sm font-medium text-primary/80 group-hover:text-primary transition-colors">
-                          {topic.text}
-                        </span>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {isLoading && (
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-full bg-soft-lavender flex items-center justify-center">
-                    <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                  </div>
-                  <div className="bg-white/60 backdrop-blur-lg rounded-3xl px-5 py-3 border border-white/50">
-                    <div className="flex gap-1">
-                      <span className="w-2 h-2 bg-primary/60 rounded-full animate-bounce" />
-                      <span
-                        className="w-2 h-2 bg-primary/60 rounded-full animate-bounce"
-                        style={{ animationDelay: "0.2s" }}
-                      />
-                      <span
-                        className="w-2 h-2 bg-primary/60 rounded-full animate-bounce"
-                        style={{ animationDelay: "0.4s" }}
-                      />
-                    </div>
-                  </div>
-                </div>
-              )}
-              <div ref={messagesEndRef} />
+          <div className="relative flex items-center justify-center my-auto">
+            <div className="w-[280px] h-[280px] md:w-[320px] md:h-[320px]">
+              <HolographicBlob />
             </div>
           </div>
-        ) : (
-          <div className="flex-1 flex flex-col items-center justify-between px-6 py-12 max-w-6xl mx-auto w-full">
-            <div className="text-center space-y-8 mt-8">
-              <h2 className="text-6xl md:text-7xl mb-8 font-medium font-display tracking-wide text-foreground/80">
-                Hello, I'm{" "}
-                <span className="font-display font-black text-6xl text-foreground/80">
-                  t<span className="text-[54px]">AI</span>mi
-                </span>
-                <br />
-                How can I help you today?
-              </h2>
-            </div>
 
-            <div className="relative flex items-center justify-center my-auto">
-              <div className="w-[280px] h-[280px] md:w-[320px] md:h-[320px]">
-                <HolographicBlob />
+          <div className="text-center space-y-4 mb-8">
+            <p className="text-lg text-primary/70 leading-relaxed max-w-lg mx-auto px-4">
+              Hello and welcome! You're now testing the TAIMI digital mentor, an experimental chatbot designed{" "}
+              <span className="text-primary/50">
+                to support young people exploring sustainable entrepreneurship in rural areas.
+              </span>
+            </p>
+            <p className="text-sm text-primary/50 italic">Scroll down to start chatting...</p>
+          </div>
+        </div>
+
+        <div
+          className={`flex-1 px-6 py-6 max-w-4xl mx-auto w-full transition-opacity duration-1000 ${
+            hasScrolled ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
+        >
+          <div className="space-y-4">
+            {messages.map((message) => (
+              <ChatMessage key={message.id} message={message} />
+            ))}
+
+            {showStarters && messages.length === 1 && !isLoading && (
+              <div className="flex flex-col gap-3 my-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                <div className="flex items-center gap-2 text-sm text-primary/60 px-2">
+                  <Sparkles className="h-4 w-4" />
+                  <span>Try asking about...</span>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                  {STARTER_TOPICS.map((topic, index) => (
+                    <button
+                      key={index}
+                      onClick={() => handleStarterClick(topic)}
+                      className="group relative flex items-center cursor-pointer gap-3 p-4 rounded-2xl bg-white/60 hover:bg-white/80 backdrop-blur-lg border border-white/50 transition-all duration-300 hover:scale-[1.02] hover:shadow-md text-left"
+                    >
+                      <span className="text-2xl flex-shrink-0">{topic.emoji}</span>
+                      <span className="text-sm font-medium text-primary/80 group-hover:text-primary transition-colors">
+                        {topic.text}
+                      </span>
+                    </button>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
 
-            <div className="text-center space-y-4 mb-8">
-              <p className="text-lg text-primary/70 leading-relaxed max-w-lg mx-auto px-4">
-                Hello and welcome! You're now testing the TAIMI digital mentor, an experimental chatbot designed{" "}
-                <span className="text-primary/50">
-                  to support young people exploring sustainable entrepreneurship in rural areas.
-                </span>
-              </p>
-            </div>
+            {isLoading && (
+              <div className="flex items-start gap-3">
+                <div className="w-8 h-8 rounded-full bg-soft-lavender flex items-center justify-center">
+                  <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                </div>
+                <div className="bg-white/60 backdrop-blur-lg rounded-3xl px-5 py-3 border border-white/50">
+                  <div className="flex gap-1">
+                    <span className="w-2 h-2 bg-primary/60 rounded-full animate-bounce" />
+                    <span
+                      className="w-2 h-2 bg-primary/60 rounded-full animate-bounce"
+                      style={{ animationDelay: "0.2s" }}
+                    />
+                    <span
+                      className="w-2 h-2 bg-primary/60 rounded-full animate-bounce"
+                      style={{ animationDelay: "0.4s" }}
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
+            <div ref={messagesEndRef} />
           </div>
-        )}
+        </div>
       </main>
 
       <div className="pb-8 px-6 border-t border-border/30 pt-6">
