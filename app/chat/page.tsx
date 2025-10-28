@@ -309,10 +309,10 @@ export default function ChatPage() {
             </div>
           </div>
         ) : (
-          <div className={`flex-1 flex flex-col items-center justify-between px-6 py-12 max-w-6xl mx-auto w-full ${
+          <div className="flex-1 flex flex-col items-center justify-between px-6 py-12 max-w-6xl mx-auto w-full">
+            <div className={`text-center space-y-8 mt-8 ${
                   showWelcomeContent ? "opacity-0 scale-90" : "opacity-100 scale-100"
                 }`}>
-            <div className="text-center space-y-8 mt-8">
               <h2 className="text-6xl md:text-7xl mb-8 font-medium font-display tracking-wide text-foreground/80">
                 Hello, I'm{" "}
                 <span className="font-display font-black text-6xl text-foreground/80">
@@ -388,7 +388,7 @@ export default function ChatPage() {
       >
         {showTooltip && isInputDisabled && (
           <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 px-4 py-2 bg-primary text-white text-sm rounded-lg shadow-lg animate-in fade-in slide-in-from-bottom-2 duration-300 whitespace-nowrap">
-            Taimi vuole dirti qualcosa prima di iniziare ✨
+            Taimi wants to tell you something before starting the conversation...
             <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-8 border-transparent border-t-primary" />
           </div>
         )}
