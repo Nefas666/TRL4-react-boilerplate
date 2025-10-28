@@ -325,8 +325,8 @@ export default function ChatPage() {
 
             <div className="relative flex items-center justify-center my-auto">
               <div
-                className={`w-[280px] h-[280px] md:w-[320px] md:h-[320px] transition-all duration-1000 ${
-                  showWelcomeContent ? "opacity-0 scale-90" : "opacity-100 scale-100"
+                className={`transition-all duration-1000 ${
+                  showWelcomeContent ? "opacity-0 scale-90" : "w-[280px] h-[280px] md:w-[320px] md:h-[320px] opacity-100 scale-100"
                 }`}
               >
                 <HolographicBlob />
