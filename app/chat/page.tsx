@@ -253,7 +253,7 @@ export default function ChatPage() {
         </Button>
       </div>
 
-      <main className="flex-1 flex flex-col overflow-y-scroll">
+      <main className="flex-1 flex flex-col overflow-auto">
         {hasStartedChat ? (
           <div className="flex-1 px-6 py-6 max-w-4xl mx-auto w-full">
             <div className="space-y-4">
