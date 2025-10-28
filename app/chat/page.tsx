@@ -18,23 +18,23 @@ const STARTER_TOPICS = [
   {
     emoji: "🌱",
     text: "Tell me about soil literacy",
-    message: "I'd like to learn about soil literacy and regenerative farming"
+    message: "I'd like to learn about soil literacy and regenerative farming",
   },
   {
     emoji: "💡",
     text: "Help me develop a business idea",
-    message: "Can you help me develop my business idea for rural entrepreneurship?"
+    message: "Can you help me develop my business idea for rural entrepreneurship?",
   },
   {
     emoji: "🎓",
     text: "Find training opportunities",
-    message: "What training opportunities are available for young rural entrepreneurs?"
+    message: "What training opportunities are available for young rural entrepreneurs?",
   },
   {
     emoji: "💧",
     text: "Climate-smart practices",
-    message: "Tell me about climate-smart and sustainable practices"
-  }
+    message: "Tell me about climate-smart and sustainable practices",
+  },
 ]
 
 export default function ChatPage() {
@@ -59,7 +59,7 @@ This is a test environment, which means that some of the features and responses 
 
 So, tell me, what would you like to explore first?`,
       created_at: new Date().toISOString(),
-    }
+    },
   ])
   const [input, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
@@ -191,7 +191,7 @@ So, tell me, what would you like to explore first?`,
     }
   }
 
-  const handleStarterClick = (topic: typeof STARTER_TOPICS[0]) => {
+  const handleStarterClick = (topic: (typeof STARTER_TOPICS)[0]) => {
     handleSendMessage(topic.message)
   }
 
@@ -224,7 +224,7 @@ So, tell me, what would you like to explore first?`,
               {messages.map((message) => (
                 <ChatMessage key={message.id} message={message} />
               ))}
-              
+
               {/* Topic suggeriti - mostrati solo all'inizio */}
               {showStarters && messages.length === 1 && !isLoading && (
                 <div className="flex flex-col gap-3 my-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -248,7 +248,7 @@ So, tell me, what would you like to explore first?`,
                   </div>
                 </div>
               )}
-              
+
               {isLoading && (
                 <div className="flex items-start gap-3">
                   <div className="w-8 h-8 rounded-full bg-soft-lavender flex items-center justify-center">
@@ -293,8 +293,10 @@ So, tell me, what would you like to explore first?`,
 
             <div className="text-center space-y-4 mb-8">
               <p className="text-lg text-primary/70 leading-relaxed max-w-lg mx-auto px-4">
-                Hello and welcome! You're now testing the TAIMI digital mentor, an experimental chatbot designed {" "}
-                <span className="text-primary/50">to support young people exploring sustainable entrepreneurship in rural areas.</span>
+                Hello and welcome! You're now testing the TAIMI digital mentor, an experimental chatbot designed{" "}
+                <span className="text-primary/50">
+                  to support young people exploring sustainable entrepreneurship in rural areas.
+                </span>
               </p>
             </div>
           </div>
