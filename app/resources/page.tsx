@@ -21,7 +21,7 @@ export default async function ResourcesPage() {
 
       <main className="flex-1 container mx-auto px-4 py-8">
         <div className="mb-8">
-          <div className="flex items-start justify-between gap-4">
+          <div className="flex items-start justify-between flex-wrap md:flex-nowrap gap-4">
             <div>
               <h1 className="text-6xl md:text-7xl mb-8 font-medium font-display tracking-wide text-foreground/80">
                 Learning Resources
@@ -32,7 +32,7 @@ export default async function ResourcesPage() {
               </p>
             </div>
             {user && (
-              <Button asChild className="rounded-full">
+              <Button asChild className="rounded-full py-4">
                 <Link href="/resources/upload">
                   <Upload className="mr-2 h-4 w-4" />
                   Upload
