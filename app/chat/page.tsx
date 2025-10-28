@@ -13,39 +13,11 @@ import { Navbar } from "@/components/navbar"
 
 type InputMode = "voice" | "text"
 
-// Topic suggeriti per iniziare la conversazione
-const STARTER_TOPICS = [
-  {
-    emoji: "🌱",
-    text: "Tell me about soil literacy",
-    message: "I'd like to learn about soil literacy and regenerative farming"
-  },
-  {
-    emoji: "💡",
-    text: "Help me develop a business idea",
-    message: "Can you help me develop my business idea for rural entrepreneurship?"
-  },
-  {
-    emoji: "🎓",
-    text: "Find training opportunities",
-    message: "What training opportunities are available for young rural entrepreneurs?"
-  },
-  {
-    emoji: "💧",
-    text: "Climate-smart practices",
-    message: "Tell me about climate-smart and sustainable practices"
-  }
-]
-
-export default function ChatPage() {
-  const [inputMode, setInputMode] = useState<InputMode>("voice")
-  const [isListening, setIsListening] = useState(false)
-  const [messages, setMessages] = useState<ChatMessageType[]>([
-    {
-      id: crypto.randomUUID(),
-      conversation_id: "welcome",
-      role: "assistant",
-      content: `👋 Hello and welcome! You're now testing the **TAIMI digital mentor**, an experimental chatbot designed to support young people exploring sustainable entrepreneurship in rural areas.
+const WELCOME_MESSAGE: ChatMessageType = {
+  id: crypto.randomUUID(),
+  conversation_id: "welcome",
+  role: "assistant",
+  content: `👋 Hello and welcome! You're now testing the **TAIMI digital mentor**, an experimental chatbot designed to support young people exploring sustainable entrepreneurship in rural areas.
 
 This is a test environment, which means that some of the features and responses are still being improved. Your feedback helps us make the mentor smarter and more useful for everyone.
 
@@ -58,9 +30,37 @@ This is a test environment, which means that some of the features and responses 
 - 🤝 **Connect** with the community of rural entrepreneurs
 
 So, tell me, what would you like to explore first?`,
-      created_at: new Date().toISOString(),
-    }
-  ])
+  created_at: new Date().toISOString(),
+}
+
+const STARTER_TOPICS = [
+  {
+    emoji: "🌱",
+    text: "Tell me about soil literacy",
+    message: "I'd like to learn about soil literacy and regenerative farming",
+  },
+  {
+    emoji: "💡",
+    text: "Help me develop a business idea",
+    message: "Can you help me develop my business idea for rural entrepreneurship?",
+  },
+  {
+    emoji: "🎓",
+    text: "Find training opportunities",
+    message: "What training opportunities are available for young rural entrepreneurs?",
+  },
+  {
+    emoji: "💧",
+    text: "Climate-smart practices",
+    message: "Tell me about climate-smart and sustainable practices",
+  },
+]
+
+export default function ChatPage() {
+  const [inputMode, setInputMode] = useState<InputMode>("voice")
+  const [isListening, setIsListening] = useState(false)
+  const [messages, setMessages] = useState<ChatMessageType[]>([])
+  const [hasStartedChat, setHasStartedChat] = useState(false)
   const [input, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [transcript, setTranscript] = useState("")
@@ -133,6 +133,10 @@ So, tell me, what would you like to explore first?`,
       recognitionRef.current.stop()
       setIsListening(false)
     } else {
+      if (!hasStartedChat) {
+        setHasStartedChat(true)
+        setMessages([WELCOME_MESSAGE])
+      }
       setTranscript("")
       recognitionRef.current.start()
       setIsListening(true)
@@ -141,6 +145,11 @@ So, tell me, what would you like to explore first?`,
 
   const handleSendMessage = async (messageText: string) => {
     if (!messageText.trim() || isLoading) return
+
+    if (!hasStartedChat) {
+      setHasStartedChat(true)
+      setMessages([WELCOME_MESSAGE])
+    }
 
     // Nascondi i topic suggeriti dopo il primo messaggio
     setShowStarters(false)
@@ -191,7 +200,7 @@ So, tell me, what would you like to explore first?`,
     }
   }
 
-  const handleStarterClick = (topic: typeof STARTER_TOPICS[0]) => {
+  const handleStarterClick = (topic: (typeof STARTER_TOPICS)[0]) => {
     handleSendMessage(topic.message)
   }
 
@@ -217,14 +226,14 @@ So, tell me, what would you like to explore first?`,
         </Button>
       </div>
 
-      <main className="flex-1 flex flex-col overflow-auto">
-        {hasMessages ? (
+      <main className="flex-1 flex flex-col overflow-y-scroll">
+        {hasStartedChat ? (
           <div className="flex-1 px-6 py-6 max-w-4xl mx-auto w-full">
             <div className="space-y-4">
               {messages.map((message) => (
                 <ChatMessage key={message.id} message={message} />
               ))}
-              
+
               {/* Topic suggeriti - mostrati solo all'inizio */}
               {showStarters && messages.length === 1 && !isLoading && (
                 <div className="flex flex-col gap-3 my-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -248,7 +257,7 @@ So, tell me, what would you like to explore first?`,
                   </div>
                 </div>
               )}
-              
+
               {isLoading && (
                 <div className="flex items-start gap-3">
                   <div className="w-8 h-8 rounded-full bg-soft-lavender flex items-center justify-center">
@@ -292,9 +301,11 @@ So, tell me, what would you like to explore first?`,
             </div>
 
             <div className="text-center space-y-4 mb-8">
-              <p className="text-lg md:text-xl text-primary/70 leading-relaxed max-w-lg mx-auto px-4">
-                Lorem ipsum tus dis nostra morbi gravida. Nisi sollicitudin{" "}
-                <span className="text-primary/50">tincidunt sodales tellus nam</span>
+              <p className="text-lg text-primary/70 leading-relaxed max-w-lg mx-auto px-4">
+                Hello and welcome! You're now testing the TAIMI digital mentor, an experimental chatbot designed{" "}
+                <span className="text-primary/50">
+                  to support young people exploring sustainable entrepreneurship in rural areas.
+                </span>
               </p>
             </div>
           </div>
