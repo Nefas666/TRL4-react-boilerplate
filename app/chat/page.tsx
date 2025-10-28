@@ -263,7 +263,7 @@ export default function ChatPage() {
 
               {/* Topic suggeriti - mostrati solo all'inizio */}
               {showStarters && messages.length === 1 && !isLoading && (
-                <div className="flex flex-col gap-3 my-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                <div className="flex flex-col gap-3 my-6 animate-in fade-in slide-in-from-bottom-4 duration-500 ">
                   <div className="flex items-center gap-2 text-sm text-primary/60 px-2">
                     <Sparkles className="h-4 w-4" />
                     <span>Try asking about...</span>
@@ -309,7 +309,9 @@ export default function ChatPage() {
             </div>
           </div>
         ) : (
-          <div className="flex-1 flex flex-col items-center justify-between px-6 py-12 max-w-6xl mx-auto w-full">
+          <div className={`flex-1 flex flex-col items-center justify-between px-6 py-12 max-w-6xl mx-auto w-full ${
+                  showWelcomeContent ? "opacity-0 scale-90" : "opacity-100 scale-100"
+                }`}>
             <div className="text-center space-y-8 mt-8">
               <h2 className="text-6xl md:text-7xl mb-8 font-medium font-display tracking-wide text-foreground/80">
                 Hello, I'm{" "}
