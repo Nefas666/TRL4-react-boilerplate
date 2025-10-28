@@ -40,6 +40,7 @@ const STARTER_TOPICS = [
 export default function ChatPage() {
   const [inputMode, setInputMode] = useState<InputMode>("voice")
   const [isListening, setIsListening] = useState(false)
+  const [showInitialBlob, setShowInitialBlob] = useState(true)
   const [messages, setMessages] = useState<ChatMessageType[]>([
     {
       id: crypto.randomUUID(),
@@ -69,6 +70,14 @@ So, tell me, what would you like to explore first?`,
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const router = useRouter()
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowInitialBlob(false)
+    }, 3500)
+
+    return () => clearTimeout(timer)
+  }, [])
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
   }
@@ -77,7 +86,6 @@ So, tell me, what would you like to explore first?`,
     scrollToBottom()
   }, [messages])
 
-  // Initialize Speech Recognition
   useEffect(() => {
     if (typeof window !== "undefined" && "webkitSpeechRecognition" in window) {
       const SpeechRecognition = (window as any).webkitSpeechRecognition
@@ -142,7 +150,6 @@ So, tell me, what would you like to explore first?`,
   const handleSendMessage = async (messageText: string) => {
     if (!messageText.trim() || isLoading) return
 
-    // Nascondi i topic suggeriti dopo il primo messaggio
     setShowStarters(false)
 
     const userMessage: ChatMessageType = {
@@ -218,16 +225,43 @@ So, tell me, what would you like to explore first?`,
       </div>
 
       <main className="flex-1 flex flex-col overflow-auto">
-        {hasMessages ? (
-          <div className="flex-1 px-6 py-6 max-w-4xl mx-auto w-full">
+        {showInitialBlob ? (
+          <div className="flex-1 flex flex-col items-center justify-between px-6 py-12 max-w-6xl mx-auto w-full animate-in fade-in duration-700">
+            <div className="text-center space-y-8 mt-8">
+              <h2 className="text-6xl md:text-7xl mb-8 font-medium font-display tracking-wide text-foreground/80">
+                Hello, I'm{" "}
+                <span className="font-display font-black text-6xl text-foreground/80">
+                  t<span className="text-[54px]">AI</span>mi
+                </span>
+                <br />
+                How can I help you today?
+              </h2>
+            </div>
+
+            <div className="relative flex items-center justify-center my-auto">
+              <div className="w-[280px] h-[280px] md:w-[320px] md:h-[320px]">
+                <HolographicBlob />
+              </div>
+            </div>
+
+            <div className="text-center space-y-4 mb-8">
+              <p className="text-lg text-primary/70 leading-relaxed max-w-lg mx-auto px-4">
+                Hello and welcome! You're now testing the TAIMI digital mentor, an experimental chatbot designed{" "}
+                <span className="text-primary/50">
+                  to support young people exploring sustainable entrepreneurship in rural areas.
+                </span>
+              </p>
+            </div>
+          </div>
+        ) : (
+          <div className="flex-1 px-6 py-6 max-w-4xl mx-auto w-full animate-in fade-in slide-in-from-bottom-4 duration-700">
             <div className="space-y-4">
               {messages.map((message) => (
                 <ChatMessage key={message.id} message={message} />
               ))}
 
-              {/* Topic suggeriti - mostrati solo all'inizio */}
               {showStarters && messages.length === 1 && !isLoading && (
-                <div className="flex flex-col gap-3 my-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                <div className="flex flex-col gap-3 my-6 animate-in fade-in slide-in-from-bottom-4 duration-500 delay-300">
                   <div className="flex items-center gap-2 text-sm text-primary/60 px-2">
                     <Sparkles className="h-4 w-4" />
                     <span>Try asking about...</span>
@@ -270,34 +304,6 @@ So, tell me, what would you like to explore first?`,
                 </div>
               )}
               <div ref={messagesEndRef} />
-            </div>
-          </div>
-        ) : (
-          <div className="flex-1 flex flex-col items-center justify-between px-6 py-12 max-w-6xl mx-auto w-full">
-            <div className="text-center space-y-8 mt-8">
-              <h2 className="text-6xl md:text-7xl mb-8 font-medium font-display tracking-wide text-foreground/80">
-                Hello, I'm{" "}
-                <span className="font-display font-black text-6xl text-foreground/80">
-                  t<span className="text-[54px]">AI</span>mi
-                </span>
-                <br />
-                How can I help you today?
-              </h2>
-            </div>
-
-            <div className="relative flex items-center justify-center my-auto">
-              <div className="w-[280px] h-[280px] md:w-[320px] md:h-[320px]">
-                <HolographicBlob />
-              </div>
-            </div>
-
-            <div className="text-center space-y-4 mb-8">
-              <p className="text-lg text-primary/70 leading-relaxed max-w-lg mx-auto px-4">
-                Hello and welcome! You're now testing the TAIMI digital mentor, an experimental chatbot designed{" "}
-                <span className="text-primary/50">
-                  to support young people exploring sustainable entrepreneurship in rural areas.
-                </span>
-              </p>
             </div>
           </div>
         )}
