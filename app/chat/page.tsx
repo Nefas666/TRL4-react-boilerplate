@@ -4,7 +4,7 @@ import type React from "react"
 import { useState, useRef, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { ArrowLeft, Grid3x3, Mic, X, Send, MessageSquare } from "lucide-react"
+import { ArrowLeft, Mic, X, Send, MessageSquare } from "lucide-react"
 import { useRouter } from "next/navigation"
 import HolographicBlob from "@/components/holographic-blob"
 import { ChatMessage } from "@/components/chat-message"
@@ -153,12 +153,22 @@ export default function ChatPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-cream">
-      <Navbar />     
-      {/* Main Content */}
-      <main className="flex-1 flex flex-col overflow-hidden">
+      <Navbar />
+
+      <div className="absolute top-20 left-4 z-50 md:top-24 md:left-6">
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => router.back()}
+          className="rounded-full w-12 h-12 md:w-14 md:h-14 bg-white/60 hover:bg-white/80 transition-all"
+        >
+          <ArrowLeft className="h-5 w-5 md:h-6 md:w-6 text-primary" />
+        </Button>
+      </div>
+
+      <main className="flex-1 flex flex-col overflow-y-scroll">
         {hasMessages ? (
-          /* Messages View */
-          <div className="flex-1 overflow-y-auto px-6 py-6 max-w-4xl mx-auto w-full">
+          <div className="flex-1 px-6 py-6 max-w-4xl mx-auto w-full">
             <div className="space-y-4">
               {messages.map((message) => (
                 <ChatMessage key={message.id} message={message} />
@@ -187,13 +197,15 @@ export default function ChatPage() {
             </div>
           </div>
         ) : (
-          /* Empty State - Welcome Screen */
           <div className="flex-1 flex flex-col items-center justify-between px-6 py-12 max-w-6xl mx-auto w-full">
             <div className="text-center space-y-8 mt-8">
               <h2 className="text-6xl md:text-7xl mb-8 font-medium font-display tracking-wide text-foreground/80">
-                Hello, I'm <span className="font-display font-black text-6xl text-foreground/80">
-              t<span className="text-[54px]">AI</span>mi</span>
-              <br/>How can I help you today?
+                Hello, I'm{" "}
+                <span className="font-display font-black text-6xl text-foreground/80">
+                  t<span className="text-[54px]">AI</span>mi
+                </span>
+                <br />
+                How can I help you today?
               </h2>
             </div>
 
@@ -205,7 +217,7 @@ export default function ChatPage() {
 
             <div className="text-center space-y-4 mb-8">
               <p className="text-lg md:text-xl text-primary/70 leading-relaxed max-w-lg mx-auto px-4">
-                Lorem ipsum tus dis nostra morbi gravida. Nisi sollicitudin {" "}
+                Lorem ipsum tus dis nostra morbi gravida. Nisi sollicitudin{" "}
                 <span className="text-primary/50">tincidunt sodales tellus nam</span>
               </p>
             </div>
@@ -213,10 +225,8 @@ export default function ChatPage() {
         )}
       </main>
 
-      {/* Bottom Controls */}
       <div className="pb-8 px-6 border-t border-border/30 pt-6">
         {inputMode === "voice" ? (
-          /* Voice Input Controls */
           <div className="max-w-2xl mx-auto">
             <div className="flex items-center justify-center gap-6">
               <Button
@@ -243,9 +253,7 @@ export default function ChatPage() {
                   onClick={handleMicToggle}
                   size="icon"
                   className={`relative rounded-full w-20 h-20 transition-all duration-300 ${
-                    isListening
-                      ? "bg-soft-aqua hover:bg-soft-aqua/90 scale-110"
-                      : "bg-white/80 hover:bg-white/90"
+                    isListening ? "bg-soft-aqua hover:bg-soft-aqua/90 scale-110" : "bg-white/80 hover:bg-white/90"
                   }`}
                 >
                   <Mic className={`h-8 w-8 ${isListening ? "text-primary" : "text-primary/70"}`} />
@@ -268,16 +276,17 @@ export default function ChatPage() {
               </Button>
             </div>
 
-            {transcript && (
-              <div className="mt-6">
-                <div className="bg-white/60 backdrop-blur-lg rounded-3xl p-4 border border-white/50">
-                  <p className="text-center text-primary/80">{transcript}</p>
-                </div>
+            <div className="mt-6 min-h-[80px]">
+              <div
+                className={`bg-white/60 backdrop-blur-lg rounded-3xl p-4 border border-white/50 transition-opacity duration-300 ${
+                  transcript ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                <p className="text-center text-primary/80 min-h-[24px]">{transcript || "\u00A0"}</p>
               </div>
-            )}
+            </div>
           </div>
         ) : (
-          /* Text Input Controls */
           <div className="max-w-2xl mx-auto">
             <form onSubmit={handleTextSubmit} className="flex gap-3 items-center">
               <Button
