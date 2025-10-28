@@ -60,14 +60,14 @@ export default function ChatPage() {
   const [inputMode, setInputMode] = useState<InputMode>("voice")
   const [isListening, setIsListening] = useState(false)
   const [messages, setMessages] = useState<ChatMessageType[]>([])
-  const [hasScrolled, setHasScrolled] = useState(false)
+  const [showWelcomeContent, setShowWelcomeContent] = useState(false)
+  const [hasStartedChat, setHasStartedChat] = useState(false)
   const [input, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [transcript, setTranscript] = useState("")
   const [showStarters, setShowStarters] = useState(true)
   const recognitionRef = useRef<any>(null)
   const messagesEndRef = useRef<HTMLDivElement>(null)
-  const mainRef = useRef<HTMLDivElement>(null)
   const router = useRouter()
 
   const scrollToBottom = () => {
@@ -80,24 +80,16 @@ export default function ChatPage() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (mainRef.current && mainRef.current.scrollTop > 50 && !hasScrolled) {
-        setHasScrolled(true)
-        setMessages([WELCOME_MESSAGE])
+      if (!showWelcomeContent && window.scrollY > 50) {
+        setShowWelcomeContent(true)
       }
     }
 
-    const mainElement = mainRef.current
-    if (mainElement) {
-      mainElement.addEventListener("scroll", handleScroll)
-    }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [showWelcomeContent])
 
-    return () => {
-      if (mainElement) {
-        mainElement.removeEventListener("scroll", handleScroll)
-      }
-    }
-  }, [hasScrolled])
-
+  // Initialize Speech Recognition
   useEffect(() => {
     if (typeof window !== "undefined" && "webkitSpeechRecognition" in window) {
       const SpeechRecognition = (window as any).webkitSpeechRecognition
@@ -143,6 +135,12 @@ export default function ChatPage() {
     }
   }, [])
 
+  const handleInputAreaInteraction = () => {
+    if (!showWelcomeContent) {
+      setShowWelcomeContent(true)
+    }
+  }
+
   const handleMicToggle = () => {
     if (!recognitionRef.current) {
       alert("Speech recognition is not supported in your browser.")
@@ -162,19 +160,12 @@ export default function ChatPage() {
   const handleSendMessage = async (messageText: string) => {
     if (!messageText.trim() || isLoading) return
 
-    if (!hasScrolled) {
-      setHasScrolled(true)
+    if (!hasStartedChat) {
+      setHasStartedChat(true)
       setMessages([WELCOME_MESSAGE])
-      setTimeout(() => {
-        sendUserMessage(messageText)
-      }, 500)
-      return
     }
 
-    sendUserMessage(messageText)
-  }
-
-  const sendUserMessage = async (messageText: string) => {
+    // Nascondi i topic suggeriti dopo il primo messaggio
     setShowStarters(false)
 
     const userMessage: ChatMessageType = {
@@ -232,8 +223,6 @@ export default function ChatPage() {
     handleSendMessage(input)
   }
 
-  const hasMessages = messages.length > 0
-
   return (
     <div className="min-h-screen flex flex-col bg-cream">
       <Navbar />
@@ -249,99 +238,136 @@ export default function ChatPage() {
         </Button>
       </div>
 
-      <main ref={mainRef} className="flex-1 flex flex-col overflow-y-scroll">
-        <div
-          className={`flex-1 flex flex-col items-center justify-between px-6 py-12 max-w-6xl mx-auto w-full transition-opacity duration-1000 ${
-            hasScrolled ? "opacity-0 pointer-events-none absolute" : "opacity-100"
-          }`}
-        >
-          <div className="text-center space-y-8 mt-8">
-            <h2 className="text-6xl md:text-7xl mb-8 font-medium font-display tracking-wide text-foreground/80">
-              Hello, I'm{" "}
-              <span className="font-display font-black text-6xl text-foreground/80">
-                t<span className="text-[54px]">AI</span>mi
-              </span>
-              <br />
-              How can I help you today?
-            </h2>
-          </div>
+      <main className="flex-1 flex flex-col overflow-y-scroll">
+        {hasStartedChat ? (
+          <div className="flex-1 px-6 py-6 max-w-4xl mx-auto w-full">
+            <div className="space-y-4">
+              {messages.map((message) => (
+                <ChatMessage key={message.id} message={message} />
+              ))}
 
-          <div className="relative flex items-center justify-center my-auto">
-            <div className="w-[280px] h-[280px] md:w-[320px] md:h-[320px]">
-              <HolographicBlob />
-            </div>
-          </div>
-
-          <div className="text-center space-y-4 mb-8">
-            <p className="text-lg text-primary/70 leading-relaxed max-w-lg mx-auto px-4">
-              Hello and welcome! You're now testing the TAIMI digital mentor, an experimental chatbot designed{" "}
-              <span className="text-primary/50">
-                to support young people exploring sustainable entrepreneurship in rural areas.
-              </span>
-            </p>
-            <p className="text-sm text-primary/50 italic">Scroll down to start chatting...</p>
-          </div>
-        </div>
-
-        <div
-          className={`flex-1 px-6 py-6 max-w-4xl mx-auto w-full transition-opacity duration-1000 ${
-            hasScrolled ? "opacity-100" : "opacity-0 pointer-events-none"
-          }`}
-        >
-          <div className="space-y-4">
-            {messages.map((message) => (
-              <ChatMessage key={message.id} message={message} />
-            ))}
-
-            {showStarters && messages.length === 1 && !isLoading && (
-              <div className="flex flex-col gap-3 my-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                <div className="flex items-center gap-2 text-sm text-primary/60 px-2">
-                  <Sparkles className="h-4 w-4" />
-                  <span>Try asking about...</span>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                  {STARTER_TOPICS.map((topic, index) => (
-                    <button
-                      key={index}
-                      onClick={() => handleStarterClick(topic)}
-                      className="group relative flex items-center cursor-pointer gap-3 p-4 rounded-2xl bg-white/60 hover:bg-white/80 backdrop-blur-lg border border-white/50 transition-all duration-300 hover:scale-[1.02] hover:shadow-md text-left"
-                    >
-                      <span className="text-2xl flex-shrink-0">{topic.emoji}</span>
-                      <span className="text-sm font-medium text-primary/80 group-hover:text-primary transition-colors">
-                        {topic.text}
-                      </span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {isLoading && (
-              <div className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded-full bg-soft-lavender flex items-center justify-center">
-                  <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                </div>
-                <div className="bg-white/60 backdrop-blur-lg rounded-3xl px-5 py-3 border border-white/50">
-                  <div className="flex gap-1">
-                    <span className="w-2 h-2 bg-primary/60 rounded-full animate-bounce" />
-                    <span
-                      className="w-2 h-2 bg-primary/60 rounded-full animate-bounce"
-                      style={{ animationDelay: "0.2s" }}
-                    />
-                    <span
-                      className="w-2 h-2 bg-primary/60 rounded-full animate-bounce"
-                      style={{ animationDelay: "0.4s" }}
-                    />
+              {/* Topic suggeriti - mostrati solo all'inizio */}
+              {showStarters && messages.length === 1 && !isLoading && (
+                <div className="flex flex-col gap-3 my-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                  <div className="flex items-center gap-2 text-sm text-primary/60 px-2">
+                    <Sparkles className="h-4 w-4" />
+                    <span>Try asking about...</span>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    {STARTER_TOPICS.map((topic, index) => (
+                      <button
+                        key={index}
+                        onClick={() => handleStarterClick(topic)}
+                        className="group relative flex items-center cursor-pointer gap-3 p-4 rounded-2xl bg-white/60 hover:bg-white/80 backdrop-blur-lg border border-white/50 transition-all duration-300 hover:scale-[1.02] hover:shadow-md text-left"
+                      >
+                        <span className="text-2xl flex-shrink-0">{topic.emoji}</span>
+                        <span className="text-sm font-medium text-primary/80 group-hover:text-primary transition-colors">
+                          {topic.text}
+                        </span>
+                      </button>
+                    ))}
                   </div>
                 </div>
-              </div>
-            )}
-            <div ref={messagesEndRef} />
+              )}
+
+              {isLoading && (
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-full bg-soft-lavender flex items-center justify-center">
+                    <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                  </div>
+                  <div className="bg-white/60 backdrop-blur-lg rounded-3xl px-5 py-3 border border-white/50">
+                    <div className="flex gap-1">
+                      <span className="w-2 h-2 bg-primary/60 rounded-full animate-bounce" />
+                      <span
+                        className="w-2 h-2 bg-primary/60 rounded-full animate-bounce"
+                        style={{ animationDelay: "0.2s" }}
+                      />
+                      <span
+                        className="w-2 h-2 bg-primary/60 rounded-full animate-bounce"
+                        style={{ animationDelay: "0.4s" }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              )}
+              <div ref={messagesEndRef} />
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="flex-1 flex flex-col items-center justify-between px-6 py-12 max-w-6xl mx-auto w-full">
+            <div className="text-center space-y-8 mt-8">
+              <h2 className="text-6xl md:text-7xl mb-8 font-medium font-display tracking-wide text-foreground/80">
+                Hello, I'm{" "}
+                <span className="font-display font-black text-6xl text-foreground/80">
+                  t<span className="text-[54px]">AI</span>mi
+                </span>
+                <br />
+                How can I help you today?
+              </h2>
+            </div>
+
+            <div className="relative flex items-center justify-center my-auto">
+              <div
+                className={`w-[280px] h-[280px] md:w-[320px] md:h-[320px] transition-all duration-1000 ${
+                  showWelcomeContent ? "opacity-30 scale-90" : "opacity-100 scale-100"
+                }`}
+              >
+                <HolographicBlob />
+              </div>
+
+              {showWelcomeContent && (
+                <div className="absolute inset-0 flex flex-col items-center justify-center animate-in fade-in slide-in-from-bottom-8 duration-1000">
+                  <div className="max-w-2xl mx-auto space-y-6">
+                    <div className="bg-white/80 backdrop-blur-lg rounded-3xl p-6 border border-white/50 shadow-lg">
+                      <ChatMessage message={WELCOME_MESSAGE} />
+                    </div>
+
+                    <div className="flex flex-col gap-3 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
+                      <div className="flex items-center gap-2 text-sm text-primary/60 px-2">
+                        <Sparkles className="h-4 w-4" />
+                        <span>Try asking about...</span>
+                      </div>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        {STARTER_TOPICS.map((topic, index) => (
+                          <button
+                            key={index}
+                            onClick={() => handleStarterClick(topic)}
+                            className="group relative flex items-center cursor-pointer gap-3 p-4 rounded-2xl bg-white/80 hover:bg-white/90 backdrop-blur-lg border border-white/50 transition-all duration-300 hover:scale-[1.02] hover:shadow-md text-left"
+                          >
+                            <span className="text-2xl flex-shrink-0">{topic.emoji}</span>
+                            <span className="text-sm font-medium text-primary/80 group-hover:text-primary transition-colors">
+                              {topic.text}
+                            </span>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div
+              className={`text-center space-y-4 mb-8 transition-opacity duration-700 ${
+                showWelcomeContent ? "opacity-0" : "opacity-100"
+              }`}
+            >
+              <p className="text-lg text-primary/70 leading-relaxed max-w-lg mx-auto px-4">
+                Hello and welcome! You're now testing the TAIMI digital mentor, an experimental chatbot designed{" "}
+                <span className="text-primary/50">
+                  to support young people exploring sustainable entrepreneurship in rural areas.
+                </span>
+              </p>
+            </div>
+          </div>
+        )}
       </main>
 
-      <div className="pb-8 px-6 border-t border-border/30 pt-6">
+      <div
+        className="pb-8 px-6 border-t border-border/30 pt-6"
+        onMouseEnter={handleInputAreaInteraction}
+        onFocus={handleInputAreaInteraction}
+      >
         {inputMode === "voice" ? (
           <div className="max-w-2xl mx-auto">
             <div className="flex items-center justify-center gap-6">
