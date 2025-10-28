@@ -1,64 +1,63 @@
-// import { type NextRequest, NextResponse } from "next/server"
 
-// export async function POST(request: NextRequest) {
-//   try {
-//     const { message } = await request.json()
+import { NextRequest, NextResponse } from "next/server"
+import OpenAI from "openai"
 
-//     // TODO: Integrate with OpenAI API via Supabase Edge Function
-//     // For now, return a mock response
-//     const mockResponse = `Thank you for your message: "${message}". 
-    
-// This is a placeholder response. To enable real AI chat:
-// 1. Set up OpenAI API key in your environment
-// 2. Create a Supabase Edge Function to handle OpenAI requests
-// 3. Update this route to call the Edge Function
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+})
 
-// I can help you find courses, scholarships, and funding opportunities. What are you interested in learning?`
+export async function POST(req: NextRequest) {
+  try {
+    const { message, isFirstMessage } = await req.json()
 
-//     return NextResponse.json({ message: mockResponse })
-//   } catch (error) {
-//     console.error("Chat API error:", error)
-//     return NextResponse.json({ error: "Failed to process message" }, { status: 500 })
-//   }
-// }
+    if (!message) {
+      return NextResponse.json({ error: "Message is required" }, { status: 400 })
+    }
 
-// import { NextRequest, NextResponse } from "next/server"
-// import OpenAI from "openai"
+    const messages = [
+      {
+        role: "system",
+        content: "You are tAImi, an AI mentor for rural youth entrepreneurship in Northern Ostrobothnia, Finland. You help users discover training opportunities, funding resources, and local mentors. Be friendly, supportive, and practical.",
+      }
+    ]
 
-// const openai = new OpenAI({
-//   apiKey: process.env.OPENAI_API_KEY,
-// })
+       if (isFirstMessage) {
+      messages.push({
+        role: "assistant",
+        content:  [
+      "Hello and welcome! You're now testing the **TAIMI digital mentor**, an experimental chatbot designed to support young people exploring sustainable entrepreneurship in rural areas.",
+      "",
+      "This is a test environment, which means that some of the features and responses are still being improved. Your feedback helps us make the mentor smarter and more useful for everyone.",
+      "",
+      "Together, we can:",
+      "",
+      "- **Learn** about soil literacy and regenerative farming",
+      "- **Explore** climate-smart and sustainable practices",
+      "- **Develop** your business ideas and find resources to make them real",
+      "- **Discover** training opportunities and EU programmes for young innovators",
+      "- **Connect** with the community of rural entrepreneurs",
+      "",
+      "So, tell me, what would you like to explore first?"
+    ].join('\n'),
+        })
+    }
+     messages.push({
+      role: "user",
+      content: message,
+    })
 
-// export async function POST(req: NextRequest) {
-//   try {
-//     const { message } = await req.json()
+    const completion = await openai.chat.completions.create({
+      model: "gpt-4o",
+      messages: messages as any,
+      temperature: 0.7,
+      max_tokens: 500,
+    })
 
-//     if (!message) {
-//       return NextResponse.json({ error: "Message is required" }, { status: 400 })
-//     }
+    const responseMessage = completion.choices[0]?.message?.content || "Sorry, I couldn't generate a response."
 
-//     const completion = await openai.chat.completions.create({
-//       model: "gpt-4-turbo-preview", // o "gpt-3.5-turbo" per risparmiare
-//       messages: [
-//         {
-//           role: "system",
-//           content:
-//             "You are tAImi, an AI mentor for rural youth entrepreneurship in Northern Ostrobothnia, Finland. You help users discover training opportunities, funding resources, and local mentors. Be friendly, supportive, and practical.",
-//         },
-//         {
-//           role: "user",
-//           content: message,
-//         },
-//       ],
-//       temperature: 0.7,
-//       max_tokens: 500,
-//     })
-
-//     const responseMessage = completion.choices[0]?.message?.content || "Sorry, I couldn't generate a response."
-
-//     return NextResponse.json({ message: responseMessage })
-//   } catch (error) {
-//     console.error("OpenAI API error:", error)
-//     return NextResponse.json({ error: "Failed to process message" }, { status: 500 })
-//   }
-// }
+    return NextResponse.json({ message: responseMessage })
+  } catch (error) {
+    console.error("OpenAI API error:", error)
+    return NextResponse.json({ error: "Failed to process message" }, { status: 500 })
+  }
+}

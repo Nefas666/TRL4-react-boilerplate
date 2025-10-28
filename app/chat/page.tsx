@@ -4,7 +4,7 @@ import type React from "react"
 import { useState, useRef, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { ArrowLeft, Mic, X, Send, MessageSquare } from "lucide-react"
+import { ArrowLeft, Mic, X, Send, MessageSquare, Sparkles } from "lucide-react"
 import { useRouter } from "next/navigation"
 import HolographicBlob from "@/components/holographic-blob"
 import { ChatMessage } from "@/components/chat-message"
@@ -13,13 +13,58 @@ import { Navbar } from "@/components/navbar"
 
 type InputMode = "voice" | "text"
 
+// Topic suggeriti per iniziare la conversazione
+const STARTER_TOPICS = [
+  {
+    emoji: "🌱",
+    text: "Tell me about soil literacy",
+    message: "I'd like to learn about soil literacy and regenerative farming"
+  },
+  {
+    emoji: "💡",
+    text: "Help me develop a business idea",
+    message: "Can you help me develop my business idea for rural entrepreneurship?"
+  },
+  {
+    emoji: "🎓",
+    text: "Find training opportunities",
+    message: "What training opportunities are available for young rural entrepreneurs?"
+  },
+  {
+    emoji: "💧",
+    text: "Climate-smart practices",
+    message: "Tell me about climate-smart and sustainable practices"
+  }
+]
+
 export default function ChatPage() {
   const [inputMode, setInputMode] = useState<InputMode>("voice")
   const [isListening, setIsListening] = useState(false)
-  const [messages, setMessages] = useState<ChatMessageType[]>([])
+  const [messages, setMessages] = useState<ChatMessageType[]>([
+    {
+      id: crypto.randomUUID(),
+      conversation_id: "welcome",
+      role: "assistant",
+      content: `👋 Hello and welcome! You're now testing the **TAIMI digital mentor**, an experimental chatbot designed to support young people exploring sustainable entrepreneurship in rural areas.
+
+This is a test environment, which means that some of the features and responses are still being improved. Your feedback helps us make the mentor smarter and more useful for everyone.
+
+**Together, we can:**
+
+- 🌱 **Learn** about soil literacy and regenerative farming
+- 💧 **Explore** climate-smart and sustainable practices
+- 💡 **Develop** your business ideas and find resources to make them real
+- 🎓 **Discover** training opportunities and EU programmes for young innovators
+- 🤝 **Connect** with the community of rural entrepreneurs
+
+So, tell me, what would you like to explore first?`,
+      created_at: new Date().toISOString(),
+    }
+  ])
   const [input, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [transcript, setTranscript] = useState("")
+  const [showStarters, setShowStarters] = useState(true)
   const recognitionRef = useRef<any>(null)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const router = useRouter()
@@ -56,7 +101,6 @@ export default function ChatPage() {
 
         setTranscript(finalTranscript || interimTranscript)
 
-        // Auto-send when speech is final
         if (finalTranscript) {
           handleSendMessage(finalTranscript.trim())
         }
@@ -97,6 +141,9 @@ export default function ChatPage() {
 
   const handleSendMessage = async (messageText: string) => {
     if (!messageText.trim() || isLoading) return
+
+    // Nascondi i topic suggeriti dopo il primo messaggio
+    setShowStarters(false)
 
     const userMessage: ChatMessageType = {
       id: crypto.randomUUID(),
@@ -144,6 +191,10 @@ export default function ChatPage() {
     }
   }
 
+  const handleStarterClick = (topic: typeof STARTER_TOPICS[0]) => {
+    handleSendMessage(topic.message)
+  }
+
   const handleTextSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     handleSendMessage(input)
@@ -166,13 +217,38 @@ export default function ChatPage() {
         </Button>
       </div>
 
-      <main className="flex-1 flex flex-col overflow-y-scroll">
+      <main className="flex-1 flex flex-col overflow-auto">
         {hasMessages ? (
           <div className="flex-1 px-6 py-6 max-w-4xl mx-auto w-full">
             <div className="space-y-4">
               {messages.map((message) => (
                 <ChatMessage key={message.id} message={message} />
               ))}
+              
+              {/* Topic suggeriti - mostrati solo all'inizio */}
+              {showStarters && messages.length === 1 && !isLoading && (
+                <div className="flex flex-col gap-3 my-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                  <div className="flex items-center gap-2 text-sm text-primary/60 px-2">
+                    <Sparkles className="h-4 w-4" />
+                    <span>Try asking about...</span>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    {STARTER_TOPICS.map((topic, index) => (
+                      <button
+                        key={index}
+                        onClick={() => handleStarterClick(topic)}
+                        className="group relative flex items-center cursor-pointer gap-3 p-4 rounded-2xl bg-white/60 hover:bg-white/80 backdrop-blur-lg border border-white/50 transition-all duration-300 hover:scale-[1.02] hover:shadow-md text-left"
+                      >
+                        <span className="text-2xl flex-shrink-0">{topic.emoji}</span>
+                        <span className="text-sm font-medium text-primary/80 group-hover:text-primary transition-colors">
+                          {topic.text}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+              
               {isLoading && (
                 <div className="flex items-start gap-3">
                   <div className="w-8 h-8 rounded-full bg-soft-lavender flex items-center justify-center">
@@ -294,7 +370,7 @@ export default function ChatPage() {
                 variant="ghost"
                 size="icon"
                 onClick={() => setInputMode("voice")}
-                className="rounded-full w-12 h-12 bg-white/60 hover:bg-white/80 transition-all flex-shrink-0"
+                className="rounded-full w-12 h-12 bg-white/60 hover:bg-white/80 transition-all flex-shrink-0 cursor-pointer"
               >
                 <Mic className="h-6 w-6 text-primary" />
               </Button>
@@ -304,14 +380,14 @@ export default function ChatPage() {
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Type your message..."
                 disabled={isLoading}
-                className="flex-1 rounded-full bg-white/60 backdrop-blur-lg border-white/50 px-6 py-6 text-base focus:bg-white/80 transition-all"
+                className="flex-1 rounded-full bg-white/60 backdrop-blur-lg border-white/50 px-6 py-6 text-base focus:bg-white/80 transition-all cursor-pointer"
               />
 
               <Button
                 type="submit"
                 disabled={isLoading || !input.trim()}
                 size="icon"
-                className="rounded-full w-12 h-12 bg-primary hover:bg-primary/90 disabled:opacity-50 flex-shrink-0"
+                className="rounded-full w-12 h-12 bg-primary hover:bg-primary/90 disabled:opacity-50 flex-shrink-0 cursor-pointer"
               >
                 <Send className="h-5 w-5 text-white" />
               </Button>
