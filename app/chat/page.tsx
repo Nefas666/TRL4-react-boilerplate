@@ -147,6 +147,14 @@ So, tell me, what would you like to explore first?`,
     }
   }
 
+  const handleStopVoice = () => {
+    if (recognitionRef.current) {
+      recognitionRef.current.stop()
+    }
+    setIsListening(false)
+    setTranscript("")
+  }
+
   const handleSendMessage = async (messageText: string) => {
     if (!messageText.trim() || isLoading) return
 
@@ -347,14 +355,10 @@ So, tell me, what would you like to explore first?`,
               <Button
                 variant="ghost"
                 size="icon"
-                onClick={() => {
-                  setIsListening(false)
-                  setTranscript("")
-                  if (recognitionRef.current) {
-                    recognitionRef.current.stop()
-                  }
-                }}
-                className="rounded-full w-14 h-14 bg-white/60 hover:bg-white/80 transition-all"
+                onClick={handleStopVoice}
+                disabled={!isListening && !transcript}
+                aria-label="Stop voice input and clear transcript"
+                className="rounded-full w-14 h-14 bg-white/60 hover:bg-white/80 transition-all disabled:opacity-50"
               >
                 <X className="h-6 w-6 text-primary" />
               </Button>

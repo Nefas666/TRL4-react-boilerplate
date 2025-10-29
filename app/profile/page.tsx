@@ -6,6 +6,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { MessageSquare, Upload, Download, LogOut, FileVideo, FileText } from "lucide-react"
 import Link from "next/link"
+import { signOut } from "@/app/actions/auth"
 
 export default async function ProfilePage() {
   const supabase = await createClient()
@@ -65,10 +66,12 @@ export default async function ProfilePage() {
             </CardHeader>
             <CardContent>
               {profile?.bio && <p className="text-sm text-muted-foreground mb-4">{profile.bio}</p>}
-              <Button variant="outline" className="w-full gap-2 bg-transparent">
-                <LogOut className="h-4 w-4" />
-                Sign Out
-              </Button>
+              <form action={signOut}>
+                <Button type="submit" variant="outline" className="w-full gap-2 bg-transparent">
+                  <LogOut className="h-4 w-4" />
+                  Sign Out
+                </Button>
+              </form>
             </CardContent>
           </Card>
 
