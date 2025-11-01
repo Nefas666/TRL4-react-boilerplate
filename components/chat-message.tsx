@@ -23,7 +23,7 @@ export function ChatMessage({ message }: ChatMessageProps) {
 
 
   return (
-    <div className={cn("flex w-full max-w-4xl md:max-w-7xl mb-4 mx-auto", isUser ? "justify-end" : "justify-start")}>
+    <div className={cn("flex w-full md:max-w-7xl mb-4 mx-auto", isUser ? "justify-end" : "mb:justify-start justify-center")}>
       <div
         className={cn(
           "max-w-[80%] rounded-lg px-4 py-3 font-light",
