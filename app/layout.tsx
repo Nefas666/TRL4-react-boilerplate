@@ -1,11 +1,10 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Space_Grotesk,MuseoModerno } from "next/font/google"
-
-import localFont from "next/font/local"
+import { Space_Grotesk, MuseoModerno } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
 import "./globals.css"
+import { IntroVideoModal } from "@/components/intro-video-modal"
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -18,14 +17,12 @@ const museoModerno = MuseoModerno({
   display: "swap",
 })
 
-
-
 export const metadata: Metadata = {
-  title: 'tAImi - AI Mentor for Rural Youth Entrepreneurship',
-  description: 'AI-powered platform for rural youth entrepreneurship in Northern Ostrobothnia, Finland',
+  title: "tAImi - AI Mentor for Rural Youth Entrepreneurship",
+  description: "AI-powered platform for rural youth entrepreneurship in Northern Ostrobothnia, Finland",
   openGraph: {
-    title: 'tAImi - AI Mentor for Rural Youth',
-    description: 'Empowering rural communities through AI mentorship',
+    title: "tAImi - AI Mentor for Rural Youth",
+    description: "Empowering rural communities through AI mentorship",
   },
   generator: "001100 010010 011110 100001 101101 110011",
 }
@@ -37,8 +34,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`font-sans ${spaceGrotesk.variable, museoModerno.variable}`}>
+      <body className={`font-sans ${spaceGrotesk.variable} ${museoModerno.variable}`}>
         <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+        <IntroVideoModal />
         <Analytics />
       </body>
     </html>
