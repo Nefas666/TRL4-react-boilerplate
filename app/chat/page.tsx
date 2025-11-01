@@ -262,7 +262,7 @@ So, tell me, what would you like to explore first?`,
             </div>
           </div>
         ) : (
-          <div className="flex-1 px-6 py-6 max-w-4xl mx-auto w-full animate-in fade-in slide-in-from-bottom-4 duration-700">
+          <div className="flex-1 px-6 py-6 pt-20 md:pt-6 max-w-4xl mx-auto w-full animate-in fade-in slide-in-from-bottom-4 duration-700">
             <div className="space-y-4">
               {messages.map((message) => (
                 <ChatMessage key={message.id} message={message} />

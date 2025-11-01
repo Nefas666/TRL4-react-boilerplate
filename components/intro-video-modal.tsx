@@ -47,7 +47,7 @@ export function IntroVideoModal() {
           <div className="relative w-full max-w-4xl mx-4 bg-background rounded-2xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300">
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b bg-background/95 backdrop-blur">
-              <h2 className="text-xl font-semibold font-display">Benvenuto in tAImi</h2>
+              <h2 className="text-xl font-semibold font-display">Welcome to tAImi</h2>
               <div className="flex gap-2">
                 <Button
                   variant="ghost"
@@ -85,14 +85,14 @@ export function IntroVideoModal() {
                 onError={() => setIsLoading(false)}
               >
                 <source src={INTRO_VIDEO_URL} type="video/mp4" />
-                Il tuo browser non supporta il tag video.
+                Your browser does not support the video tag.
               </video>
             </div>
 
             {/* Footer */}
             <div className="p-4 bg-background/95 backdrop-blur border-t">
               <p className="text-sm text-muted-foreground text-center">
-                Scopri come tAImi può aiutarti nel tuo percorso imprenditoriale
+                Discover how tAImi can help you in your entrepreneurial journey
               </p>
             </div>
           </div>
@@ -104,7 +104,7 @@ export function IntroVideoModal() {
         <div className="fixed bottom-4 right-4 z-50 w-80 bg-background rounded-xl shadow-2xl overflow-hidden animate-in slide-in-from-bottom-4 duration-300">
           {/* Mini Header */}
           <div className="flex items-center justify-between p-2 bg-background/95 backdrop-blur border-b">
-            <span className="text-sm font-medium font-display truncate">Video di benvenuto</span>
+            <span className="text-sm font-medium font-display truncate">Welcome video</span>
             <div className="flex gap-1">
               <Button
                 variant="ghost"
@@ -131,7 +131,7 @@ export function IntroVideoModal() {
           <div className="relative aspect-video bg-black">
             <video className="w-full h-full" controls>
               <source src={INTRO_VIDEO_URL} type="video/mp4" />
-              Il tuo browser non supporta il tag video.
+              Your browser does not support the video tag.
             </video>
           </div>
         </div>
